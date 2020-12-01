@@ -773,7 +773,7 @@ scdl("https://m.soundcloud.com/abdul-muttaqin-701361735/lucid-dreams-gustixa-ft-
  * save audio file
  */
 
-ttsid.save(filepath, suara, function() {
+gtts.save(filepath, suara, function() {
   console.log(`${filepath} MP3 SAVED!`)
 });
 await new Promise(resolve => setTimeout(resolve, 500));
