@@ -226,10 +226,13 @@ conn.sendMessage(id, 'Waalaikumsalam, ada yang bisa saya bantu? kalo bingung ket
 }
 else if (text == '#infoserver'){
 conn.sendMessage(id, 'Lunaticnetwork', 
- 'ip: id.lunaticmc.me',
- 'port: 19132(default)',
- 'status: Beta Release',
-'official LunaticNetwork',
+'ip:',
+ 'id.lunaticmc.me',
+'port:',
+ '19132(default)',
+'status:',
+ 'Beta Release',
+'officialLunaticNetwork',
  'whatsapp:',
 'bit.ly/lunaticWA',
  'vote:',
