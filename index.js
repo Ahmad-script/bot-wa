@@ -119,7 +119,7 @@ conn.sendMessage(id, teks, MessageType.text)
 if (text.includes("#nulis")){
   const teks = text.replace(/#nulis /, "")
 axios.get(`https://mhankbarbar.herokuapp.com/nulis?text=${teks}&apiKey=zFuV88pxcIiCWuYlwg57`).then((res) => {
-    let hasil = `Download sendiri ya hasilnya dibawah, soalnya kalo dikirim langsung hasilnya blur\n\n${res.data.result}`;
+    let hasil = `Silahkan download hasil dibawah ini agar hasilnya lebih bagus! 馃憣\n\n${res.data.result}`;
     conn.sendMessage(id, hasil ,MessageType.text);
 })
 }
@@ -134,8 +134,8 @@ axios.get(`https://st4rz.herokuapp.com/api/yta?url=${teks}`).then((res) => {
 
 if (text.includes("#yt")){
 const teks = text.replace(/#yt /, "")
-axios.get(`https://mhankbarbar.herokuapp.com/api/ytv?url=${teks}&apiKey=zFuV88pxcIiCWuYlwg57`).then((res) => {
-    let hasil = `Download sendiri melalui link dibawah ya, takut servernya down xixi..\n\nSize: ${res.data.filesize}\n\nLink: ${res.data.result}`;
+axios.get(`https://st4rz.herokuapp.com/api/ytv?url=${teks}`).then((res) => {
+    let hasil = `Video telah tersedia pada link di bawah, silahkan klik link dan download hasilnya\n馃憞馃憞馃憞馃憞馃憞馃憞馃憞馃憞馃憞\n\nJudul: ${res.data.title}\n\nUkuran video: ${res.data.filesize}\n\nLink: ${res.data.result}`;
     conn.sendMessage(id, hasil ,MessageType.text);
 })
 }
@@ -143,15 +143,15 @@ axios.get(`https://mhankbarbar.herokuapp.com/api/ytv?url=${teks}&apiKey=zFuV88px
 if (text.includes("#fb")){
 const teks = text.replace(/#fb /, "")
 axios.get(`https://mhankbarbar.herokuapp.com/api/epbe?url=${teks}&apiKey=zFuV88pxcIiCWuYlwg57`).then((res) => {
-    let hasil = `Download sendiri melalui link dibawah ya, takut servernya down xixi..\n\nJudul: ${res.data.title}\n\nSize: ${res.data.filesize}\n\nLink: ${res.data.result}`;
+    let hasil = `Berhasil! silahkan klik link di bawah untuk mendownload hasilnya!\n馃憞馃憞馃憞馃憞馃憞馃憞馃憞馃憞馃憞\n\nJudul: ${res.data.title}\n\nUkuran: ${res.data.filesize}\n\nLink: ${res.data.result}`;
     conn.sendMessage(id, hasil ,MessageType.text);
 })
 }
 
 if (text.includes("#ig")){
 const teks = text.replace(/#ig /, "")
-axios.get(`https://mhankbarbar.herokuapp.com/api/ig?url=${teks}&apiKey=zFuV88pxcIiCWuYlwg57`).then((res) => {
-    let hasil = `Download sendiri melalui link dibawah ya, takut servernya down xixi..\n\nLink: ${res.data.result}`;
+axios.get(`https://st4rz.herokuapp.com/api/ig?url=${teks}`).then((res) => {
+    let hasil = `Berhasil! silahkan klik link di bawah untuk mendownload hasilnya!\n馃憞馃憞馃憞馃憞馃憞馃憞馃憞馃憞馃憞\n\nUkuran: ${res.data.filesize}\n\nLink: ${res.data.result}`;
     conn.sendMessage(id, hasil ,MessageType.text);
 })
 }
@@ -159,19 +159,31 @@ axios.get(`https://mhankbarbar.herokuapp.com/api/ig?url=${teks}&apiKey=zFuV88pxc
 if (text.includes("#twt")){
 const teks = text.replace(/#twt /, "")
 axios.get(`https://mhankbarbar.herokuapp.com/api/twit?url=${teks}&apiKey=zFuV88pxcIiCWuYlwg57`).then((res) => {
-    let hasil = `Download sendiri melalui link dibawah ya, takut servernya down xixi..\n\nJudul: ${res.data.title}\n\nSize: ${res.data.filesize}\n\nLink: ${res.data.result}`;
+    let hasil = `Berhasil! silahkan klik link di bawah untuk mendownload hasilnya!\n馃憞馃憞馃憞馃憞馃憞馃憞馃憞馃憞馃憞\n\nSize: ${res.data.filesize}\n\nLink: ${res.data.result}`;
     conn.sendMessage(id, hasil ,MessageType.text);
 })
 }
-
-if (text.includes("#wiki")){
-const teks = text.replace(/#wiki /, "")
-axios.get(`https://mhankbarbar.herokuapp.com/api/wiki?q=${teks}&lang=id&apiKey=zFuV88pxcIiCWuYlwg57`).then((res) => {
+if (text.includes("#tiktok")) {
+const tictoc = text.replace(/#tiktok /, "")
+axios.get(`https://st4rz.herokuapp.com/api/tiktok?url=${tictoc}`).then((res) => {
+     let titoe = `Berhasil!!! Silahkan klik link dibawah ini untuk mendownload hasilnya! \n馃憞馃憞馃憞馃憞馃憞馃憞馃憞馃憞馃憞\n\nJudul: ${res.data.deskripsi} \n\nDurasi: ${res.data.durasi}\n\nNama: ${res.data.nama}\n\nUrl: ${res.data.urlvideo}`;
+conn.sendMessage(id, titoe, MessageType.text);
+})
+}
+if (text.includes("#wikia")){
+const teks = text.replace(/#wikia /, "")
+axios.get(`https://st4rz.herokuapp.com/api/wiki?q=${text}`).then((res) => {
     let hasil = `Menurut Wikipedia:\n\n${res.data.result}`;
     conn.sendMessage(id, hasil ,MessageType.text);
 })
 }
-
+if (text.includes("#sholat")){
+  const teks = text.replace(/#sholat /, "")
+  axios.get(`https://mhankbarbar.herokuapp.com/api/jadwalshalat?daerah=${teks}&apiKey=zFuV88pxcIiCWuYlwg57`).then ((res) =>{
+  let hasil = `Jadwal sholat di ${teks} hari ini adalah\n\n馃憠Imsyak : ${res.data.Imsyak}\n馃憠Subuh : ${res.data.Subuh} WIB\n馃憠Dzuhur : ${res.data.Dzuhur}WIB\n馃憠Ashar : ${res.data.Ashar} WIB\n馃憠Maghrib : ${res.data.Maghrib}\n馃憠Isya : ${res.data.Isya} WIB\n馃憠Tengah malam : ${res.data.Dhuha} WIB`;
+  conn.sendMessage(id, hasil, MessageType.text);
+})
+}
 if (text == '#help'){
 const corohelp = await get.get('https://covid19.mathdro.id/api/countries/id').json()
 var date = new Date();
