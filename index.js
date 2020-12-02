@@ -226,7 +226,6 @@ conn.sendMessage(id, 'Waalaikumsalam, ada yang bisa saya bantu? kalo bingung ket
 }
 else if (text == '#infoserver'){
 conn.sendMessage(id, 'Lunaticnetwork', 
-❏Join LunaticNetwork Sekarang
 ❏ Ip: id.lunaticmc.me
 ❏ Port: 19132(default)
 ❏ Status: Beta Release
