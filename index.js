@@ -226,19 +226,19 @@ conn.sendMessage(id, 'Waalaikumsalam, ada yang bisa saya bantu? kalo bingung ket
 }
 else if (text == '#infoserver'){
 conn.sendMessage(id, 'Lunaticnetwork', 
- Ip: id.lunaticmc.me
- Port: 19132(default)
- Status: Beta Release
-Official LunaticNetwork
- Whatsapp:
+ ip: id.lunaticmc.me
+ port: 19132(default)
+ status: Beta Release
+official LunaticNetwork
+ whatsapp:
 bit.ly/lunaticWA
- Vote:
+ vote:
 bit.ly/lunaticVote
- Website:
+ website:
 http://www.lunaticmc.me/
- ResurcePacks:
+ resurcePacks:
 https://bit.ly/3m4co0Z
-Copyright 2020 LunaticNetwork' ,MessageType.text);
+copyright 2020 LunaticNetwork' ,MessageType.text);
 }
 else if (text == 'Assalamualaikum'){
 conn.sendMessage(id, 'Waalaikumsalam, ada yang bisa saya bantu? kalo bingung ketik #help ya say..' ,MessageType.text);
