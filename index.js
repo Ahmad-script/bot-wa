@@ -224,8 +224,29 @@ conn.sendMessage(id, 'Waalaikumsalam, ada yang bisa saya bantu? kalo bingung ket
 else if (text == 'salam'){
 conn.sendMessage(id, 'Waalaikumsalam, ada yang bisa saya bantu? kalo bingung ketik #help ya say..' ,MessageType.text);
 }
-else if (text == 'asalamualaikum'){
-conn.sendMessage(id, 'Waalaikumsalam, ada yang bisa saya bantu? kalo bingung ketik #help ya say..' ,MessageType.text);
+else if (text == '#infoserver'){
+conn.sendMessage(id, '*Lunatic network*
+_Memberikan Server Terbaik_
+
+*Join LunaticNetwork Sekarang*
+❏ Ip: id.lunaticmc.me
+❏ Port: 19132(default)
+❏ Status: Beta Release
+
+*Official LunaticNetwork*
+❏ Whatsapp:
+bit.ly/lunaticWA
+
+❏ Vote:
+bit.ly/lunaticVote
+
+❏ Website:
+http://www.lunaticmc.me/
+
+❏ ResurcePacks:
+https://bit.ly/3m4co0Z
+
+Copyright © 2020 LunaticNetwork' ,MessageType.text);
 }
 else if (text == 'Assalamualaikum'){
 conn.sendMessage(id, 'Waalaikumsalam, ada yang bisa saya bantu? kalo bingung ketik #help ya say..' ,MessageType.text);
