@@ -12,12 +12,12 @@ const menu = require("./lib/menu.js");
 const donate = require("./lib/donate.js");
 const info = require("./lib/info.js");
 //
-const BotName = 'BOT ./MrG3P5'; // Nama Bot Whatsapp
-const instagramlu = 'https://www.instagram.com/mrg3p5_id/'; // Nama Instagramlu cok
-const whatsapplu = '0895-2325-8649'; // Nomor whatsapplu cok
+const BotName = 'BOT Ahmad'; // Nama Bot Whatsapp
+const instagramlu = 'gk ada'; // Nama Instagramlu cok
+const whatsapplu = '083865614902'; // Nomor whatsapplu cok
 const kapanbotaktif = '24 Jam'; // Kapan bot lu aktif
-const grupch1 = 'https://chat.whatsapp.com/L0jifxElwo6B2QyxuabLtU'; // OFFICIAL GRUP LU 1
-const grupch2 = 'https://chat.whatsapp.com/CxrUD2MnUv5KGko3CsW6DT'; // OFFICIAL GRUP LU 2
+const grupch1 = 'gk ada'; // OFFICIAL GRUP LU 1
+const grupch2 = 'gk ada'; // OFFICIAL GRUP LU 2
 //
 const
 {
@@ -63,11 +63,11 @@ fs.existsSync('./session.json') && conn.loadAuthInfo('./session.json')
 //conn.connectOptions.agent = ProxyAgent ('http://1.0.180.120:8080')
 conn.connect();
 
-conn.on('user-presence-update', json => console.log(`[ ${moment().format("HH:mm:ss")} ] => bot by Root@MrG3P5`))
+conn.on('user-presence-update', json => console.log(`[ ${moment().format("HH:mm:ss")} ] => bot by @Ahmad`))
 conn.on('message-status-update', json =>
 {
    const participant = json.participant ? ' (' + json.participant + ')' : '' // participant exists when the message is from a group
-   console.log(`[ ${moment().format("HH:mm:ss")} ] => bot by Root@MrG3P5`)
+   console.log(`[ ${moment().format("HH:mm:ss")} ] => bot by @ahmad`)
 })
 
 conn.on('message-new', async(m) =>
@@ -126,8 +126,8 @@ axios.get(`https://mhankbarbar.herokuapp.com/nulis?text=${teks}&apiKey=zFuV88pxc
 
 if (text.includes("#ytmp3")){
 const teks = text.replace(/#ytmp3 /, "")
-axios.get(`https://mhankbarbar.herokuapp.com/api/yta?url=${teks}&apiKey=zFuV88pxcIiCWuYlwg57`).then((res) => {
-    let hasil = `Download sendiri melalui link dibawah ya, takut servernya down xixi..\n\nSize: ${res.data.filesize}\n\nLink: ${res.data.result}`;
+axios.get(`https://st4rz.herokuapp.com/api/yta?url=${teks}`).then((res) => {
+    let hasil = `Audio telah tersedia pada link di bawah, silahkan klik link dan download hasilnya\n馃憞馃憞馃憞馃憞馃憞馃憞馃憞馃憞馃憞\n\nJudul: ${res.data.title}\n\nUkuran audio: ${res.data.filesize}\n\nLink: ${res.data.result}`;
     conn.sendMessage(id, hasil ,MessageType.text);
 })
 }
@@ -786,9 +786,53 @@ const buffer = fs.readFileSync(filepath)
 	conn.sendMessage(id , buffer , MessageType.audio);
 
 };
-
-
 }
+if (text.includes("#lirik")){
+	const teks = text.split("#lirik")[1]
+	axios.get(`http://scrap.terhambar.com/lirik?word=${teks}`).then ((res) => {
+	 	let hasil = `LIRIK DARI LAGU ${teks} ADALAH\n\n\n ${res.data.result.lirik}`
+	conn.sendMessage(id, hasil, MessageType.text)
+	})
+}
+if (text.includes("#alay")){
+	const alay = text.split("#alay")[1]
+	axios.get(`https://api.terhambar.com/bpk?kata=${alay}`).then ((res) =>
+		{ let hasil = `${res.data.text}`
+		conn.sendMessage(id, hasil, MessageType.text)
+	})
+}
+
+if (text.includes("#loli"))
+   {
+    var items = ["anime loli","anime loli sange","anime loli fackgirll","anime loli i love you"];
+    var nime = items[Math.floor(Math.random() * items.length)];
+    var url = "https://api.fdci.se/rep.php?gambar=" + nime;
+    
+    axios.get(url)
+      .then((result) => {
+        var n = JSON.parse(JSON.stringify(result.data));
+        var nimek =  n[Math.floor(Math.random() * n.length)];
+        imageToBase64(nimek) 
+        .then(
+            (response) => {
+	var buf = Buffer.from(response, 'base64'); 
+              conn.sendMessage(
+            id,
+              buf,MessageType.image)
+       
+            }
+        )
+        .catch(
+            (error) => {
+                console.log(error);
+            }
+        )
+    
+    });
+    }
+
+
+
 
 
 
