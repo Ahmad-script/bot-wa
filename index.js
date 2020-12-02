@@ -849,7 +849,7 @@ if (text.includes("#loli"))
 
 
 
-}
+
 
 
 
