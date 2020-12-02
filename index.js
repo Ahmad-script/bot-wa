@@ -229,20 +229,15 @@ conn.sendMessage(id, 'Lunaticnetwork',
  Ip: id.lunaticmc.me
  Port: 19132(default)
  Status: Beta Release
-
 Official LunaticNetwork
  Whatsapp:
 bit.ly/lunaticWA
-
  Vote:
 bit.ly/lunaticVote
-
  Website:
 http://www.lunaticmc.me/
-
  ResurcePacks:
 https://bit.ly/3m4co0Z
-
 Copyright 2020 LunaticNetwork' ,MessageType.text);
 }
 else if (text == 'Assalamualaikum'){
