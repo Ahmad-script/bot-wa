@@ -225,7 +225,7 @@ else if (text == 'salam'){
 conn.sendMessage(id, 'Waalaikumsalam, ada yang bisa saya bantu? kalo bingung ketik #help ya say..' ,MessageType.text);
 }
 else if (text == '#infoserver'){
-conn.sendMessage(id, '*Lunatic network*
+conn.sendMessage(id, 'Lunatic network
 _Memberikan Server Terbaik_
 
 *Join LunaticNetwork Sekarang*
