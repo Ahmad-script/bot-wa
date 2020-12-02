@@ -227,7 +227,7 @@ conn.sendMessage(id, 'Waalaikumsalam, ada yang bisa saya bantu? kalo bingung ket
 else if (text == '#infoserver'){
 conn.sendMessage(id, 'Lunaticnetwork', 
 'ip:',
- 'id.lunaticmc.me',
+ 'dideskgrup',
 'port:',
  '19132',
 'status:',
