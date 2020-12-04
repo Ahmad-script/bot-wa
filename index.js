@@ -226,13 +226,13 @@ conn.sendMessage(id, 'Waalaikumsalam, ada yang bisa saya bantu? kalo bingung ket
 }
 else if (text == '#intro'){
 conn.sendMessage(id, 'INTRO:v',
-'Nama:,
-'Umur:,
-'Kelas:,
-'Punya Pacar Ato gak:v?:,
-'Nama Pacar:v:,
-'Udh Pernah Ngewe:v?:,
-'Jenis Kelamin:v:' ,MessageType.text);
+conn.sendMessage(id, 'Nama:',
+conn.sendMessage(id, 'Umur:',
+conn.sendMessage(id, 'Kelas:',
+conn.sendMessage(id, 'Punya Pacar Ato gak:v?:',
+conn.sendMessage(id, 'Nama Pacar:v:',
+conn.sendMessage(id, 'Udh Pernah Ngewe:v?:',
+conn.sendMessage(id, 'Jenis Kelamin:v:' ,MessageType.text);
 }
 else if (text == 'Assalamualaikum'){
 conn.sendMessage(id, 'Waalaikumsalam, ada yang bisa saya bantu? kalo bingung ketik #help ya say..' ,MessageType.text);
