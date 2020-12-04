@@ -225,14 +225,14 @@ else if (text == 'salam'){
 conn.sendMessage(id, 'Waalaikumsalam, ada yang bisa saya bantu? kalo bingung ketik #help ya say..' ,MessageType.text);
 }
 else if (text == '#intro'){
-conn.sendMessage(id, 'INTRO:v',
-conn.sendMessage(id, 'Nama:',
-conn.sendMessage(id, 'Umur:',
-conn.sendMessage(id, 'Kelas:',
-conn.sendMessage(id, 'Punya Pacar Ato gak:v?:',
-conn.sendMessage(id, 'Nama Pacar:v:',
-conn.sendMessage(id, 'Udh Pernah Ngewe:v?:',
-conn.sendMessage(id, 'Jenis Kelamin:v:'
+conn.sendMessage(id, 'INTRO',
+conn.sendMessage(id, 'Nama=',
+conn.sendMessage(id, 'Umur=',
+conn.sendMessage(id, 'Kelas=',
+conn.sendMessage(id, 'Punya Pacar Ato gak?=',
+conn.sendMessage(id, 'Nama Pacar=',
+conn.sendMessage(id, 'Udh Pernah Ngewe?=',
+conn.sendMessage(id, 'Jenis Kelamin=',
 }
 else if (text == 'Assalamualaikum'){
 conn.sendMessage(id, 'Waalaikumsalam, ada yang bisa saya bantu? kalo bingung ketik #help ya say..' ,MessageType.text);
