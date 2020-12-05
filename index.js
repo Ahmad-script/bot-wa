@@ -225,7 +225,7 @@ else if (text == 'salam'){
 conn.sendMessage(id, 'Waalaikumsalam, ada yang bisa saya bantu? kalo bingung ketik #help ya say..' ,MessageType.text);
 }
 else if (text == '#intro'){
-conn.sendMessage(id, 'exports.intro = (id, BotName, corohelp, tampilTanggal, tampilWaktu, instagramlu, whatsapplu, kapanbotaktif, grupch1, grupch2) => {
+conn.sendMessage(id, 'exports.menu = (id, BotName, corohelp, tampilTanggal, tampilWaktu, instagramlu, whatsapplu, kapanbotaktif, grupch1, grupch2) => {
 	return `🔰 -----[ *MENU INTRO ${BotName}* ]----- 🔰
 
 Hi, *${id.split("@s.whatsapp.net")[0]}* 👋️
