@@ -226,8 +226,7 @@ conn.sendMessage(id, 'Waalaikumsalam, ada yang bisa saya bantu? kalo bingung ket
 }
 else if (text == '#intro'){
 conn.sendMessage(id, 'Hi, *${id.split("@s.whatsapp.net")[0]}* 👋️
-Mau intro? Berikut Menu intro!!
-
+Mau intro? Berikut Menu intro!!',
 MENU INTRO! :
 => *Nama*: 
 => *Umur*: 
