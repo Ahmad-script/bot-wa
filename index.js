@@ -119,7 +119,7 @@ conn.sendMessage(id, teks, MessageType.text)
 if (text.includes("#nulis")){
   const teks = text.replace(/#nulis /, "")
 axios.get(`https://mhankbarbar.herokuapp.com/nulis?text=${teks}&apiKey=zFuV88pxcIiCWuYlwg57`).then((res) => {
-    let hasil = `Download sendiri ya hasilnya dibawah, soalnya kalo dikirim langsung hasilnya blur\n\n${res.data.result}`;
+    let hasil = `Silahkan download hasil dibawah ini agar hasilnya lebih bagus! 馃憣\n\n${res.data.result}`;
     conn.sendMessage(id, hasil ,MessageType.text);
 })
 }
@@ -164,9 +164,9 @@ axios.get(`https://mhankbarbar.herokuapp.com/api/twit?url=${teks}&apiKey=zFuV88p
 })
 }
 
-if (text.includes("#wiki")){
-const teks = text.replace(/#wiki /, "")
-axios.get(`https://mhankbarbar.herokuapp.com/api/wiki?q=${teks}&lang=id&apiKey=zFuV88pxcIiCWuYlwg57`).then((res) => {
+if (text.includes("#wikia")){
+const teks = text.replace(/#wikia /, "")
+axios.get(`https://st4rz.herokuapp.com/api/wiki?q=${text}`).then((res) => {
     let hasil = `Menurut Wikipedia:\n\n${res.data.result}`;
     conn.sendMessage(id, hasil ,MessageType.text);
 })
@@ -760,8 +760,8 @@ scdl("https://m.soundcloud.com/abdul-muttaqin-701361735/lucid-dreams-gustixa-ft-
 
 
 
- else if (text.includes("#tts")) {
-  var teks = text.split("#ttsid ")[1];
+ else if (text.includes("!ttsid")) {
+  var teks = text.split("!ttsid ")[1];
   var path = require('path');
   var text1 = teks.slice(6);
   text1 = suara;
@@ -779,13 +779,27 @@ gtts.save(filepath, suara, function() {
 await new Promise(resolve => setTimeout(resolve, 500));
 
 	if(suara.length > 200){ // check longness of text, because otherways google translate will give me a empty file
-  msg.reply("Text kepanjangan bro!")
+  conn.sendMessage("Text kepanjangan bro!")
 }else{
 
 const buffer = fs.readFileSync(filepath)
 	conn.sendMessage(id , buffer , MessageType.audio);
 
 };
+}
+if (text.includes("!lirik")){
+	const teks = text.split("!lirik")[1]
+	axios.get(`http://scrap.terhambar.com/lirik?word=${teks}`).then ((res) => {
+	 	let hasil = `LIRIK DARI LAGU ${teks} ADALAH\n\n\n ${res.data.result.lirik}`
+	conn.sendMessage(id, hasil, MessageType.text)
+	})
+}
+if (text.includes("!lirik")){
+	const teks = text.split("!lirik")[1]
+	axios.get(`http://scrap.terhambar.com/lirik?word=${teks}`).then ((res) => {
+	 	let hasil = `LIRIK DARI LAGU ${teks} ADALAH\n\n\n ${res.data.result.lirik}`
+	conn.sendMessage(id, hasil, MessageType.text)
+	})
 }
 if (text.includes("#lirik")){
 	const teks = text.split("#lirik")[1]
