@@ -226,7 +226,19 @@ conn.sendMessage(id, 'Waalaikumsalam, ada yang bisa saya bantu? kalo bingung ket
 }
 else if (text == '#intro'){
 conn.sendMessage(id, 'exports.intro = (id, BotName, corohelp, tampilTanggal, tampilWaktu, instagramlu, whatsapplu, kapanbotaktif, grupch1, grupch2) => {
-	return `🔰 -----[ *MENU INTRO ${BotName}* ]----- 🔰' ,MessageType.text);
+	return `🔰 -----[ *MENU INTRO ${BotName}* ]----- 🔰
+
+Hi, *${id.split("@s.whatsapp.net")[0]}* 👋️
+Mau intro? Berikut Menu intro!!
+
+MENU INTRO! :
+=> *Nama*: 
+=> *Umur*: 
+=> *Kelas*: 
+=> *Punya Pacar?*: 
+=> *Nama Pacar*: 
+=> *Umur pacar*: 
+=> *Udh Pernah ngewe?*: ' ,MessageType.text);
 }
 else if (text == 'Assalamualaikum'){
 conn.sendMessage(id, 'Waalaikumsalam, ada yang bisa saya bantu? kalo bingung ketik #help ya say..' ,MessageType.text);
