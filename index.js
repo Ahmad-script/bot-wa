@@ -224,8 +224,9 @@ conn.sendMessage(id, 'Waalaikumsalam, ada yang bisa saya bantu? kalo bingung ket
 else if (text == 'salam'){
 conn.sendMessage(id, 'Waalaikumsalam, ada yang bisa saya bantu? kalo bingung ketik #help ya say..' ,MessageType.text);
 }
-else if (text == 'Assalamualaikum'){
-conn.sendMessage(id, 'Waalaikumsalam, ada yang bisa saya bantu? kalo bingung ketik #help ya say..' ,MessageType.text);
+else if (text == '#intro'){
+conn.sendMessage(id, 'exports.intro = (id, BotName, corohelp, tampilTanggal, tampilWaktu, instagramlu, whatsapplu, kapanbotaktif, grupch1, grupch2) => {
+	return `🔰 -----[ *MENU INTRO ${BotName}* ]----- 🔰' ,MessageType.text);
 }
 else if (text == 'Assalamualaikum'){
 conn.sendMessage(id, 'Waalaikumsalam, ada yang bisa saya bantu? kalo bingung ketik #help ya say..' ,MessageType.text);
