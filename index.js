@@ -224,18 +224,6 @@ conn.sendMessage(id, 'Waalaikumsalam, ada yang bisa saya bantu? kalo bingung ket
 else if (text == 'salam'){
 conn.sendMessage(id, 'Waalaikumsalam, ada yang bisa saya bantu? kalo bingung ketik #help ya say..' ,MessageType.text);
 }
-else if (text == '#intro'){
-conn.sendMessage(id, 'Hi, *${id.split("@s.whatsapp.net")[0]}* 👋️
-Mau intro? Berikut Menu intro!!',
-MENU INTRO! :
-=> *Nama*: 
-=> *Umur*: 
-=> *Kelas*: 
-=> *Punya Pacar?*: 
-=> *Nama Pacar*: 
-=> *Umur pacar*: 
-=> *Udh Pernah ngewe?*: ' ,MessageType.text);
-}
 else if (text == 'Assalamualaikum'){
 conn.sendMessage(id, 'Waalaikumsalam, ada yang bisa saya bantu? kalo bingung ketik #help ya say..' ,MessageType.text);
 }
