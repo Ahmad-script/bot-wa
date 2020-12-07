@@ -130,7 +130,7 @@ if (text.includes('#nulis')){
     })
 }
 
-if if (text.includes("#ytmp3")){
+if (text.includes("#ytmp3")){
 const teks = text.replace(/#ytmp3 /, "")
 axios.get(`https://alfians-api.herokuapp.com/api/yta?url=${teks}`).then((res) => {
 	conn.sendMessage(id, '[WAIT] Searching...⏳', MessageType.text)
