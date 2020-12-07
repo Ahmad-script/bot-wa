@@ -117,7 +117,8 @@ conn.sendMessage(id, teks, MessageType.text)
 }
 
 if (text.includes('#nulis')){
-  var teks = text.replace(#nulis /, '')
+  var teks = text.replace(#
+nulis /, '')
     axios.get('https://bangandre.herokuapp.com/nulis?teks='+teks)
     .then((res) => {
       imageToBase64(res.data.result)
@@ -171,7 +172,8 @@ axios.get(`https://mhankbarbar.herokuapp.com/api/twit?url=${teks}&apiKey=zFuV88p
 }
 
 if (text.includes("#wiki")){
-const teks = text.replace(#wiki /, "")
+const teks = text.replace(#
+wiki /, "")
 axios.get(`https://arugaz.herokuapp.com/api/wiki?q=${teks}`).then((res) => {
 	conn.sendMessage(id, '[WAIT] Searching...❗', MessageType.text)
     let hasil = ` *👩‍💻Menurut Wikipedia:👩‍💻* \n\n _${res.data.result}_ `;
@@ -180,7 +182,8 @@ axios.get(`https://arugaz.herokuapp.com/api/wiki?q=${teks}`).then((res) => {
 }
 
 if (text.includes("#spamcall")){
-const teks = text.replace(#spamcall /, "")
+const teks = text.replace(#
+spamcall /, "")
 axios.get(`https://arugaz.herokuapp.com/api/spamcall?no=${teks}`).then((res) => {
 	conn.sendMessage(id, '[WAIT] Proses...❗', MessageType.text)
     let hasil = ` *INFO SPAM CALL* \n\n _${res.data.logs}_`;
