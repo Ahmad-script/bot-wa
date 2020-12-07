@@ -116,12 +116,18 @@ if (text.includes("#say")){
 conn.sendMessage(id, teks, MessageType.text)
 }
 
-if (text.includes("#nulis")){
-  const teks = text.replace(/#nulis /, "")
-axios.get(`https://mhankbarbar.herokuapp.com/nulis?text=${teks}&apiKey=zFuV88pxcIiCWuYlwg57`).then((res) => {
-    let hasil = `Silahkan download hasil dibawah ini agar hasilnya lebih bagus! 馃憣\n\n${res.data.result}`;
-    conn.sendMessage(id, hasil ,MessageType.text);
-})
+if (text.includes('#nulis')){
+  var teks = text.replace(#nulis /, '')
+    axios.get('https://bangandre.herokuapp.com/nulis?teks='+teks)
+    .then((res) => {
+      imageToBase64(res.data.result)
+        .then(
+          (ress) => {
+            conn.sendMessage(id, '[WAIT] Sedang dibuat..❗', MessageType.text)
+            var buf = Buffer.from(ress, 'base64')
+            conn.sendMessage(id, buf, MessageType.image)
+        })
+    })
 }
 
 if (text.includes("#ytmp3")){
@@ -164,10 +170,20 @@ axios.get(`https://mhankbarbar.herokuapp.com/api/twit?url=${teks}&apiKey=zFuV88p
 })
 }
 
-if (text.includes("#wikia")){
-const teks = text.replace(/#wikia /, "")
-axios.get(`https://st4rz.herokuapp.com/api/wiki?q=${text}`).then((res) => {
-    let hasil = `Menurut Wikipedia:\n\n${res.data.result}`;
+if (text.includes("#wiki")){
+const teks = text.replace(#wiki /, "")
+axios.get(`https://arugaz.herokuapp.com/api/wiki?q=${teks}`).then((res) => {
+	conn.sendMessage(id, '[WAIT] Searching...❗', MessageType.text)
+    let hasil = ` *👩‍💻Menurut Wikipedia:👩‍💻* \n\n _${res.data.result}_ `;
+    conn.sendMessage(id, hasil ,MessageType.text);
+})
+}
+
+if (text.includes("#spamcall")){
+const teks = text.replace(#spamcall /, "")
+axios.get(`https://arugaz.herokuapp.com/api/spamcall?no=${teks}`).then((res) => {
+	conn.sendMessage(id, '[WAIT] Proses...❗', MessageType.text)
+    let hasil = ` *INFO SPAM CALL* \n\n _${res.data.logs}_`;
     conn.sendMessage(id, hasil ,MessageType.text);
 })
 }
@@ -871,6 +887,14 @@ if (text.includes("#hentai"))
     });
     }
 
+case '#stickertoimg':
+            if (quotedMsg && quotedMsg.type == 'sticker') {
+                const mediaData = await decryptMedia(quotedMsg)
+                tobz.reply(from, `[WAIT] Sedang di proses⏳ silahkan tunggu!`, id)
+                const imageBase64 = `data:${quotedMsg.mimetype};base64,${mediaData.toString('base64')}`
+                await tobz.sendFile(from, imageBase64, 'imagesticker.jpg', 'Success Convert Sticker to Image!', id)
+            } else if (!quotedMsg) return tobz.reply(from, `Mohon tag sticker yang ingin dijadikan gambar!`, id)
+            break
 
 
 
