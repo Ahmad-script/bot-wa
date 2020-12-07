@@ -895,6 +895,47 @@ case '#stickertoimg':
                 await tobz.sendFile(from, imageBase64, 'imagesticker.jpg', 'Success Convert Sticker to Image!', id)
             } else if (!quotedMsg) return tobz.reply(from, `Mohon tag sticker yang ingin dijadikan gambar!`, id)
             break
+case '#wait':
+            if (isMedia && type === 'image' || quotedMsg && quotedMsg.type === 'image') {
+                if (isMedia) {
+                    var mediaData = await decryptMedia(message, uaOverride)
+                } else {
+                    var mediaData = await decryptMedia(quotedMsg, uaOverride)
+                }
+                const fetch = require('node-fetch')
+                const imgBS4 = `data:${mimetype};base64,${mediaData.toString('base64')}`
+                client.reply(from, 'Searching....', id)
+                fetch('https://trace.moe/api/search', {
+                    method: 'POST',
+                    body: JSON.stringify({ image: imgBS4 }),
+                    headers: { "Content-Type": "application/json" }
+                })
+                .then(respon => respon.json())
+                .then(resolt => {
+                	if (resolt.docs && resolt.docs.length <= 0) {
+                		client.reply(from, 'Maaf, saya tidak tau ini anime apa', id)
+                	}
+                    const { is_adult, title, title_chinese, title_romaji, title_english, episode, similarity, filename, at, tokenthumb, anilist_id } = resolt.docs[0]
+                    teks = ''
+                    if (similarity < 0.92) {
+                    	teks = '*Saya memiliki keyakinan rendah dalam hal ini* :\n\n'
+                    }
+                    teks += `➸ *Title Japanese* : ${title}\n➸ *Title chinese* : ${title_chinese}\n➸ *Title Romaji* : ${title_romaji}\n➸ *Title English* : ${title_english}\n`
+                    teks += `➸ *Ecchi* : ${is_adult}\n`
+                    teks += `➸ *Eps* : ${episode.toString()}\n`
+                    teks += `➸ *Kesamaan* : ${(similarity * 100).toFixed(1)}%\n`
+                    var video = `https://media.trace.moe/video/${anilist_id}/${encodeURIComponent(filename)}?t=${at}&token=${tokenthumb}`;
+                    client.sendFileFromUrl(from, video, 'nimek.mp4', teks, id).catch(() => {
+                        client.reply(from, teks, id)
+                    })
+                })
+                .catch(() => {
+                    client.reply(from, 'Error !', id)
+                })
+            } else {
+                client.sendFile(from, './media/img/tutod.jpg', 'Tutor.jpg', 'Neh contoh mhank!', id)
+            }
+            break
 
 
 
