@@ -882,7 +882,7 @@ if (text.includes("#randomloli"))
 
 if (text.includes("#randomhentai"))
    {
-    var items = ["nsfwneko","anime hentai"];
+    var items = ["anime loli sange","anime loli fackgirll"];
     var anim = items[Math.floor(Math.random() * items.length)];
     var url = "https://api.fdci.se/rep.php?gambar=" + nime;
     
