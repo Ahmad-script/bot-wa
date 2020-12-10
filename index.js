@@ -1118,4 +1118,4 @@ if (text.includes("#wait"))
 }
     
     });
-    })
+    }
