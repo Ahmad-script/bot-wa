@@ -995,7 +995,7 @@ else if (text.includes("#artinama"))
   });
   }
 
-if (text.includes("#grupinfo")){
+else if (text.includes("#grupinfo")){
             if (!isGroupMsg) return client.reply(from, '.', message.id) 
             var totalMem = chat.groupMetadata.participants.length
             var desc = chat.groupMetadata.desc
@@ -1012,7 +1012,7 @@ if (text.includes("#grupinfo")){
 ${desc}`)
         }
 
-if (text.includes("#bc")){
+else if (text.includes("#bc")){
             if(!isowner) return client.reply(from, 'Only Bot admins!', message.id)
             let msg = body.slice(4)
             const chatz = await client.getAllChatIds()
@@ -1023,7 +1023,7 @@ if (text.includes("#bc")){
             client.reply(from, 'Broadcast Success!', message.id)
             }
 
-if (text.includes("#kick")){
+else if (text.includes("#kick")){
             if(!isGroupMsg) return client.reply(from, '...', message.id)
             if(!isGroupAdmins) return client.reply(from, 'You are not an admin, Sorry', message.id)
             if(!isBotGroupAdmins) return client.reply(from, 'You need to make me admin to use this CMD', message.id)
@@ -1034,7 +1034,7 @@ if (text.includes("#kick")){
                 await client.removeParticipant(groupId, mentionedJidList[i])
             }
 
-if (text.includes("#wait")){
+else if (text.includes("#wait")){
             const keyword = message.body.replace('#anime', '')
             try {
             const data = await fetch(
@@ -1063,7 +1063,7 @@ if (text.includes("#wait")){
              await client.sendFileFromUrl(from, errorurl2, 'error.png', '💔️ Sorry, Couldn\'t find the requested anime')
            }
 
-if (text.includes("#pasangan ")) {
+else if (text.includes("#pasangan ")) {
     const request = require('request');
     var gh = text.split("#pasangan ")[1];
     var namamu = gh.split("&")[0];
