@@ -1063,7 +1063,7 @@ if (text.includes("#wait")){
              await client.sendFileFromUrl(from, errorurl2, 'error.png', '💔️ Sorry, Couldn\'t find the requested anime')
            }
 
-else if (text.includes("#pasangan ")) {
+if (text.includes("#pasangan ")) {
     const request = require('request');
     var gh = text.split("#pasangan ")[1];
     var namamu = gh.split("&")[0];
