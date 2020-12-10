@@ -995,33 +995,6 @@ else if (text.includes("#artinama"))
   });
   }
 
-else if (text.includes("#pasangan ")) {
-    const request = require('request');
-    var gh = text.split("#pasangan ")[1];
-    var namamu = gh.split("&")[0];
-    var pasangan = gh.split("&")[1];
-    request.get({
-        headers: {'content-type' : 'application/x-www-form-urlencoded'},
-        url:     'http://www.primbon.com/kecocokan_nama_pasangan.php?nama1='+ namamu +'&nama2='+ pasangan +'&proses=+Submit%21+',
-
-    },function(error, response, body){
-        let $ = cheerio.load(body);
-      var y = $.html().split('<b>KECOCOKAN JODOH BERDASARKAN NAMA PASANGAN</b><br><br>')[1];
-        var t = y.split('.<br><br>')[1];
-        var f = y.replace(t ," ");
-        var x = f.replace(/<br\s*[\/]?>/gi, "\n");
-        var h  = x.replace(/<[^>]*>?/gm, '');
-        var d = h.replace("&amp;", '&')
-      console.log(""+ d);
-      conn.sendMessage(id, `
-❉──────────❉
- *Kecocokan berdasarkan nama*
- _${d}_
-❉──────────❉
-    `, MessageType.text);
-  });
-  }
-
 if (text.includes("#grupinfo")){
             if (!isGroupMsg) return client.reply(from, '.', message.id) 
             var totalMem = chat.groupMetadata.participants.length
@@ -1088,8 +1061,35 @@ if (text.includes("#wait")){
            } catch (err) {
              console.error(err.message)
              await client.sendFileFromUrl(from, errorurl2, 'error.png', '💔️ Sorry, Couldn\'t find the requested anime')
+           }
+
+else if (text.includes("#pasangan ")) {
+    const request = require('request');
+    var gh = text.split("#pasangan ")[1];
+    var namamu = gh.split("&")[0];
+    var pasangan = gh.split("&")[1];
+    request.get({
+        headers: {'content-type' : 'application/x-www-form-urlencoded'},
+        url:     'http://www.primbon.com/kecocokan_nama_pasangan.php?nama1='+ namamu +'&nama2='+ pasangan +'&proses=+Submit%21+',
+
+    },function(error, response, body){
+        let $ = cheerio.load(body);
+      var y = $.html().split('<b>KECOCOKAN JODOH BERDASARKAN NAMA PASANGAN</b><br><br>')[1];
+        var t = y.split('.<br><br>')[1];
+        var f = y.replace(t ," ");
+        var x = f.replace(/<br\s*[\/]?>/gi, "\n");
+        var h  = x.replace(/<[^>]*>?/gm, '');
+        var d = h.replace("&amp;", '&')
+      console.log(""+ d);
+      conn.sendMessage(id, `
+❉──────────❉
+ *Kecocokan berdasarkan nama*
+ _${d}_
+❉──────────❉
+    `, MessageType.text);
   });
   }
+
 
 
 
