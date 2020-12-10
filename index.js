@@ -1105,7 +1105,6 @@ if (text.includes("#wait"))
              await client.sendFileFromUrl(from, errorurl2, 'error.png', '💔️ Sorry, Couldn\'t find the requested anime')
            }
 
-  
 
 
 
@@ -1116,4 +1115,4 @@ if (text.includes("#wait"))
    // end of file
 
 
-}
+})
