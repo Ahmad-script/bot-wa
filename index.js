@@ -27,17 +27,6 @@ function sleep(ms) {
 
 module.exports = index.js = async (client, message) => {
     try {
-        const { type, id, from, t, sender, isGroupMsg, chat, chatId, caption, isMedia, mimetype, quotedMsg, mentionedJidList, author, quotedMsgObj } = message
-        let { body } = message
-        const { name } = chat
-        let { pushname, verifiedName } = sender
-        const prefix = '#'
-        body = (type === 'chat' && body.startsWith(prefix)) ? body : ((type === 'image' && caption || type === 'video' && caption) && caption.startsWith(prefix)) ? caption : ''
-        const command = body.slice(prefix.length).trim().split(/ +/).shift().toLowerCase()
-        const args = body.slice(prefix.length).trim().split(/ +/).slice(1)
-        const isCmd = body.startsWith(prefix)
-
-        const time = moment(t * 1000).format('DD/MM HH:mm:ss')
 
         if (isCmd && msgFilter.isFiltered(from) && !isGroupMsg) return console.log(color('[SPAM!]', 'red'), color(time, 'yellow'), color(`${command} [${args.length}]`), 'from', color(pushname))
         if (isCmd && msgFilter.isFiltered(from) && isGroupMsg) return console.log(color('[SPAM!]', 'red'), color(time, 'yellow'), color(`${command} [${args.length}]`), 'from', color(pushname), 'in', color(name))
@@ -1033,8 +1022,7 @@ else if (text.includes("#pasangan ")) {
   });
   }
 
-if (text.includes("#grupinfo"))
-   {
+if (text.includes("#grupinfo")){
             if (!isGroupMsg) return client.reply(from, '.', message.id) 
             var totalMem = chat.groupMetadata.participants.length
             var desc = chat.groupMetadata.desc
@@ -1051,8 +1039,7 @@ if (text.includes("#grupinfo"))
 ${desc}`)
         }
 
-if (text.includes("#bc"))
-   {
+if (text.includes("#bc")){
             if(!isowner) return client.reply(from, 'Only Bot admins!', message.id)
             let msg = body.slice(4)
             const chatz = await client.getAllChatIds()
@@ -1063,8 +1050,7 @@ if (text.includes("#bc"))
             client.reply(from, 'Broadcast Success!', message.id)
             }
 
-if (text.includes("#kick"))
-   {
+if (text.includes("#kick")){
             if(!isGroupMsg) return client.reply(from, '...', message.id)
             if(!isGroupAdmins) return client.reply(from, 'You are not an admin, Sorry', message.id)
             if(!isBotGroupAdmins) return client.reply(from, 'You need to make me admin to use this CMD', message.id)
@@ -1075,8 +1061,7 @@ if (text.includes("#kick"))
                 await client.removeParticipant(groupId, mentionedJidList[i])
             }
 
-if (text.includes("#wait"))
-   {
+if (text.includes("#wait")){
             const keyword = message.body.replace('#anime', '')
             try {
             const data = await fetch(
@@ -1115,4 +1100,4 @@ if (text.includes("#wait"))
    // end of file
 
 
-Break
+})
