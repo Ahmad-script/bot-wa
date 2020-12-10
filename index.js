@@ -11,6 +11,7 @@ const imageToBase64 = require('image-to-base64');
 const menu = require("./lib/menu.js");
 const donate = require("./lib/donate.js");
 const info = require("./lib/info.js");
+const msgFilter = require('./lib/msgFilter')
 //
 const BotName = 'BOT Ahmad'; // Nama Bot Whatsapp
 const instagramlu = 'gk ada'; // Nama Instagramlu cok
@@ -19,6 +20,44 @@ const kapanbotaktif = '24 Jam'; // Kapan bot lu aktif
 const grupch1 = 'gk ada'; // OFFICIAL GRUP LU 1
 const grupch2 = 'gk ada'; // OFFICIAL GRUP LU 2
 //
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+module.exports = msgHandler = async (client, message) => {
+    try {
+        const { type, id, from, t, sender, isGroupMsg, chat, chatId, caption, isMedia, mimetype, quotedMsg, mentionedJidList, author, quotedMsgObj } = message
+        let { body } = message
+        const { name } = chat
+        let { pushname, verifiedName } = sender
+        const prefix = '#'
+        body = (type === 'chat' && body.startsWith(prefix)) ? body : ((type === 'image' && caption || type === 'video' && caption) && caption.startsWith(prefix)) ? caption : ''
+        const command = body.slice(prefix.length).trim().split(/ +/).shift().toLowerCase()
+        const args = body.slice(prefix.length).trim().split(/ +/).slice(1)
+        const isCmd = body.startsWith(prefix)
+
+        const time = moment(t * 1000).format('DD/MM HH:mm:ss')
+
+        if (isCmd && msgFilter.isFiltered(from) && !isGroupMsg) return console.log(color('[SPAM!]', 'red'), color(time, 'yellow'), color(`${command} [${args.length}]`), 'from', color(pushname))
+        if (isCmd && msgFilter.isFiltered(from) && isGroupMsg) return console.log(color('[SPAM!]', 'red'), color(time, 'yellow'), color(`${command} [${args.length}]`), 'from', color(pushname), 'in', color(name))
+        if (!isCmd && !isGroupMsg) return console.log('[RECV]', color(time, 'yellow'), 'Message from', color(pushname))
+        if (!isCmd && isGroupMsg) return console.log('[RECV]', color(time, 'yellow'), 'Message from', color(pushname), 'in', color(name))
+        if (isCmd && !isGroupMsg) console.log(color('[EXEC]'), color(time, 'yellow'), color(`${command} [${args.length}]`), 'from', color(pushname))
+        if (isCmd && isGroupMsg) console.log(color('[EXEC]'), color(time, 'yellow'), color(`${command} [${args.length}]`), 'from', color(pushname), 'in', color(name))
+        const botNumber = await client.getHostNumber()
+        const groupId = isGroupMsg ? chat.groupMetadata.id : ''
+        const groupAdmins = isGroupMsg ? await client.getGroupAdmins(groupId) : ''
+        const isGroupAdmins = isGroupMsg ? groupAdmins.includes(sender.id) : false
+        const isBotGroupAdmins = isGroupMsg ? groupAdmins.includes(botNumber + '@c.us') : false
+        const isBanned = ban.includes(chatId)
+        const owner = '083865614902' // eg 9190xxxxxxxx
+        const isowner = owner+'@c.us' == sender.id 
+
+        msgFilter.addFilter(from)
+
+        const uaOverride = 'WhatsApp/2.2029.4 Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36'
+        const isUrl = new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&/=]*)/gi)
 const
 {
    WAConnection,
@@ -994,6 +1033,78 @@ else if (text.includes("#pasangan ")) {
   });
   }
 
+if (text.includes("#grupinfo"))
+   {
+            if (!isGroupMsg) return client.reply(from, '.', message.id) 
+            var totalMem = chat.groupMetadata.participants.length
+            var desc = chat.groupMetadata.desc
+            var groupname = name
+            var grouppic = await client.getProfilePicFromServer(chat.id)
+            if (grouppic == undefined) {
+                 var pfp = errorurl
+            } else {
+                 var pfp = grouppic 
+            }
+            await client.sendFileFromUrl(from, pfp, 'group.png', `*${groupname}* 
+🌐️ *Members: ${totalMem}*
+📃️ *Group Description* 
+${desc}`)
+        }
+
+if (text.includes("#bc"))
+   {
+            if(!isowner) return client.reply(from, 'Only Bot admins!', message.id)
+            let msg = body.slice(4)
+            const chatz = await client.getAllChatIds()
+            for (let ids of chatz) {
+                var cvk = await client.getChatById(ids)
+                if (!cvk.isReadOnly) client.sendText(ids, `[ EWH BOT Broadcast ]\n\n${msg}`)
+            }
+            client.reply(from, 'Broadcast Success!', message.id)
+            }
+
+if (text.includes("#kick"))
+   {
+            if(!isGroupMsg) return client.reply(from, '...', message.id)
+            if(!isGroupAdmins) return client.reply(from, 'You are not an admin, Sorry', message.id)
+            if(!isBotGroupAdmins) return client.reply(from, 'You need to make me admin to use this CMD', message.id)
+            if(mentionedJidList.length === 0) return client.reply(from, 'Wrong format', message.id)
+            await client.sendText(from, `Request Accepted! issued:\n${mentionedJidList.join('\n')}`)
+            for (let i = 0; i < mentionedJidList.length; i++) {
+                if (groupAdmins.includes(mentionedJidList[i])) return await client.reply(from, '....', message.id)
+                await client.removeParticipant(groupId, mentionedJidList[i])
+            }
+
+if (text.includes("#wait"))
+   {
+            const keyword = message.body.replace('#anime', '')
+            try {
+            const data = await fetch(
+           `https://api.jikan.moe/v3/search/anime?q=${keyword}`
+            )
+            const parsed = await data.json()
+            if (!parsed) {
+              await client.sendFileFromUrl(from, errorurl2, 'error.png', '💔️ Sorry, Couldn\'t find the requested anime', id)
+              console.log("Sent!")
+              return null
+              }
+            const { title, synopsis, episodes, url, rated, score, image_url } = parsed.results[0]
+            const content = `*Anime Found!*
+✨️ *Title:* ${title}
+🎆️ *Episodes:* ${episodes}
+💌️ *Rating:* ${rated}
+❤️ *Score:* ${score}
+💚️ *Synopsis:* ${synopsis}
+🌐️ *URL*: ${url}`
+
+            const image = await bent("buffer")(image_url)
+            const base64 = `data:image/jpg;base64,${image.toString("base64")}`
+            client.sendImage(from, base64, title, content)
+           } catch (err) {
+             console.error(err.message)
+             await client.sendFileFromUrl(from, errorurl2, 'error.png', '💔️ Sorry, Couldn\'t find the requested anime')
+           }
+  
 
 
 
