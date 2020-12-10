@@ -1088,7 +1088,8 @@ if (text.includes("#wait")){
            } catch (err) {
              console.error(err.message)
              await client.sendFileFromUrl(from, errorurl2, 'error.png', '💔️ Sorry, Couldn\'t find the requested anime')
-           }
+  });
+  }
 
 
 
@@ -1100,4 +1101,4 @@ if (text.includes("#wait")){
    // end of file
 
 
-)}
+})
