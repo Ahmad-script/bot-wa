@@ -1012,28 +1012,6 @@ else if (text.includes("#grupinfo")){
 ${desc}`)
         }
 
-else if (text.includes("#bc")){
-            if(!isowner) return client.reply(from, 'Only Bot admins!', message.id)
-            let msg = body.slice(4)
-            const chatz = await client.getAllChatIds()
-            for (let ids of chatz) {
-                var cvk = await client.getChatById(ids)
-                if (!cvk.isReadOnly) client.sendText(ids, `[ EWH BOT Broadcast ]\n\n${msg}`)
-            }
-            client.reply(from, 'Broadcast Success!', message.id)
-            }
-
-else if (text.includes("#kick")){
-            if(!isGroupMsg) return client.reply(from, '...', message.id)
-            if(!isGroupAdmins) return client.reply(from, 'You are not an admin, Sorry', message.id)
-            if(!isBotGroupAdmins) return client.reply(from, 'You need to make me admin to use this CMD', message.id)
-            if(mentionedJidList.length === 0) return client.reply(from, 'Wrong format', message.id)
-            await client.sendText(from, `Request Accepted! issued:\n${mentionedJidList.join('\n')}`)
-            for (let i = 0; i < mentionedJidList.length; i++) {
-                if (groupAdmins.includes(mentionedJidList[i])) return await client.reply(from, '....', message.id)
-                await client.removeParticipant(groupId, mentionedJidList[i])
-            }
-
 else if (text.includes("#pasangan ")) {
     const request = require('request');
     var gh = text.split("#pasangan ")[1];
