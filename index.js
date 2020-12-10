@@ -1100,4 +1100,4 @@ if (text.includes("#wait")){
    // end of file
 
 
-})
+)}
