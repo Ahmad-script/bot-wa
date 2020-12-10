@@ -11,7 +11,6 @@ const imageToBase64 = require('image-to-base64');
 const menu = require("./lib/menu.js");
 const donate = require("./lib/donate.js");
 const info = require("./lib/info.js");
-const msgFilter = require('./lib/msgFilter');
 //
 const BotName = 'BOT Ahmad'; // Nama Bot Whatsapp
 const instagramlu = 'gk ada'; // Nama Instagramlu cok
@@ -20,33 +19,6 @@ const kapanbotaktif = '24 Jam'; // Kapan bot lu aktif
 const grupch1 = 'gk ada'; // OFFICIAL GRUP LU 1
 const grupch2 = 'gk ada'; // OFFICIAL GRUP LU 2
 //
-
-function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
-
-module.exports = index.js = async (client, message) => {
-    try {
-
-        if (isCmd && msgFilter.isFiltered(from) && !isGroupMsg) return console.log(color('[SPAM!]', 'red'), color(time, 'yellow'), color(`${command} [${args.length}]`), 'from', color(pushname))
-        if (isCmd && msgFilter.isFiltered(from) && isGroupMsg) return console.log(color('[SPAM!]', 'red'), color(time, 'yellow'), color(`${command} [${args.length}]`), 'from', color(pushname), 'in', color(name))
-        if (!isCmd && !isGroupMsg) return console.log('[RECV]', color(time, 'yellow'), 'Message from', color(pushname))
-        if (!isCmd && isGroupMsg) return console.log('[RECV]', color(time, 'yellow'), 'Message from', color(pushname), 'in', color(name))
-        if (isCmd && !isGroupMsg) console.log(color('[EXEC]'), color(time, 'yellow'), color(`${command} [${args.length}]`), 'from', color(pushname))
-        if (isCmd && isGroupMsg) console.log(color('[EXEC]'), color(time, 'yellow'), color(`${command} [${args.length}]`), 'from', color(pushname), 'in', color(name))
-        const botNumber = await client.getHostNumber()
-        const groupId = isGroupMsg ? chat.groupMetadata.id : ''
-        const groupAdmins = isGroupMsg ? await client.getGroupAdmins(groupId) : ''
-        const isGroupAdmins = isGroupMsg ? groupAdmins.includes(sender.id) : false
-        const isBotGroupAdmins = isGroupMsg ? groupAdmins.includes(botNumber + '@c.us') : false
-        const isBanned = ban.includes(chatId)
-        const owner = '083865614902' // eg 9190xxxxxxxx
-        const isowner = owner+'@c.us' == sender.id 
-
-        msgFilter.addFilter(from)
-
-        const uaOverride = 'WhatsApp/2.2029.4 Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36'
-        const isUrl = new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&/=]*)/gi)
 const
 {
    WAConnection,
@@ -995,23 +967,6 @@ else if (text.includes("#artinama"))
   });
   }
 
-else if (text.includes("#grupinfo")){
-            if (!isGroupMsg) return client.reply(from, '.', message.id) 
-            var totalMem = chat.groupMetadata.participants.length
-            var desc = chat.groupMetadata.desc
-            var groupname = name
-            var grouppic = await client.getProfilePicFromServer(chat.id)
-            if (grouppic == undefined) {
-                 var pfp = errorurl
-            } else {
-                 var pfp = grouppic 
-            }
-            await client.sendFileFromUrl(from, pfp, 'group.png', `*${groupname}* 
-🌐️ *Members: ${totalMem}*
-📃️ *Group Description* 
-${desc}`)
-        }
-
 else if (text.includes("#pasangan ")) {
     const request = require('request');
     var gh = text.split("#pasangan ")[1];
@@ -1048,7 +1003,6 @@ else if (text.includes("#pasangan ")) {
 
 
    // end of file
-
 
 
 })
