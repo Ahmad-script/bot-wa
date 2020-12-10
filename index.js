@@ -1034,35 +1034,6 @@ else if (text.includes("#kick")){
                 await client.removeParticipant(groupId, mentionedJidList[i])
             }
 
-else if (text.includes("#wait")){
-            const keyword = message.body.replace('#anime', '')
-            try {
-            const data = await fetch(
-           `https://api.jikan.moe/v3/search/anime?q=${keyword}`
-            )
-            const parsed = await data.json()
-            if (!parsed) {
-              await client.sendFileFromUrl(from, errorurl2, 'error.png', '💔️ Sorry, Couldn\'t find the requested anime', id)
-              console.log("Sent!")
-              return null
-              }
-            const { title, synopsis, episodes, url, rated, score, image_url } = parsed.results[0]
-            const content = `*Anime Found!*
-✨️ *Title:* ${title}
-🎆️ *Episodes:* ${episodes}
-💌️ *Rating:* ${rated}
-❤️ *Score:* ${score}
-💚️ *Synopsis:* ${synopsis}
-🌐️ *URL*: ${url}`
-
-            const image = await bent("buffer")(image_url)
-            const base64 = `data:image/jpg;base64,${image.toString("base64")}`
-            client.sendImage(from, base64, title, content)
-           } catch (err) {
-             console.error(err.message)
-             await client.sendFileFromUrl(from, errorurl2, 'error.png', '💔️ Sorry, Couldn\'t find the requested anime')
-           }
-
 else if (text.includes("#pasangan ")) {
     const request = require('request');
     var gh = text.split("#pasangan ")[1];
