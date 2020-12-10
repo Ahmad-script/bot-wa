@@ -1119,4 +1119,4 @@ if (text.includes("#wait"))
         )
     
     });
-    }
+    })
