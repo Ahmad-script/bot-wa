@@ -11,7 +11,7 @@ const imageToBase64 = require('image-to-base64');
 const menu = require("./lib/menu.js");
 const donate = require("./lib/donate.js");
 const info = require("./lib/info.js");
-const msgFilter = require('./lib/msgFilter')
+const msgFilter = require('./lib/msgFilter');
 //
 const BotName = 'BOT Ahmad'; // Nama Bot Whatsapp
 const instagramlu = 'gk ada'; // Nama Instagramlu cok
