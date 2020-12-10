@@ -1116,7 +1116,6 @@ if (text.includes("#wait"))
 
 
 }
-        )
     
     });
     })
