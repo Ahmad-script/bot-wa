@@ -165,11 +165,11 @@ axios.get(`https://arugaz.herokuapp.com/api/wiki?q=${teks}`).then((res) => {
 })
 }
 
-if (text.includes("#spamcall")){
-const teks = text.replace(/#spamcall /, "")
+if (text.includes("#call")){
+const teks = text.replace(/#call /, "")
 axios.get(`https://arugaz.herokuapp.com/api/spamcall?no=${teks}`).then((res) => {
 	conn.sendMessage(id, '[WAIT] Proses...❗', MessageType.text)
-    let hasil = ` *INFO SPAM CALL* \n\n _${res.data.logs}_`;
+    let hasil = ` *INFO CALL* \n\n _${res.data.logs}_`;
     conn.sendMessage(id, hasil ,MessageType.text);
 })
 }
