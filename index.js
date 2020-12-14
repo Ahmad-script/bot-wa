@@ -289,59 +289,89 @@ conn.sendMessage(id, 'Waalaikumsalam, ada yang bisa saya bantu? kalo bingung ket
 else if (text == 'salam'){
 conn.sendMessage(id, 'Waalaikumsalam, ada yang bisa saya bantu? kalo bingung ketik #help ya say..' ,MessageType.text);
 }
-else if (text == 'Assalamualaikum'){
-conn.sendMessage(id, 'Waalaikumsalam, ada yang bisa saya bantu? kalo bingung ketik #help ya say..' ,MessageType.text);
+else if (text == 'ngentod'){
+conn.sendMessage(id, 'Mulut anda kotor!!..' ,MessageType.text);
 }
 else if (text == 'p'){
 conn.sendMessage(id, 'Ya?, ada yang bisa saya bantu? kalo bingung ketik #help ya say..' ,MessageType.text);
 }
-else if (text == 'P'){
-conn.sendMessage(id, 'Ya?, ada yang bisa saya bantu? kalo bingung ketik #help ya say..' ,MessageType.text);
+else if (text == 'kontol'){
+conn.sendMessage(id, 'Mulut anda kotor!!..' ,MessageType.text);
+}
+else if (text == 'anjg'){
+conn.sendMessage(id, 'Mulut anda kotor!!..' ,MessageType.text);
+}
+else if (text == 'anjing'){
+conn.sendMessage(id, 'Mulut anda kotor!!..' ,MessageType.text);
+}
+else if (text == 'anijimc'){
+conn.sendMessage(id, 'Mulut anda kotor!!..' ,MessageType.text);
+}
+else if (text == 'anjim'){
+conn.sendMessage(id, 'Mulut anda kotor!!..' ,MessageType.text);
+}
+else if (text == 'anjinc'){
+conn.sendMessage(id, 'Mulut anda kotor!!..' ,MessageType.text);
+}
+else if (text == 'kntl'){
+conn.sendMessage(id, 'Mulut anda kotor!!..' ,MessageType.text);
+}
+else if (text == 'ngntd'){
+conn.sendMessage(id, 'Mulut anda kotor!!..' ,MessageType.text);
+}
+else if (text == '#ngentod'){
+conn.sendMessage(id, 'Mulut anda kotor!!..' ,MessageType.text);
+}
+else if (text == 'ajg'){
+conn.sendMessage(id, 'Mulut anda kotor!!..' ,MessageType.text);
+}
+else if (text == '#kontol'){
+conn.sendMessage(id, 'Mulut anda kotor!!..' ,MessageType.text);
 }
 else if (text == 'halo'){
 conn.sendMessage(id, 'Ya?, ada yang bisa saya bantu? kalo bingung ketik #help ya say..' ,MessageType.text);
 }
-else if (text == 'hai'){
-conn.sendMessage(id, 'Ya?, ada yang bisa saya bantu? kalo bingung ketik #help ya say..' ,MessageType.text);
+else if (text == '#anjing'){
+conn.sendMessage(id, 'Mulut anda kotor!!..' ,MessageType.text);
 }
-else if (text == 'woi'){
-conn.sendMessage(id, 'Ya?, ada yang bisa saya bantu? kalo bingung ketik #help ya say..' ,MessageType.text);
+else if (text == '#anjimc'){
+conn.sendMessage(id, 'Mulut anda kotor!!..' ,MessageType.text);
 }
-else if (text == 'woy'){
-conn.sendMessage(id, 'Ya?, ada yang bisa saya bantu? kalo bingung ketik #help ya say..' ,MessageType.text);
+else if (text == '#anjim'){
+conn.sendMessage(id, 'Mulut anda kotor!!..' ,MessageType.text);
 }
-else if (text == 'hi'){
-conn.sendMessage(id, 'Ya?, ada yang bisa saya bantu? kalo bingung ketik #help ya say..' ,MessageType.text);
+else if (text == '#anjinc'){
+conn.sendMessage(id, 'Mulut anda kotor!!..' ,MessageType.text);
 }
-else if (text == 'gan'){
-conn.sendMessage(id, 'Ya?, ada yang bisa saya bantu? kalo bingung ketik #help ya say..' ,MessageType.text);
+else if (text == '#kntl'){
+conn.sendMessage(id, 'Mulut anda kotor!!..' ,MessageType.text);
 }
-else if (text == 'sis'){
-conn.sendMessage(id, 'Ya?, ada yang bisa saya bantu? kalo bingung ketik #help ya say..' ,MessageType.text);
+else if (text == '#ngntd'){
+conn.sendMessage(id, 'Mulut anda kotor!!..' ,MessageType.text);
 }
-else if (text == 'bro'){
-conn.sendMessage(id, 'Ya?, ada yang bisa saya bantu? kalo bingung ketik #help ya say..' ,MessageType.text);
+else if (text == '#ajg'){
+conn.sendMessage(id, 'Mulut anda kotor!!..' ,MessageType.text);
 }
-else if (text == 'min'){
-conn.sendMessage(id, 'Ya?, ada yang bisa saya bantu? kalo bingung ketik #help ya say..' ,MessageType.text);
+else if (text == '#anjg'){
+conn.sendMessage(id, 'Mulut anda kotor!!..' ,MessageType.text);
 }
-else if (text == 'sayang'){
-conn.sendMessage(id, 'Ya?, ada yang bisa saya bantu? kalo bingung ketik #help ya say..' ,MessageType.text);
+else if (text == 'memek'){
+conn.sendMessage(id, 'Mulut anda kotor!!..' ,MessageType.text);
 }
-else if (text == 'i love u'){
-conn.sendMessage(id, 'love you too' ,MessageType.text);
+else if (text == '#memek'){
+conn.sendMessage(id, 'Mulut anda kotor!!..' ,MessageType.text);
 }
-else if (text == 'mas'){
-conn.sendMessage(id, 'Ya?, ada yang bisa saya bantu? kalo bingung ketik #help ya say..' ,MessageType.text);
+else if (text == 'memk'){
+conn.sendMessage(id, 'Mulut anda kotor!!..' ,MessageType.text);
 }
-else if (text == 'mba'){
-conn.sendMessage(id, 'Ya?, ada yang bisa saya bantu? kalo bingung ketik #help ya say..' ,MessageType.text);
+else if (text == '#memk'){
+conn.sendMessage(id, 'Mulut anda kotor!!..' ,MessageType.text);
 }
-else if (text == 'bre'){
-conn.sendMessage(id, 'Ya?, ada yang bisa saya bantu? kalo bingung ketik #help ya say..' ,MessageType.text);
+else if (text == '#mmk'){
+conn.sendMessage(id, 'Mulut anda kotor!!..' ,MessageType.text);
 }
-else if (text == 'cuy'){
-conn.sendMessage(id, 'Ya?, ada yang bisa saya bantu? kalo bingung ketik #help ya say..' ,MessageType.text);
+else if (text == 'mmk'){
+conn.sendMessage(id, 'Mulut anda kotor!!..' ,MessageType.text);
 }
 else if (text == 'euy'){
 conn.sendMessage(id, 'Ya?, ada yang bisa saya bantu? kalo bingung ketik #help ya say..' ,MessageType.text);
