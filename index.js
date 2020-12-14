@@ -13,9 +13,9 @@ const donate = require("./lib/donate.js");
 const info = require("./lib/info.js");
 //
 const BotName = 'BOT Ahmad'; // Nama Bot Whatsapp
-const instagramlu = 'gk ada'; // Nama Instagramlu cok
+const instagramlu = 'ahmadwoi_x'; // Nama Instagramlu cok
 const whatsapplu = '083865614902'; // Nomor whatsapplu cok
-const kapanbotaktif = '24 Jam'; // Kapan bot lu aktif
+const kapanbotaktif = 'gtw'; // Kapan bot lu aktif
 const grupch1 = 'gk ada'; // OFFICIAL GRUP LU 1
 const grupch2 = 'gk ada'; // OFFICIAL GRUP LU 2
 //
