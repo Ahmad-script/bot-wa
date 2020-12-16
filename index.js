@@ -18,7 +18,6 @@ const whatsapplu = '083865614902'; // Nomor whatsapplu cok
 const kapanbotaktif = 'gtw'; // Kapan bot lu aktif
 const grupch1 = 'gk ada'; // OFFICIAL GRUP LU 1
 const grupch2 = 'gk ada'; // OFFICIAL GRUP LU 2
-//
 const
 {
    WAConnection,
