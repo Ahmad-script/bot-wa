@@ -62,11 +62,11 @@ fs.existsSync('./session.json') && conn.loadAuthInfo('./session.json')
 //conn.connectOptions.agent = ProxyAgent ('http://1.0.180.120:8080')
 conn.connect();
 
-conn.on('user-presence-update', json => console.log(`[ ${moment().format("HH:mm:ss")} ] => bot by @Reza`))
+conn.on('user-presence-update', json => console.log(`[ ${moment().format("HH:mm:ss")} ] => bot by @Ahmad`))
 conn.on('message-status-update', json =>
 {
    const participant = json.participant ? ' (' + json.participant + ')' : '' // participant exists when the message is from a group
-   console.log(`[ ${moment().format("HH:mm:ss")} ] => bot by @Reza`)
+   console.log(`[ ${moment().format("HH:mm:ss")} ] => bot by @Ahmad`)
 })
 
 conn.on('message-new', async(m) =>
@@ -122,7 +122,7 @@ if (text.includes('#nulis')){
       imageToBase64(res.data.result)
         .then(
           (ress) => {
-            conn.sendMessage(id, '[WAIT] Sedangdibuat...❗', MessageType.text)
+            conn.sendMessage(id, '[WAIT] Proses...❗', MessageType.text)
             var buf = Buffer.from(ress, 'base64')
             conn.sendMessage(id, buf, MessageType.image)
         })
