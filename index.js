@@ -49,6 +49,35 @@ conn.on('qr', qr =>
    });
    console.log(`[ ${moment().format("HH:mm:ss")} ] Scan kode qr mu cok!`);
 });
+   WAConnection,
+   MessageType,
+   Presence,
+   MessageOptions,
+   Mimetype,
+   WALocationMessage,
+   WA_MESSAGE_STUB_TYPES,
+   ReconnectMode,
+   ProxyAgent,
+   waChatKey,
+} = require("@adiwajshing/baileys");
+var jam = moment().format("HH:mm");
+
+function foreach(arr, func)
+{
+   for (var i in arr)
+   {
+      func(i, arr[i]);
+   }
+}
+const conn = new WAConnection()
+conn.on('qr', qr =>
+{
+   qrcode.generate(qr,
+   {
+      small: true
+   });
+   console.log(`[ ${moment().format("HH:mm:ss")} ] Scan kode qr mu cok!`);
+});
 
 conn.on('credentials-updated', () =>
 {
@@ -62,11 +91,11 @@ fs.existsSync('./session.json') && conn.loadAuthInfo('./session.json')
 //conn.connectOptions.agent = ProxyAgent ('http://1.0.180.120:8080')
 conn.connect();
 
-conn.on('user-presence-update', json => console.log(`[ ${moment().format("HH:mm:ss")} ] => bot by @Ahmad`))
+conn.on('user-presence-update', json => console.log(`[ ${moment().format("HH:mm:ss")} ] => bot by @Reza`))
 conn.on('message-status-update', json =>
 {
    const participant = json.participant ? ' (' + json.participant + ')' : '' // participant exists when the message is from a group
-   console.log(`[ ${moment().format("HH:mm:ss")} ] => bot by @ahmad`)
+   console.log(`[ ${moment().format("HH:mm:ss")} ] => bot by @Reza`)
 })
 
 conn.on('message-new', async(m) =>
