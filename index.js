@@ -49,35 +49,6 @@ conn.on('qr', qr =>
    });
    console.log(`[ ${moment().format("HH:mm:ss")} ] Scan kode qr mu cok!`);
 });
-   WAConnection,
-   MessageType,
-   Presence,
-   MessageOptions,
-   Mimetype,
-   WALocationMessage,
-   WA_MESSAGE_STUB_TYPES,
-   ReconnectMode,
-   ProxyAgent,
-   waChatKey,
-} = require("@adiwajshing/baileys");
-var jam = moment().format("HH:mm");
-
-function foreach(arr, func)
-{
-   for (var i in arr)
-   {
-      func(i, arr[i]);
-   }
-}
-const conn = new WAConnection()
-conn.on('qr', qr =>
-{
-   qrcode.generate(qr,
-   {
-      small: true
-   });
-   console.log(`[ ${moment().format("HH:mm:ss")} ] Scan kode qr mu cok!`);
-});
 
 conn.on('credentials-updated', () =>
 {
