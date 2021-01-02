@@ -14,7 +14,7 @@ const info = require("./lib/info.js");
 const serverlist = require("./lib/serverlist.js");
 const serverphoenix = require("./lib/serverphoenix.js");
 const speed = require('performance-now');
-const readTextInImage = require('./lib/ocr')
+const readTextInImage = require("./lib/ocr.js")
 const vcard = 'BEGIN:VCARD\n' // metadata of the contact card
             + 'VERSION:3.0\n' 
             + 'FN:affis\n' // full name
