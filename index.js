@@ -982,64 +982,6 @@ if (text.includes("#randomloli"))
     });
     }
 
-if (text.includes("#randomhentai"))
-   {
-    var items = ["anime loli sange","anime loli fackgirll"];
-    var anim = items[Math.floor(Math.random() * items.length)];
-    var url = "https://api.fdci.se/rep.php?gambar=" + nime;
-    
-    axios.get(url)
-      .then((result) => {
-        var b = JSON.parse(JSON.stringify(result.data));
-        var anim =  b[Math.floor(Math.random() * b.length)];
-        imageToBase64(anim) // Path to the image
-        .then(
-            (response) => {
-	var buf = Buffer.from(response, 'base64'); // Ta-da	
-              conn.sendMessage(
-            id,
-              buf,MessageType.image)
-       
-            }
-        )
-        .catch(
-            (error) => {
-                console.log(error); // Logs an error if there was one
-            }
-        )
-    
-    });
-    }
-
-if (text.includes("#waifu"))
-   {
-    var items = ["waifu","anime waifu"];
-    var anim = items[Math.floor(Math.random() * items.length)];
-    var url = "https://api.haipbis.xyz/waifu";
-    
-    axios.get(url)
-      .then((result) => {
-        var b = JSON.parse(JSON.stringify(result.data));
-        var anim =  b[Math.floor(Math.random() * b.length)];
-        imageToBase64(anim) // Path to the image
-        .then(
-            (response) => {
-	var buf = Buffer.from(response, 'base64'); // Ta-da	
-              conn.sendMessage(
-            id,
-              buf,MessageType.image)
-       
-            }
-        )
-        .catch(
-            (error) => {
-                console.log(error); // Logs an error if there was one
-            }
-        )
-    
-    });
-    }
-
 else if (text.includes("#artinama")) 
   {
     const cheerio = require('cheerio');
