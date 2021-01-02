@@ -14,11 +14,10 @@ const info = require("./lib/info.js");
 const serverlist = require("./lib/serverlist.js");
 const serverphoenix = require("./lib/serverphoenix.js");
 const speed = require('performance-now');
-const readTextInImage = require("./lib/ocr.js")
 const vcard = 'BEGIN:VCARD\n' // metadata of the contact card
             + 'VERSION:3.0\n' 
             + 'FN:affis\n' // full name
-            + 'ORG:Owner  XBOT Bot;\n' // the organization of the contact
+            + 'ORG:Owner  Bot Ahmad;\n' // the organization of the contact
             + 'TEL;type=CELL;type=VOICE;waid=6283865614902:+62 838-6561-4902\n' // WhatsApp ID + phone number
             + 'END:VCARD'
 //
