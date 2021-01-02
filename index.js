@@ -285,8 +285,11 @@ axios.get('https://api.banghasan.com/quran/format/json/acak').then((res) => {
 else if (text == 'assalamualaikum'){
 conn.sendMessage(id, 'Waalaikumsalam, ada yang bisa saya bantu? kalo bingung ketik #help ya say..' ,MessageType.text);
 }
-else if (text == 'salam'){
-conn.sendMessage(id, 'Waalaikumsalam, ada yang bisa saya bantu? kalo bingung ketik #help ya say..' ,MessageType.text);
+ if (text == '#server phoenix'){
+conn.sendMessage(id, 'hshshshhshs' ,MessageType.text);
+}
+ if (text == '#server list'){
+conn.sendMessage(id, '1.#server phoenix' ,MessageType.text);
 }
 else if (text == 'ngentod'){
 conn.sendMessage(id, 'Mulut anda kotor!!..' ,MessageType.text);
