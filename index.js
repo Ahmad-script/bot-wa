@@ -245,8 +245,8 @@ axios.get(`https://arugaz.herokuapp.com/api/howbucins`).then((res) => {
     conn.sendMessage(id, hasil ,MessageType.text);
 })
 }
-if (text.includes('#texthunder')){
-  var teks = text.replace(/#texthunder /, '')
+if (text.includes('#textthunder')){
+  var teks = text.replace(/#textthunder /, '')
     axios.get('http://jojo-api-doc.herokuapp.com/api/thunder?text='+teks)
     .then((res) => {
       imageToBase64(res.data.result)
