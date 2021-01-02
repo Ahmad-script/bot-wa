@@ -1090,10 +1090,6 @@ if (text.includes('#ttp')){
         })
     })
 }
-else if (text == 'hello'){
-let hasil = fs.readFileSync('mp3/' + 'PTT' + '.wav')
- conn.sendMessage(id, hasil, MessageType.audio, { quoted: m } )
-}
 if (text.includes("test")){
 let err = fs.readFileSync('mp3/' + 'test' + '.wav')
  conn.sendMessage(id, err, MessageType.audio, { quoted: m })
@@ -1114,20 +1110,12 @@ if (text.includes('bot')) {
  }
  conn.sendMessage(id, options, MessageType.text, { quoted: m })
 }
-if (text.includes("desah")){
-let err = fs.readFileSync('mp3/' + 'desah' + '.wav')
- conn.sendMessage(id, err, MessageType.audio, { ptt: true, quoted: m })
-}
 if (text.includes("iri")){
 let err = fs.readFileSync('mp3/' + 'iri' + '.mp3')
  conn.sendMessage(id, err, MessageType.audio, { ptt: true, quoted: m })
 }
 else if (text == 'baka'){
 let hasil = fs.readFileSync('mp3/' + 'baka' + '.wav')
- conn.sendMessage(id, hasil, MessageType.audio, { quoted: m } )
-}
-else if (text == 'pttt'){
-let hasil = fs.readFileSync('mp3/' + 'pttt' + '.pttt')
  conn.sendMessage(id, hasil, MessageType.audio, { quoted: m } )
 }
 else if (text == 'goblok'){
