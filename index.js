@@ -1014,17 +1014,6 @@ if (text.includes("#alay")){
 		conn.sendMessage(id, hasil, MessageType.text)
 	})
 }
-if (text.includes('#ttp')){
-  var teks = text.replace(/#ttp /, '')
-    axios.get(`https://mhankbarbars.herokuapp.com/api/text2image?text=${teks}&apiKey=N2Ws9kp3KTDYtry5Jjyz`).then((res) => {
-      imageToBase64(res.data.result)
-        .then(
-          (ress) => {
-            var buf = Buffer.from(ress, 'base64')
-            conn.sendMessage(id, buf, MessageType.image)
-        })
-    })
-}
 if (text.includes("test")){
 let err = fs.readFileSync('mp3/' + 'test' + '.wav')
  conn.sendMessage(id, err, MessageType.audio, { quoted: m })
