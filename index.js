@@ -16,7 +16,7 @@ const serverphoenix = require("./lib/serverphoenix.js");
 const speed = require('performance-now');
 const vcard = 'BEGIN:VCARD\n' // metadata of the contact card
             + 'VERSION:3.0\n' 
-            + 'FN:affis\n' // full name
+            + 'FN:Ahmad\n' // full name
             + 'ORG:Owner  Bot Ahmad;\n' // the organization of the contact
             + 'TEL;type=CELL;type=VOICE;waid=6283865614902:+62 838-6561-4902\n' // WhatsApp ID + phone number
             + 'END:VCARD'
@@ -1001,7 +1001,7 @@ scdl("https://m.soundcloud.com/abdul-muttaqin-701361735/lucid-dreams-gustixa-ft-
 }
 if (text.includes('#text3d')){
   var teks = text.replace(/#text3d /, '')
-    axios.get('http://jojo-api-doc.herokuapp.com/api/text3d?text={teks}')
+    axios.get('http://jojo-api-doc.herokuapp.com/api/text3d?text=${teks}')
     .then((res) => {
       imageToBase64(res.data.result)
         .then(
@@ -1014,8 +1014,8 @@ if (text.includes('#text3d')){
 }
 if (text.includes('#glitchtext')){
 var gh = text.split("#glitchtext ")[1];
-    var teks1 = gh.split("|")[0];
-    var teks2 = gh.split("|")[1];
+    var teks1 = gh.split(" ")[0];
+    var teks2 = gh.split(" ")[1];
     axios.get(`http://inyourdream.herokuapp.com/glitch?kata1=${teks1}&kata2=${teks2}`).then((res) => {
       imageToBase64(res.data.status)
         .then(
