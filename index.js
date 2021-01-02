@@ -245,7 +245,6 @@ axios.get(`https://arugaz.herokuapp.com/api/howbucins`).then((res) => {
     conn.sendMessage(id, hasil ,MessageType.text);
 })
 }
-
 if (text.includes('#texthunder')){
   var teks = text.replace(/#texthunder /, '')
     axios.get('http://jojo-api-doc.herokuapp.com/api/thunder?text='+teks)
@@ -259,7 +258,6 @@ if (text.includes('#texthunder')){
         })
     })
 }
-
 if (text.includes('#cooltext')){
   var teks = text.replace(/#cooltext /, '')
     axios.get('https://api.haipbis.xyz/randomcooltext?text='+teks)
@@ -273,17 +271,16 @@ if (text.includes('#cooltext')){
         })
     })
 }
-
-if (text.includes("#setname")){
-const teks = text.replace(/#setname /, "")
+if (text.includes("#setgroupname")){
+const teks = text.replace(/#setgroupname /, "")
     let nama = `${teks}`;
     let idgrup = `${id.split("@s.whatsapp.net")[0]}`;
     conn.groupUpdateSubject(idgrup, nama);
 conn.sendMessage(id, 'Succes Change Name Group' ,MessageType.text, { quoted: m } );
 
 }
-if (text.includes("#setdesc")){
-const teks = text.replace(/#setdesc /, "")
+if (text.includes("#setgroupdesc")){
+const teks = text.replace(/#setgroupdesc /, "")
     let desk = `${teks}`;
     let idgrup = `${id.split("@s.whatsapp.net")[0]}`;
     conn.groupUpdateDescription(idgrup, desk)
@@ -294,7 +291,16 @@ if (text.includes('#join')){
 conn.sendMessage(id, {displayname: "Jeff", vcard: vcard}, MessageType.contact)
 conn.sendMessage(id, 'Ingin donasi untuk masukin Bot ke group?, chat Owner :D', MessageType.text)
 }
-
+else if (text == '#opengc'){
+let hasil = `${id.split("@s.whatsapp.net")[0]}`;
+   conn.groupSettingChange (hasil, GroupSettingChange.messageSend, false);
+conn.sendMessage(id, 'SUCCES, GRUP TELAH DIBUKA' ,MessageType.text, { quoted: m } );
+}
+else if (text == '#closegc'){
+ let hasil = `${id.split("@s.whatsapp.net")[0]}`;
+   conn.groupSettingChange (hasil, GroupSettingChange.messageSend, true);
+conn.sendMessage(id, 'SUCCES, GRUP TELAH DITUTUP' ,MessageType.text, { quoted: m } );
+}
 else if (text == '#help'){
 const corohelp = await get.get('https://covid19.mathdro.id/api/countries/id').json()
 var date = new Date();
@@ -994,7 +1000,33 @@ scdl("https://m.soundcloud.com/abdul-muttaqin-701361735/lucid-dreams-gustixa-ft-
         })
     })
 }
-
+if (text.includes('#text3d')){
+  var teks = text.replace(/#text3d /, '')
+    axios.get('http://jojo-api-doc.herokuapp.com/api/text3d?text={teks}')
+    .then((res) => {
+      imageToBase64(res.data.result)
+        .then(
+          (ress) => {
+            conn.sendMessage(id, '🔍 SEDANG DIPROSES', MessageType.text)
+            var buf = Buffer.from(ress, 'base64')
+            conn.sendMessage(id, buf, MessageType.image)
+        })
+    })
+}
+if (text.includes('#glitchtext')){
+var gh = text.split("#glitchtext ")[1];
+    var teks1 = gh.split("|")[0];
+    var teks2 = gh.split("|")[1];
+    axios.get(`http://inyourdream.herokuapp.com/glitch?kata1=${teks1}&kata2=${teks2}`).then((res) => {
+      imageToBase64(res.data.status)
+        .then(
+          (ress) => {
+            var buf = Buffer.from(ress, 'base64')
+            conn.sendMessage(id, '[ WAIT ] Sedang diproses🔍 silahkan tunggu sebentar', MessageType.text, { quoted: m })
+            conn.sendMessage(id, buf, MessageType.image, { quoted: m });
+        })
+    })
+}
 if (text.includes("#lirik")){
 	const teks = text.split("#lirik")[1]
 	axios.get(`http://scrap.terhambar.com/lirik?word=${teks}`).then ((res) => {
@@ -1009,7 +1041,85 @@ if (text.includes("#alay")){
 		conn.sendMessage(id, hasil, MessageType.text)
 	})
 }
-
+if (text.includes('#logogaming')){
+  var teks = text.replace(/#logogaming /, '')
+    axios.get(`https://docs-jojo.herokuapp.com/api/gaming?text=${teks}`).then((res) => {
+      imageToBase64(res.data.result)
+        .then(
+          (ress) => {
+            var buf = Buffer.from(ress, 'base64')
+            conn.sendMessage(id, buf, MessageType.image)
+        })
+    })
+}
+if (text.includes('#ssweb')){
+  var teks = text.replace(/#ssweb /, '')
+    axios.get('https://api.haipbis.xyz/ssweb?url='+teks)
+    .then((res) => {
+      imageToBase64(res.data.result)
+        .then(
+          (ress) => {
+            conn.sendMessage(id, '🔍 SEDANG DIPROSES', MessageType.text)
+            var buf = Buffer.from(ress, 'base64')
+            conn.sendMessage(id, buf, MessageType.image)
+        })
+    })
+}
+if (text.includes('#ttp')){
+  var teks = text.replace(/#ttp /, '')
+    axios.get(`https://mhankbarbars.herokuapp.com/api/text2image?text=${teks}&apiKey=N2Ws9kp3KTDYtry5Jjyz`).then((res) => {
+      imageToBase64(res.data.result)
+        .then(
+          (ress) => {
+            var buf = Buffer.from(ress, 'base64')
+            conn.sendMessage(id, buf, MessageType.image)
+        })
+    })
+}
+else if (text == 'hello'){
+let hasil = fs.readFileSync('mp3/' + 'PTT' + '.wav')
+ conn.sendMessage(id, hasil, MessageType.audio, { quoted: m } )
+}
+if (text.includes("test")){
+let err = fs.readFileSync('mp3/' + 'test' + '.wav')
+ conn.sendMessage(id, err, MessageType.audio, { quoted: m })
+}
+if (text.includes("salam")){
+let err = fs.readFileSync('mp3/' + 'salam' + '.mp3')
+ conn.sendMessage(id, err, MessageType.audio, { ptt: true })
+}
+if (text.includes("tariksis")){
+let err = fs.readFileSync('mp3/' + 'tariksis' + '.wav')
+ conn.sendMessage(id, err, MessageType.audio, { ptt: true, quoted: m })
+}
+if (text.includes('bot')) {
+ var nomor = m.participant
+ const options = {
+       text: `apa manggil manggil tinggal ketik #help @${nomor.split("@s.whatsapp.net")[0]}, Ketik #help untuk menampilkan perintah yaa`,
+       contextInfo: { mentionedJid: [nomor] }
+ }
+ conn.sendMessage(id, options, MessageType.text, { quoted: m })
+}
+if (text.includes("desah")){
+let err = fs.readFileSync('mp3/' + 'desah' + '.wav')
+ conn.sendMessage(id, err, MessageType.audio, { ptt: true, quoted: m })
+}
+if (text.includes("iri")){
+let err = fs.readFileSync('mp3/' + 'iri' + '.mp3')
+ conn.sendMessage(id, err, MessageType.audio, { ptt: true, quoted: m })
+}
+else if (text == 'baka'){
+let hasil = fs.readFileSync('mp3/' + 'baka' + '.wav')
+ conn.sendMessage(id, hasil, MessageType.audio, { quoted: m } )
+}
+else if (text == 'pttt'){
+let hasil = fs.readFileSync('mp3/' + 'pttt' + '.pttt')
+ conn.sendMessage(id, hasil, MessageType.audio, { quoted: m } )
+}
+else if (text == 'goblok'){
+let hasil = fs.readFileSync('mp3/' + 'goblok' + '.wav')
+ conn.sendMessage(id, hasil, MessageType.audio, { quoted: m } )
+}
 if (text.includes("#randomloli"))
    {
     var items = ["anime loli","anime loli sange","anime loli fackgirll","anime loli i love you"];
