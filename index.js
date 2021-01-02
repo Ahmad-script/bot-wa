@@ -244,32 +244,6 @@ axios.get(`https://arugaz.herokuapp.com/api/howbucins`).then((res) => {
     conn.sendMessage(id, hasil ,MessageType.text);
 })
 }
-if (text.includes('#textthunder')){
-  var teks = text.replace(/#textthunder /, '')
-    axios.get('http://jojo-api-doc.herokuapp.com/api/thunder?text='+teks)
-    .then((res) => {
-      imageToBase64(res.data.result)
-        .then(
-          (ress) => {
-            conn.sendMessage(id, '🔍 SEDANG DIPROSES', MessageType.text)
-            var buf = Buffer.from(ress, 'base64')
-            conn.sendMessage(id, buf, MessageType.image)
-        })
-    })
-}
-if (text.includes('#cooltext')){
-  var teks = text.replace(/#cooltext /, '')
-    axios.get('https://api.haipbis.xyz/randomcooltext?text='+teks)
-    .then((res) => {
-      imageToBase64(res.data.image)
-        .then(
-          (ress) => {
-            conn.sendMessage(id, '🔍 SEDANG DIPROSES', MessageType.text)
-            var buf = Buffer.from(ress, 'base64')
-            conn.sendMessage(id, buf, MessageType.image)
-        })
-    })
-}
 if (text.includes("#setgroupname")){
 const teks = text.replace(/#setgroupname /, "")
     let nama = `${teks}`;
@@ -288,7 +262,7 @@ conn.sendMessage(id, 'Succes Change Description Group' ,MessageType.text, { quot
 }
 if (text.includes('#join')){
 conn.sendMessage(id, {displayname: "Jeff", vcard: vcard}, MessageType.contact)
-conn.sendMessage(id, 'Ingin donasi untuk masukin Bot ke group?, chat Owner :D', MessageType.text)
+conn.sendMessage(id, 'Ingin masukin Bot ke group?, chat Owner :D', MessageType.text)
 }
 else if (text == '#opengc'){
 let hasil = `${id.split("@s.whatsapp.net")[0]}`;
@@ -1012,20 +986,6 @@ if (text.includes('#text3d')){
         })
     })
 }
-if (text.includes('#glitchtext')){
-var gh = text.split("#glitchtext ")[1];
-    var teks1 = gh.split(" ")[0];
-    var teks2 = gh.split(" ")[1];
-    axios.get(`http://inyourdream.herokuapp.com/glitch?kata1=${teks1}&kata2=${teks2}`).then((res) => {
-      imageToBase64(res.data.status)
-        .then(
-          (ress) => {
-            var buf = Buffer.from(ress, 'base64')
-            conn.sendMessage(id, '[ WAIT ] Sedang diproses🔍 silahkan tunggu sebentar', MessageType.text, { quoted: m })
-            conn.sendMessage(id, buf, MessageType.image, { quoted: m });
-        })
-    })
-}
 if (text.includes('#phlogo')){
 var porn = text.split("#phlogo ")[1];
     var text1 = porn.split("|")[0];
@@ -1053,30 +1013,6 @@ if (text.includes("#alay")){
 		{ let hasil = `${res.data.text}`
 		conn.sendMessage(id, hasil, MessageType.text)
 	})
-}
-if (text.includes('#logogaming')){
-  var teks = text.replace(/#logogaming /, '')
-    axios.get(`https://docs-jojo.herokuapp.com/api/gaming?text=${teks}`).then((res) => {
-      imageToBase64(res.data.result)
-        .then(
-          (ress) => {
-            var buf = Buffer.from(ress, 'base64')
-            conn.sendMessage(id, buf, MessageType.image)
-        })
-    })
-}
-if (text.includes('#ssweb')){
-  var teks = text.replace(/#ssweb /, '')
-    axios.get('https://api.haipbis.xyz/ssweb?url='+teks)
-    .then((res) => {
-      imageToBase64(res.data.result)
-        .then(
-          (ress) => {
-            conn.sendMessage(id, '🔍 SEDANG DIPROSES', MessageType.text)
-            var buf = Buffer.from(ress, 'base64')
-            conn.sendMessage(id, buf, MessageType.image)
-        })
-    })
 }
 if (text.includes('#ttp')){
   var teks = text.replace(/#ttp /, '')
