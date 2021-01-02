@@ -13,12 +13,20 @@ const donate = require("./lib/donate.js");
 const info = require("./lib/info.js");
 const serverlist = require("./lib/serverlist.js");
 const serverphoenix = require("./lib/serverphoenix.js");
+const speed = require('performance-now');
+const readTextInImage = require('./lib/ocr')
+const vcard = 'BEGIN:VCARD\n' // metadata of the contact card
+            + 'VERSION:3.0\n' 
+            + 'FN:affis\n' // full name
+            + 'ORG:Owner  XBOT Bot;\n' // the organization of the contact
+            + 'TEL;type=CELL;type=VOICE;waid=6283865614902:+62 838-6561-4902\n' // WhatsApp ID + phone number
+            + 'END:VCARD'
 //
 const BotName = 'BOT Ahmad'; // Nama Bot Whatsapp
 const instagramlu = 'ahmadwoi_x'; // Nama Instagramlu cok
 const whatsapplu = '083865614902'; // Nomor whatsapplu cok
 const kapanbotaktif = 'gtw'; // Kapan bot lu aktif
-const grupch1 = 'gk ada'; // OFFICIAL GRUP LU 1
+const grupch1 = 'https://chat.whatsapp.com/DxdS1IGOuBrEVBo7cxgr7s'; // OFFICIAL GRUP LU 1
 const grupch2 = 'gk ada'; // OFFICIAL GRUP LU 2
 const
 {
@@ -124,7 +132,7 @@ if (text.includes('#nulis')){
       imageToBase64(res.data.result)
         .then(
           (ress) => {
-            conn.sendMessage(id, '[WAIT] Proses...❗', MessageType.text)
+            conn.sendMessage(id, '[WAIT] Searching...🔍', MessageType.text)
             var buf = Buffer.from(ress, 'base64')
             conn.sendMessage(id, buf, MessageType.image)
         })
@@ -236,6 +244,55 @@ axios.get(`https://arugaz.herokuapp.com/api/howbucins`).then((res) => {
     let hasil = ` _${res.data.desc}_ `;
     conn.sendMessage(id, hasil ,MessageType.text);
 })
+}
+
+if (text.includes('#texthunder')){
+  var teks = text.replace(/#texthunder /, '')
+    axios.get('http://jojo-api-doc.herokuapp.com/api/thunder?text='+teks)
+    .then((res) => {
+      imageToBase64(res.data.result)
+        .then(
+          (ress) => {
+            conn.sendMessage(id, '🔍 SEDANG DIPROSES', MessageType.text)
+            var buf = Buffer.from(ress, 'base64')
+            conn.sendMessage(id, buf, MessageType.image)
+        })
+    })
+}
+
+if (text.includes('#cooltext')){
+  var teks = text.replace(/#cooltext /, '')
+    axios.get('https://api.haipbis.xyz/randomcooltext?text='+teks)
+    .then((res) => {
+      imageToBase64(res.data.image)
+        .then(
+          (ress) => {
+            conn.sendMessage(id, '🔍 SEDANG DIPROSES', MessageType.text)
+            var buf = Buffer.from(ress, 'base64')
+            conn.sendMessage(id, buf, MessageType.image)
+        })
+    })
+}
+
+if (text.includes("#setname")){
+const teks = text.replace(/#setname /, "")
+    let nama = `${teks}`;
+    let idgrup = `${id.split("@s.whatsapp.net")[0]}`;
+    conn.groupUpdateSubject(idgrup, nama);
+conn.sendMessage(id, 'Succes Change Name Group' ,MessageType.text, { quoted: m } );
+
+}
+if (text.includes("#setdesc")){
+const teks = text.replace(/#setdesc /, "")
+    let desk = `${teks}`;
+    let idgrup = `${id.split("@s.whatsapp.net")[0]}`;
+    conn.groupUpdateDescription(idgrup, desk)
+conn.sendMessage(id, 'Succes Change Description Group' ,MessageType.text, { quoted: m } );
+
+}
+if (text.includes('#join')){
+conn.sendMessage(id, {displayname: "Jeff", vcard: vcard}, MessageType.contact)
+conn.sendMessage(id, 'Ingin donasi untuk masukin Bot ke group?, chat Owner :D', MessageType.text)
 }
 
 else if (text == '#help'){
