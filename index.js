@@ -1462,3 +1462,4 @@ else if (text.includes("#pasangan ")) {
 						console.log(color('[ERROR]','red'), 'Unregistered Command from', color(sender.split('@')[0]))
 					}
 });
+}
