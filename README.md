@@ -6,6 +6,8 @@
 
 #>pkg install git
 
+#>pkg install tesseract
+
 #>git clone https://github.com/Ahmad-script/bot-wa
 
 #>cd bot-wa
