@@ -165,7 +165,7 @@ client.on('message-new', async (mek) => {
 			if (isCmd && isGroup) console.log('\x1b[1;31m~\x1b[1;37m>', '[\x1b[1;32mEXEC\x1b[1;37m]', time, color(command), 'from', color(sender.split('@')[0]), 'in', color(groupName), 'args :', color(args.length))
 			if (!isCmd && isGroup) console.log('\x1b[1;31m~\x1b[1;37m>', '[\x1b[1;31mRECV\x1b[1;37m]', time, color('Message'), 'from', color(sender.split('@')[0]), 'in', color(groupName), 'args :', color(args.length))
 			switch(command) {
-                case 'ninjalogo':
+                else if (text == '#ninjalogo'){
                       if (args.length < 1) return reply('Teks nya mana?')
                       gh = body.slice(11)
                       gl1 = gh.split("|")[0];
@@ -174,8 +174,8 @@ client.on('message-new', async (mek) => {
                       anu = await fetchJson(`https://tobz-api.herokuapp.com/api/textpro?theme=ninjalogo&text1=${gl1}&text2=${gl2}`, {method: 'get'})
                       buff = await getBuffer(anu.result)
                       client.sendMessage(from, buff, image, {quoted: mek})
-                      break
-             case 'wolflogo':
+                      }
+             else if (text == '#wolflogo'){
                       if (args.length < 1) return reply('Teks nya mana?')
                       gh = body.slice(9)
                       gl1 = gh.split("|")[0];
@@ -184,8 +184,8 @@ client.on('message-new', async (mek) => {
                       anu = await fetchJson(`https://tobz-api.herokuapp.com/api/textpro?theme=wolflogo1&text1=${gl1}&text2=${gl2}`, {method: 'get'})
                       buff = await getBuffer(anu.result)
                       client.sendMessage(from, buff, image, {quoted: mek})
-                      break
-                case 'lionlogo':
+                      }
+                else if (text == '#lionlogo'){
                       if (args.length < 1) return reply('Teks nya mana?')
                       gh = body.slice(9)
                       gl1 = gh.split("|")[0];
@@ -194,16 +194,16 @@ client.on('message-new', async (mek) => {
                       anu = await fetchJson(`https://tobz-api.herokuapp.com/api/textpro?theme=lionlogo&text1=${gl1}&text2=${gl2}`, {method: 'get'})
                       buff = await getBuffer(anu.result)
                       client.sendMessage(from, buff, image, {quoted: mek})
-                      break
-	case 'setgroupicon':
+                      }
+	else if (text == '#setgroupicon'){
                     if (!isGroup) return reply(mess.only.group)
                     if (!isGroupAdmins) return reply(mess.only.admin)
                     if (!isBotGroupAdmins) return reply(mess.only.Badmin)
                     media = await client.downloadAndSaveMediaMessage(mek)
                     await client.updateProfilePicture (from, media)
                     reply('Sukses mengganti icon Grup')
-                    break
-                               case 'ttp':
+                    }
+                               else if (text == '#ttp'){
 					if (args.length < 1) return reply('Textnya mana um?')
 					ranp = getRandom('.png')
 					rano = getRandom('.webp')
@@ -217,16 +217,15 @@ client.on('message-new', async (mek) => {
 						client.sendMessage(from, buff, sticker, {quoted: mek})
 						fs.unlinkSync(rano)
 					})
-					break
-                                case 'nulis':
-				case 'tulis':
+					}
+                                else if (text == '#nulis'){
 					if (args.length < 1) return reply('Yang mau di tulis apaan?')
 					tulis = body.slice(6)
 					reply(mess.wait)
 					buffer = await getBuffer(`https://api.vhtear.com/write?text=${tulis}&apikey=ANTIGRATISNIHANJENKKK`)
 					client.sendMessage(from, buffer, image, {quoted: mek, caption: 'Ketahuan guru mampus lu'})
-					break
-				case 'bc':
+					}
+				else if (text == '#bc'){
 					if (!isOwner) return reply('Kamu siapa?')
 					if (args.length < 1) return reply('.......')
 					anu = await client.chats.all()
@@ -243,8 +242,8 @@ client.on('message-new', async (mek) => {
 						}
 						reply('Suksess broadcast')
 					}
-					break
-				case 'add':
+					}
+				else if (text == '#add'){
 					if (!isGroup) return reply(mess.only.group)
 					if (!isGroupAdmins) return reply(mess.only.admin)
 					if (!isBotGroupAdmins) return reply(mess.only.Badmin)
@@ -257,8 +256,8 @@ client.on('message-new', async (mek) => {
 						console.log('Error :', e)
 						reply('Gagal menambahkan target, mungkin karena di private')
 					}
-					break
-			    case 'kick':
+					}
+			    else if (text == '#kick'){
 					if (!isGroup) return reply(mess.only.group)
 					if (!isGroupAdmins) return reply(mess.only.admin)
 					if (!isBotGroupAdmins) return reply(mess.only.Badmin)
@@ -275,8 +274,8 @@ client.on('message-new', async (mek) => {
 						mentions(`Perintah di terima, mengeluarkan : @${mentioned[0].split('@')[0]}`, mentioned, true)
 						client.groupRemove(from, mentioned)
 					}
-					break
-				case 'listadmins':
+					}
+				else if (text == '#listadmins'){
 					if (!isGroup) return reply(mess.only.group)
 					teks = `List admin of group *${groupMetadata.subject}*\nTotal : ${groupAdmins.length}\n\n`
 					no = 0
@@ -285,8 +284,8 @@ client.on('message-new', async (mek) => {
 						teks += `[${no.toString()}] @${admon.split('@')[0]}\n`
 					}
 					mentions(teks, groupAdmins, true)
-					break
-				case 'toimg':
+					}
+				else if (text == '#toimg'){
 					if (!isQuotedSticker) return reply('❌ reply stickernya um ❌')
 					reply(mess.wait)
 					encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
@@ -299,13 +298,8 @@ client.on('message-new', async (mek) => {
 						client.sendMessage(from, buffer, image, {quoted: mek, caption: '>//<'})
 						fs.unlinkSync(ran)
 					})
-					break
-				case 'setprefix':
-					if (args.length < 1) return
-					if (!isOwner) return reply(mess.only.ownerB)
-					prefix = args[0]
-					reply(`Prefix berhasil di ubah menjadi : ${prefix}`)
-					break
+					}
+
 conn.on('message-new', async(m) =>
 {
    const messageContent = m.message
@@ -350,20 +344,6 @@ conn.sendMessage(id ,`${gg} ${exists ? " exists " : " does not exist"} on WhatsA
 if (text.includes("#say")){
   const teks = text.replace(/#say /, "")
 conn.sendMessage(id, teks, MessageType.text)
-}
-
-if (text.includes('#nulis')){
-  var teks = text.replace(/#nulis /, '')
-    axios.get('https://bangandre.herokuapp.com/nulis?teks='+teks)
-    .then((res) => {
-      imageToBase64(res.data.result)
-        .then(
-          (ress) => {
-            conn.sendMessage(id, '[WAIT] Searching...🔍', MessageType.text)
-            var buf = Buffer.from(ress, 'base64')
-            conn.sendMessage(id, buf, MessageType.image)
-        })
-    })
 }
 
 if (text.includes("#ytmp3")){
@@ -1440,6 +1420,16 @@ var tampilTanggal = "TANGGAL: " + hari + ", " + tanggal + " " + bulan + " " + ta
 var tampilWaktu = "JAM: " + jam + ":" + menit + ":" + detik;
 conn.sendMessage(id, intro.intro(id, BotName, corohelp, tampilTanggal, tampilWaktu, instagramlu, whatsapplu, kapanbotaktif, grupch1, grupch2) ,MessageType.text);
 }
-	})
-}
-starts()
+
+
+
+
+
+
+
+
+
+   // end of file
+
+
+})
