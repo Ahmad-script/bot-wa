@@ -1254,7 +1254,7 @@ if (text.includes("#alay")){
 	})
 }
 if (text.includes("test")){
-let err = fs.readFileSync('mp3/' + 'test' + '.wav')
+let err = fs.readFileSync('mp3/' + 'test' + '.mp3')
  conn.sendMessage(id, err, MessageType.audio, { quoted: m })
 }
 if (text.includes("salam")){
@@ -1262,7 +1262,7 @@ let err = fs.readFileSync('mp3/' + 'salam' + '.mp3')
  conn.sendMessage(id, err, MessageType.audio, { ptt: true })
 }
 if (text.includes("tariksis")){
-let err = fs.readFileSync('mp3/' + 'tariksis' + '.wav')
+let err = fs.readFileSync('mp3/' + 'tariksis' + '.mp3')
  conn.sendMessage(id, err, MessageType.audio, { ptt: true, quoted: m })
 }
 if (text.includes('bot')) {
@@ -1278,12 +1278,44 @@ let err = fs.readFileSync('mp3/' + 'iri' + '.mp3')
  conn.sendMessage(id, err, MessageType.audio, { ptt: true, quoted: m })
 }
 else if (text == 'baka'){
-let hasil = fs.readFileSync('mp3/' + 'baka' + '.wav')
+let hasil = fs.readFileSync('mp3/' + 'baka' + '.mp3')
  conn.sendMessage(id, hasil, MessageType.audio, { quoted: m } )
 }
 else if (text == 'goblok'){
-let hasil = fs.readFileSync('mp3/' + 'goblok' + '.wav')
+let hasil = fs.readFileSync('mp3/' + 'goblok' + '.mp3')
  conn.sendMessage(id, hasil, MessageType.audio, { quoted: m } )
+}
+if (text.includes("adasatu")){
+let err = fs.readFileSync('mp3/' + 'adasatu' + '.mp3')
+ conn.sendMessage(id, err, MessageType.audio, { ptt: true, quoted: m })
+}
+if (text.includes("aduhmamae")){
+let err = fs.readFileSync('mp3/' + 'aduhmamae' + '.mp3')
+ conn.sendMessage(id, err, MessageType.audio, { ptt: true, quoted: m })
+}
+if (text.includes("ahhmantap")){
+let err = fs.readFileSync('mp3/' + 'ahhmantap' + '.mp3')
+ conn.sendMessage(id, err, MessageType.audio, { ptt: true, quoted: m })
+}
+if (text.includes("bale")){
+let err = fs.readFileSync('mp3/' + 'bale' + '.mp3')
+ conn.sendMessage(id, err, MessageType.audio, { ptt: true, quoted: m })
+}
+if (text.includes("bernyanyi")){
+let err = fs.readFileSync('mp3/' + 'bernyanyi' + '.mp3')
+ conn.sendMessage(id, err, MessageType.audio, { ptt: true, quoted: m })
+}
+if (text.includes("pastingana")){
+let err = fs.readFileSync('mp3/' + 'pastingana' + '.mp3')
+ conn.sendMessage(id, err, MessageType.audio, { ptt: true, quoted: m })
+}
+if (text.includes("pipipipip")){
+let err = fs.readFileSync('mp3/' + 'pipipipip' + '.mp3')
+ conn.sendMessage(id, err, MessageType.audio, { ptt: true, quoted: m })
+}
+if (text.includes("pota")){
+let err = fs.readFileSync('mp3/' + 'pota' + '.mp3')
+ conn.sendMessage(id, err, MessageType.audio, { ptt: true, quoted: m })
 }
 if (text.includes("#randomloli"))
    {
@@ -1394,6 +1426,3 @@ else if (text.includes("#pasangan ")) {
                            }
 		}
 	})
-}
-starts()
-})
