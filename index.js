@@ -163,7 +163,8 @@ client.on('message-new', async (mek) => {
 			if (isCmd && isGroup) console.log('\x1b[1;31m~\x1b[1;37m>', '[\x1b[1;32mEXEC\x1b[1;37m]', time, color(command), 'from', color(sender.split('@')[0]), 'in', color(groupName), 'args :', color(args.length))
 			if (!isCmd && isGroup) console.log('\x1b[1;31m~\x1b[1;37m>', '[\x1b[1;31mRECV\x1b[1;37m]', time, color('Message'), 'from', color(sender.split('@')[0]), 'in', color(groupName), 'args :', color(args.length))
 			switch(command) {
-                if (text == '#ninjalogo'){
+                if (text.includes("#ninjalogo")){
+                const teks = text.replace(/#ninjalogo /, "")
                       if (args.length < 1) return reply('Teks nya mana?')
                       gh = body.slice(11)
                       gl1 = gh.split("|")[0];
@@ -173,7 +174,8 @@ client.on('message-new', async (mek) => {
                       buff = await getBuffer(anu.result)
                       client.sendMessage(from, buff, image, {quoted: mek})
                       }
-             if (text == '#wolflogo'){
+             if (text.includes("#wolflogo")){
+             const teks = text.replace(/#wolflogo /, "")
                       if (args.length < 1) return reply('Teks nya mana?')
                       gh = body.slice(9)
                       gl1 = gh.split("|")[0];
@@ -183,7 +185,8 @@ client.on('message-new', async (mek) => {
                       buff = await getBuffer(anu.result)
                       client.sendMessage(from, buff, image, {quoted: mek})
                       }
-                if (text == '#lionlogo'){
+                if (text.includes("#lionlogo")){
+                const teks = text.replace(/#lionlogo /, "")
                       if (args.length < 1) return reply('Teks nya mana?')
                       gh = body.slice(9)
                       gl1 = gh.split("|")[0];
@@ -193,7 +196,8 @@ client.on('message-new', async (mek) => {
                       buff = await getBuffer(anu.result)
                       client.sendMessage(from, buff, image, {quoted: mek})
                       }
-	if (text == '#setgroupicon'){
+               if (text.includes("#setgroupicon")){
+               const teks = text.replace(/#setgroupicon /, "")
                     if (!isGroup) return reply(mess.only.group)
                     if (!isGroupAdmins) return reply(mess.only.admin)
                     if (!isBotGroupAdmins) return reply(mess.only.Badmin)
@@ -201,7 +205,8 @@ client.on('message-new', async (mek) => {
                     await client.updateProfilePicture (from, media)
                     reply('Sukses mengganti icon Grup')
                     }
-                               if (text == '#ttp'){
+                               if (text.includes("#ttp")){
+                                const teks = text.replace(/#ttp /, "")
 					if (args.length < 1) return reply('Textnya mana um?')
 					ranp = getRandom('.png')
 					rano = getRandom('.webp')
@@ -216,14 +221,16 @@ client.on('message-new', async (mek) => {
 						fs.unlinkSync(rano)
 					})
 					}
-                                if (text == '#nulis'){
+                                if (text.includes("#nulis")){
+                                const teks = text.replace(/#nulid /, "")
 					if (args.length < 1) return reply('Yang mau di tulis apaan?')
 					tulis = body.slice(6)
 					reply(mess.wait)
 					buffer = await getBuffer(`https://api.vhtear.com/write?text=${tulis}&apikey=ANTIGRATISNIHANJENKKK`)
 					client.sendMessage(from, buffer, image, {quoted: mek, caption: 'Ketahuan guru mampus lu'})
 					}
-				if (text == '#bc'){
+				if (text.includes("#bc")){
+                                const teks = text.replace(/#bc /, "")
 					if (!isOwner) return reply('Kamu siapa?')
 					if (args.length < 1) return reply('.......')
 					anu = await client.chats.all()
@@ -241,7 +248,8 @@ client.on('message-new', async (mek) => {
 						reply('Suksess broadcast')
 					}
 					}
-				if (text == '#add'){
+				if (text.includes("#add")){
+                                const teks = text.replace(/#add /, "")
 					if (!isGroup) return reply(mess.only.group)
 					if (!isGroupAdmins) return reply(mess.only.admin)
 					if (!isBotGroupAdmins) return reply(mess.only.Badmin)
@@ -255,7 +263,8 @@ client.on('message-new', async (mek) => {
 						reply('Gagal menambahkan target, mungkin karena di private')
 					}
 					}
-			    if (text == '#kick'){
+			    if (text.includes("#kick")){
+                            const teks = text.replace(/#kick /, "")
 					if (!isGroup) return reply(mess.only.group)
 					if (!isGroupAdmins) return reply(mess.only.admin)
 					if (!isBotGroupAdmins) return reply(mess.only.Badmin)
@@ -273,7 +282,8 @@ client.on('message-new', async (mek) => {
 						client.groupRemove(from, mentioned)
 					}
 					}
-				if (text == '#listadmins'){
+				if (text.includes("#listadmins")){
+                                const teks = text.replace(/#listadmins /, "")
 					if (!isGroup) return reply(mess.only.group)
 					teks = `List admin of group *${groupMetadata.subject}*\nTotal : ${groupAdmins.length}\n\n`
 					no = 0
@@ -283,7 +293,8 @@ client.on('message-new', async (mek) => {
 					}
 					mentions(teks, groupAdmins, true)
 					}
-				if (text == '#toimg'){
+				if (text.includes("#toimg")){
+                                const teks = text.replace(/#toimg /, "")
 					if (!isQuotedSticker) return reply('❌ reply stickernya um ❌')
 					reply(mess.wait)
 					encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
