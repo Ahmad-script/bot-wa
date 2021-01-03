@@ -174,13 +174,6 @@ client.on('message-new', async (mek) => {
                       buff = await getBuffer(anu.result)
                       client.sendMessage(from, buff, image, {quoted: mek})
                       break
-                case 'glitchtext':
-					var gh = body.slice(8)
-					var tels3 = gh.split("|").. r fnfmffmmfmf
-					anu = await fetchJson(`https://tobz-api.herokuapp.com/api/textpro?theme=glitch&text1=${tels3}&text2=${tels4}`, {method: 'get'})
-					buffer = await getBuffer(anu.resul
-					client.sendMessage(from, buffer, image, {quoted: mek})
-					break
              case 'wolflogo':
                       if (args.length < 1) return reply('Teks nya mana?')
                       gh = body.slice(9)
