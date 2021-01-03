@@ -32,8 +32,22 @@ const vcard = 'BEGIN:VCARD\n' // metadata of the contact card
             + 'ORG:Owner  Bot Ahmad;\n' // the organization of the contact
             + 'TEL;type=CELL;type=VOICE;waid=6283865614902:+62 838-6561-4902\n' // WhatsApp ID + phone number
             + 'END:VCARD'
-prefix = '#'
-blocked = []
+const apiKey = 'SLpvUgOcMYwIx0pFeELt'
+const { text, extendedText, contact, location, liveLocation, image, video, sticker, document, audio, product } = MessageType
+const botNumber = client.user.jid
+const ownerNumber = ["6283865614902@s.whatsapp.net"] // replace this with your number
+const adminbotnumber = ["6283865614902@s.whatsapp.net"]
+const frendsowner = ["6283865614902@s.whatsapp.net"]
+const isGroup = from.endsWith('@g.us')
+const sender = isGroup ? m.participant : m.key.remoteJid''
+const groupName = isGroup ? groupMetadata.subject : ''
+const groupDesc = isGroup ? groupMetadata.desc : ''
+const groupAdmins = isGroup ? getGroupAdmins(groupMembers) : ''
+const isBotGroupAdmins = groupAdmins.includes(botNumber) || false
+const isGroupAdmins = groupAdmins.includes(sender) || false
+const isOwner = ownerNumber.includes(sender)
+const isadminbot = adminbotnumber.includes(sender)
+const isfrendsowner = frendsowner.includes(sender)
 //
 const BotName = 'BOT Ahmad'; // Nama Bot Whatsapp
 const instagramlu = 'ahmadwoi_x'; // Nama Instagramlu cok
@@ -92,84 +106,14 @@ conn.on('message-status-update', json =>
    console.log(`[ ${moment().format("HH:mm:ss")} ] => bot by @Ahmad`)
 })
 
-conn.on('message-new', async (m) => {
-		try {
-if (!m.message) return
-if (m.key && m.key.remoteJid == 'status@broadcast') return
-if (m.key.fromMe) return
+conn.on('message-new', async(m) =>
+{
    const messageContent = m.message
    const text = m.message.conversation
    let id = m.key.remoteJid
    const messageType = Object.keys(messageContent)[0] // message will always contain one key signifying what kind of message
    let imageMessage = m.message.imageMessage;
    console.log(`[ ${moment().format("HH:mm:ss")} ] => Nomor: [ ${id.split("@s.whatsapp.net")[0]} ] => ${text}`);
-global.prefix
-global.blocked
-const content = JSON.stringify(m.message)
-const from = m.key.remoteJid
-const type = Object.keys(m.message)[0]
-const apiKey = 'SLpvUgOcMYwIx0pFeELt'
-const { text, extendedText, contact, location, liveLocation, image, video, sticker, document, audio, product } = MessageType
-const time = moment.tz('Asia/Jakarta').format('DD/MM HH:mm:ss')
-body = (type === 'conversation' && m.message.conversation.startsWith(prefix)) ? m.message.conversation : (type == 'imageMessage') && m.message.imageMessage.caption.startsWith(prefix) ? m.message.imageMessage.caption : (type == 'videoMessage') && m.message.videoMessage.caption.startsWith(prefix) ? m.message.videoMessage.caption : (type == 'extendedTextMessage') && m.message.extendedTextMessage.text.startsWith(prefix) ? m.message.extendedTextMessage.text : ''
-budy = (type === 'conversation') ? m.message.conversation : (type === 'extendedTextMessage') ? m.message.extendedTextMessage.text : ''
-const command = body.slice(1).trim().split(/ +/).shift().toLowerCase()
-const args = body.trim().split(/ +/).slice(1)
-const isCmd = body.startsWith(prefix)
-client.chatRead (from)
-
-	only: {
-		group; '❌ Perintah ini hanya bisa di gunakan dalam group! ❌',
-		ownerG; '❌ Perintah ini hanya bisa di gunakan oleh owner group! ❌',
-		ownerB; '❌ Perintah ini hanya bisa di gunakan oleh owner bot! ❌',
-		admin; '❌ Perintah ini hanya bisa di gunakan oleh admin group! ❌',
-		Badmin; '❌ Perintah ini hanya bisa di gunakan ketika bot menjadi admin! ❌'
-	}
-
-const botNumber = conn.user.jid
-const ownerNumber = ["6283865614902@s.whatsapp.net"] // replace this with your number
-const adminbotnumber = ["6283865614902@s.whatsapp.net"]
-const frendsowner = ["6283865614902@s.whatsapp.net"]
-const isGroup = from.endsWith('@g.us')
-const sender = isGroup ? m.participant : m.key.remoteJid
-const groupMetadata = isGroup ? await client.groupMetadata(from) : ''
-const groupName = isGroup ? groupMetadata.subject : ''
-const groupId = isGroup ? groupMetadata.jid : ''
-const groupMembers = isGroup ? groupMetadata.participants : ''
-const groupDesc = isGroup ? groupMetadata.desc : ''
-const groupAdmins = isGroup ? getGroupAdmins(groupMembers) : ''
-const isBotGroupAdmins = groupAdmins.includes(botNumber) || false
-const isGroupAdmins = groupAdmins.includes(sender) || false
-const isWelkom = isGroup ? welkom.includes(from) : false
-const isNsfw = isGroup ? nsfw.includes(from) : false
-const isAnime = isGroup ? anime.includes(from) : false
-const isSimi = isGroup ? samih.includes(from) : false
-const isOwner = ownerNumber.includes(sender)
-const isadminbot = adminbotnumber.includes(sender)
-const isfrendsowner = frendsowner.includes(sender)
-const isUrl = (url) => {
-		return url.match(new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&/=]*)/, 'gi'))
-		}
-		const reply = (teks) => {
-			conn.sendMessage(from, teks, text, {quoted:m})
-		}
-		const sendMess = (hehe, teks) => {
-			conn.sendMessage(hehe, teks, text)
-		}
-		const mentions = (teks, memberr, id) => {
-			(id == null || id == undefined || id == false) ? conn.sendMessage(from, teks.trim(), extendedText, {contextInfo: {"mentionedJid": memberr}}) : coon.sendMessage(from, teks.trim(), extendedText, {quoted: m, contextInfo: {"mentionedJid": memberr}})
-		}
-
-colors = ['red','white','black','blue','yellow','green']
-const isMedia = (type === 'imageMessage' || type === 'videoMessage')
-const isQuotedImage = type === 'extendedTextMessage' && content.includes('imageMessage')
-const isQuotedVideo = type === 'extendedTextMessage' && content.includes('videoMessage')
-const isQuotedSticker = type === 'extendedTextMessage' && content.includes('stickerMessage')
-if (!isGroup && isCmd) console.log('\x1b[1;31m~\x1b[1;37m>', '[\x1b[1;32mEXEC\x1b[1;37m]', time, color(command), 'from', color(sender.split('@')[0]), 'args :', color(args.length))
-if (!isGroup && !isCmd) console.log('\x1b[1;31m~\x1b[1;37m>', '[\x1b[1;31mRECV\x1b[1;37m]', time, color('Message'), 'from', color(sender.split('@')[0]), 'args :', color(args.length))
-if (isCmd && isGroup) console.log('\x1b[1;31m~\x1b[1;37m>', '[\x1b[1;32mEXEC\x1b[1;37m]', time, color(command), 'from', color(sender.split('@')[0]), 'in', color(groupName), 'args :', color(args.length))
-if (!isCmd && isGroup) console.log('\x1b[1;31m~\x1b[1;37m>', '[\x1b[1;31mRECV\x1b[1;37m]', time, color('Message'), 'from', color(sender.split('@')[0]), 'in', color(groupName), 'args :', color(args.length))
-switch(command) {
 
 // Groups
 
@@ -200,6 +144,12 @@ const gg = idn+'@s.whatsapp.net'
 const exists = await conn.isOnWhatsApp (gg)
 console.log(exists);
 conn.sendMessage(id ,`${gg} ${exists ? " exists " : " does not exist"} on WhatsApp`, MessageType.text)
+}
+ 
+if (!isGroup && isCmd) console.log('\x1b[1;31m~\x1b[1;37m>', '[\x1b[1;32mEXEC\x1b[1;37m]', time, color(command), 'from', color(sender.split('@')[0]), 'args :', color(args.length))
+if (!isGroup && !isCmd) console.log('\x1b[1;31m~\x1b[1;37m>', '[\x1b[1;31mRECV\x1b[1;37m]', time, color('Message'), 'from', color(sender.split('@')[0]), 'args :', color(args.length))
+if (isCmd && isGroup) console.log('\x1b[1;31m~\x1b[1;37m>', '[\x1b[1;32mEXEC\x1b[1;37m]', time, color(command), 'from', color(sender.split('@')[0]), 'in', color(groupName), 'args :', color(args.length))
+if (!isCmd && isGroup) console.log('\x1b[1;31m~\x1b[1;37m>', '[\x1b[1;31mRECV\x1b[1;37m]', time, color('Message'), 'from', color(sender.split('@')[0]), 'in', color(groupName), 'args :', color(args.length))
 }
 
 if (text.includes("#say")){
@@ -355,151 +305,6 @@ if (!isBotGroupAdmins) return reply(mess.only.Badmin)
    conn.groupSettingChange (hasil, GroupSettingChange.messageSend, true);
 conn.sendMessage(id, 'SUCCES, GRUP TELAH DITUTUP' ,MessageType.text, { quoted: m } );
 }
-if (text.includes("#ninjalogo")){
-const teks = text.replace(/#ninjalogo /, "")
-                if (args.length < 1) return reply('Teks nya mana?')
-                gh = body.slice(11)
-                gl1 = gh.split("|")[0];
-                gl2 = gh.split("|")[1];
-                reply(mess.wait)
-                anu = await fetchJson(`https://tobz-api.herokuapp.com/api/textpro?theme=ninjalogo&text1=${gl1}&text2=${gl2}`, {method: 'get'})
-                buff = await getBuffer(anu.result)
-                conn.sendMessage(from, buff, image, {quoted: m})
-                }
-if (text.includes("#wolflogo")){
-const teks = text.replace(/#wolflogo /, "")
-                if (args.length < 1) return reply('Teks nya mana?')
-                gh = body.slice(9)
-                gl1 = gh.split("|")[0];
-                gl2 = gh.split("|")[1];
-                reply(mess.wait)
-                anu = await fetchJson(`https://tobz-api.herokuapp.com/api/textpro?theme=wolflogo1&text1=${gl1}&text2=${gl2}`, {method: 'get'})
-                buff = await getBuffer(anu.result)
-                conn.sendMessage(from, buff, image, {quoted: m})
-                }
-if (text.includes("#lionlogo")){
-const teks = text.replace(/#lionlogo /, "")
-                if (args.length < 1) return reply('Teks nya mana?')
-                gh = body.slice(9)
-                gl1 = gh.split("|")[0];
-                gl2 = gh.split("|")[1];
-                reply(mess.wait)
-                anu = await fetchJson(`https://tobz-api.herokuapp.com/api/textpro?theme=lionlogo&text1=${gl1}&text2=${gl2}`, {method: 'get'})
-                buff = await getBuffer(anu.result)
-                conn.sendMessage(from, buff, image, {quoted: m})
-                }
-if (text.includes("#setgroupicon")){
-const teks = text.replace(/#setgroupicon /, "")
-                if (!isGroup) return reply(mess.only.group)
-                if (!isGroupAdmins) return reply(mess.only.admin)
-                if (!isBotGroupAdmins) return reply(mess.only.Badmin)
-                media = await client.downloadAndSaveMediaMessage(m)
-                await conn.updateProfilePicture (from, media)
-                reply('Sukses mengganti icon Grup')
-                }
-if (text.includes("#ttp")){
-const teks = text.replace(/#ttp /, "")
-		if (args.length < 1) return reply('Textnya mana um?')
-		ranp = getRandom('.png')
-		rano = getRandom('.webp')
-		ttp = body.slice(5).trim()
-		anu = await fetchJson(`https://mhankbarbars.herokuapp.com/api/text2image?text=${ttp}&apiKey=SLpvUgOcMYwIx0pFeELt`, {method: 'get'})
-		if (anu.error) return reply(anu.error)
-		exec(`wget ${anu.result} -O ${ranp} && ffmpeg -i ${ranp} -vcodec libwebp -filter:v fps=fps=20 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 512:512 ${rano}`, (err) => {
-			fs.unlinkSync(ranp)
-			if (err) return reply(mess.error.stick)
-			buff = fs.readFileSync(rano)
-			conn.sendMessage(from, buff, sticker, {quoted: m})
-			fs.unlinkSync(rano)
-		})
-		}
-if (text.includes("#nulis")){
-const teks = text.replace(/#nulid /, "")
-		if (args.length < 1) return reply('Yang mau di tulis apaan?')
-		tulis = body.slice(6)
-		reply(mess.wait)
-		buffer = await getBuffer(`https://api.vhtear.com/write?text=${tulis}&apikey=ANTIGRATISNIHANJENKKK`)
-		conn.sendMessage(from, buffer, image, {quoted: m, caption: 'Ketahuan guru mampus lu'})
-		}
-if (text.includes("#bc")){
-const teks = text.replace(/#bc /, "")
-		if (!isOwner) return reply('Kamu siapa?')
-		if (args.length < 1) return reply('.......')
-		anu = await client.chats.all()
-		if (isMedia && !m.message.videoMessage || isQuotedImage) {
-			const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(m).replace('quotedM','m')).message.extendedTextMessage.contextInfo : m
-			buff = await conn.downloadMediaMessage(encmedia)
-			for (let _ of anu) {
-				conn.sendMessage(_.jid, buff, image, {caption: `[ Ini Broadcast ]\n\n${body.slice(4)}`})
-			}
-			reply('Suksess broadcast')
-		} else {
-			for (let _ of anu) {
-				sendMess(_.jid, `[ *BOTAHMAD BROADCAST* ]\n\n${body.slice(4)}`)
-			}
-			reply('Suksess broadcast')
-		}
-		}
-if (text.includes("#add")){
-const teks = text.replace(/#add /, "")
-		if (!isGroup) return reply(mess.only.group)
-		if (!isGroupAdmins) return reply(mess.only.admin)
-		if (!isBotGroupAdmins) return reply(mess.only.Badmin)
-		if (args.length < 1) return reply('Yang mau di add jin ya?')
-		if (args[0].startsWith('08')) return reply('Gunakan kode negara mas')
-		try {
-			num = `${args[0].replace(/ /g, '')}@s.whatsapp.net`
-			conn.groupAdd(from, [num])
-		} catch (e) {
-			console.log('Error :', e)
-			reply('Gagal menambahkan target, mungkin karena di private')
-		}
-		}
-if (text.includes("#kick")){
-const teks = text.replace(/#kick /, "")
-		if (!isGroup) return reply(mess.only.group)
-		if (!isGroupAdmins) return reply(mess.only.admin)
-		if (!isBotGroupAdmins) return reply(mess.only.Badmin)
-		if (m.message.extendedTextMessage === undefined || m.message.extendedTextMessage === null) return reply('Tag target yang ingin di tendang!')
-		mentioned = m.message.extendedTextMessage.contextInfo.mentionedJid
-		if (mentioned.length > 1) {
-			teks = 'Perintah di terima, mengeluarkan :\n'
-			for (let _ of mentioned) {
-				teks += `@${_.split('@')[0]}\n`
-			}
-			mentions(teks, mentioned, true)
-			conn.groupRemove(from, mentioned)
-		} else {
-			mentions(`Perintah di terima, mengeluarkan : @${mentioned[0].split('@')[0]}`, mentioned, true)
-			conn.groupRemove(from, mentioned)
-		}
-		}
-if (text.includes("#listadmins")){
-const teks = text.replace(/#listadmins /, "")
-		if (!isGroup) return reply(mess.only.group)
-		teks = `List admin of group *${groupMetadata.subject}*\nTotal : ${groupAdmins.length}\n\n`
-		no = 0
-		for (let admon of groupAdmins) {
-			no += 1
-			teks += `[${no.toString()}] @${admon.split('@')[0]}\n`
-		}
-		mentions(teks, groupAdmins, true)
-		}
-if (text.includes("#toimg")){
-const teks = text.replace(/#toimg /, "")
-		if (!isQuotedSticker) return reply('❌ reply stickernya um ❌')
-		reply(mess.wait)
-		encmedia = JSON.parse(JSON.stringify(m).replace('quotedM','m')).message.extendedTextMessage.contextInfo
-		media = await conn.downloadAndSaveMediaMessage(encmedia)
-		ran = getRandom('.png')
-		exec(`ffmpeg -i ${media} ${ran}`, (err) => {
-			fs.unlinkSync(media)
-			if (err) return reply('❌ Gagal, pada saat mengkonversi sticker ke gambar ❌')
-			buffer = fs.readFileSync(ran)
-			client.sendMessage(from, buffer, image, {quoted: m, caption: '>//<'})
-			fs.unlinkSync(ran)
-		})
-		}
 
 else if (text == '#help'){
 const corohelp = await get.get('https://covid19.mathdro.id/api/countries/id').json()
