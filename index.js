@@ -1463,4 +1463,5 @@ else if (text.includes("#pasangan ")) {
 					}
                            }
 		}
-	})
+	}
+})
