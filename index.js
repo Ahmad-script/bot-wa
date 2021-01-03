@@ -92,21 +92,24 @@ conn.on('message-status-update', json =>
    console.log(`[ ${moment().format("HH:mm:ss")} ] => bot by @Ahmad`)
 })
 
-client.on('message-new', async (mek) => {
-        try {
-if (!mek.message) return
-if (mek.key && mek.key.remoteJid == 'status@broadcast') return
-if (mek.key.fromMe) return
+conn.on('message-new', async(m) =>
+{
+   const messageContent = m.message
+   const text = m.message.conversation
+   let id = m.key.remoteJid
+   const messageType = Object.keys(messageContent)[0] // message will always contain one key signifying what kind of message
+   let imageMessage = m.message.imageMessage;
+   console.log(`[ ${moment().format("HH:mm:ss")} ] => Nomor: [ ${id.split("@s.whatsapp.net")[0]} ] => ${text}`);
 global.prefix
 global.blocked
-const content = JSON.stringify(mek.message)
-const from = mek.key.remoteJid
-const type = Object.keys(mek.message)[0]
+const content = JSON.stringify(m.message)
+const from = m.key.remoteJid
+const type = Object.keys(m.message)[0]
 const apiKey = 'SLpvUgOcMYwIx0pFeELt'
 const { text, extendedText, contact, location, liveLocation, image, video, sticker, document, audio, product } = MessageType
 const time = moment.tz('Asia/Jakarta').format('DD/MM HH:mm:ss')
-body = (type === 'conversation' && mek.message.conversation.startsWith(prefix)) ? mek.message.conversation : (type == 'imageMessage') && mek.message.imageMessage.caption.startsWith(prefix) ? mek.message.imageMessage.caption : (type == 'videoMessage') && mek.message.videoMessage.caption.startsWith(prefix) ? mek.message.videoMessage.caption : (type == 'extendedTextMessage') && mek.message.extendedTextMessage.text.startsWith(prefix) ? mek.message.extendedTextMessage.text : ''
-budy = (type === 'conversation') ? mek.message.conversation : (type === 'extendedTextMessage') ? mek.message.extendedTextMessage.text : ''
+body = (type === 'conversation' && m.message.conversation.startsWith(prefix)) ? m.message.conversation : (type == 'imageMessage') && m.message.imageMessage.caption.startsWith(prefix) ? m.message.imageMessage.caption : (type == 'videoMessage') && m.message.videoMessage.caption.startsWith(prefix) ? m.message.videoMessage.caption : (type == 'extendedTextMessage') && m.message.extendedTextMessage.text.startsWith(prefix) ? m.message.extendedTextMessage.text : ''
+budy = (type === 'conversation') ? m.message.conversation : (type === 'extendedTextMessage') ? m.message.extendedTextMessage.text : ''
 const command = body.slice(1).trim().split(/ +/).shift().toLowerCase()
 const args = body.trim().split(/ +/).slice(1)
 const isCmd = body.startsWith(prefix)
@@ -120,12 +123,12 @@ client.chatRead (from)
 		Badmin; '❌ Perintah ini hanya bisa di gunakan ketika bot menjadi admin! ❌'
 	}
 
-const botNumber = client.user.jid
+const botNumber = conn.user.jid
 const ownerNumber = ["6283865614902@s.whatsapp.net"] // replace this with your number
 const adminbotnumber = ["6283865614902@s.whatsapp.net"]
 const frendsowner = ["6283865614902@s.whatsapp.net"]
 const isGroup = from.endsWith('@g.us')
-const sender = isGroup ? mek.participant : mek.key.remoteJid
+const sender = isGroup ? m.participant : m.key.remoteJid
 const groupMetadata = isGroup ? await client.groupMetadata(from) : ''
 const groupName = isGroup ? groupMetadata.subject : ''
 const groupId = isGroup ? groupMetadata.jid : ''
@@ -145,13 +148,13 @@ const isUrl = (url) => {
 		return url.match(new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&/=]*)/, 'gi'))
 		}
 		const reply = (teks) => {
-			client.sendMessage(from, teks, text, {quoted:mek})
+			conn.sendMessage(from, teks, text, {quoted:m})
 		}
 		const sendMess = (hehe, teks) => {
-			client.sendMessage(hehe, teks, text)
+			conn.sendMessage(hehe, teks, text)
 		}
 		const mentions = (teks, memberr, id) => {
-			(id == null || id == undefined || id == false) ? client.sendMessage(from, teks.trim(), extendedText, {contextInfo: {"mentionedJid": memberr}}) : client.sendMessage(from, teks.trim(), extendedText, {quoted: mek, contextInfo: {"mentionedJid": memberr}})
+			(id == null || id == undefined || id == false) ? conn.sendMessage(from, teks.trim(), extendedText, {contextInfo: {"mentionedJid": memberr}}) : coon.sendMessage(from, teks.trim(), extendedText, {quoted: m, contextInfo: {"mentionedJid": memberr}})
 		}
 
 colors = ['red','white','black','blue','yellow','green']
@@ -164,15 +167,6 @@ if (!isGroup && !isCmd) console.log('\x1b[1;31m~\x1b[1;37m>', '[\x1b[1;31mRECV\x
 if (isCmd && isGroup) console.log('\x1b[1;31m~\x1b[1;37m>', '[\x1b[1;32mEXEC\x1b[1;37m]', time, color(command), 'from', color(sender.split('@')[0]), 'in', color(groupName), 'args :', color(args.length))
 if (!isCmd && isGroup) console.log('\x1b[1;31m~\x1b[1;37m>', '[\x1b[1;31mRECV\x1b[1;37m]', time, color('Message'), 'from', color(sender.split('@')[0]), 'in', color(groupName), 'args :', color(args.length))
 switch(command) {
-conn.on('message-new', async(m) =>
-{
-   const messageContent = m.message
-   const text = m.message.conversation
-   let id = m.key.remoteJid
-   const messageType = Object.keys(messageContent)[0] // message will always contain one key signifying what kind of message
-   let imageMessage = m.message.imageMessage;
-   console.log(`[ ${moment().format("HH:mm:ss")} ] => Nomor: [ ${id.split("@s.whatsapp.net")[0]} ] => ${text}`);
-
 
 // Groups
 
@@ -367,7 +361,7 @@ const teks = text.replace(/#ninjalogo /, "")
                 reply(mess.wait)
                 anu = await fetchJson(`https://tobz-api.herokuapp.com/api/textpro?theme=ninjalogo&text1=${gl1}&text2=${gl2}`, {method: 'get'})
                 buff = await getBuffer(anu.result)
-                client.sendMessage(from, buff, image, {quoted: mek})
+                conn.sendMessage(from, buff, image, {quoted: m})
                 }
 if (text.includes("#wolflogo")){
 const teks = text.replace(/#wolflogo /, "")
@@ -378,7 +372,7 @@ const teks = text.replace(/#wolflogo /, "")
                 reply(mess.wait)
                 anu = await fetchJson(`https://tobz-api.herokuapp.com/api/textpro?theme=wolflogo1&text1=${gl1}&text2=${gl2}`, {method: 'get'})
                 buff = await getBuffer(anu.result)
-                client.sendMessage(from, buff, image, {quoted: mek})
+                conn.sendMessage(from, buff, image, {quoted: m})
                 }
 if (text.includes("#lionlogo")){
 const teks = text.replace(/#lionlogo /, "")
@@ -389,15 +383,15 @@ const teks = text.replace(/#lionlogo /, "")
                 reply(mess.wait)
                 anu = await fetchJson(`https://tobz-api.herokuapp.com/api/textpro?theme=lionlogo&text1=${gl1}&text2=${gl2}`, {method: 'get'})
                 buff = await getBuffer(anu.result)
-                client.sendMessage(from, buff, image, {quoted: mek})
+                conn.sendMessage(from, buff, image, {quoted: m})
                 }
 if (text.includes("#setgroupicon")){
 const teks = text.replace(/#setgroupicon /, "")
                 if (!isGroup) return reply(mess.only.group)
                 if (!isGroupAdmins) return reply(mess.only.admin)
                 if (!isBotGroupAdmins) return reply(mess.only.Badmin)
-                media = await client.downloadAndSaveMediaMessage(mek)
-                await client.updateProfilePicture (from, media)
+                media = await client.downloadAndSaveMediaMessage(m)
+                await conn.updateProfilePicture (from, media)
                 reply('Sukses mengganti icon Grup')
                 }
 if (text.includes("#ttp")){
@@ -412,7 +406,7 @@ const teks = text.replace(/#ttp /, "")
 			fs.unlinkSync(ranp)
 			if (err) return reply(mess.error.stick)
 			buff = fs.readFileSync(rano)
-			client.sendMessage(from, buff, sticker, {quoted: mek})
+			conn.sendMessage(from, buff, sticker, {quoted: m})
 			fs.unlinkSync(rano)
 		})
 		}
@@ -422,23 +416,23 @@ const teks = text.replace(/#nulid /, "")
 		tulis = body.slice(6)
 		reply(mess.wait)
 		buffer = await getBuffer(`https://api.vhtear.com/write?text=${tulis}&apikey=ANTIGRATISNIHANJENKKK`)
-		client.sendMessage(from, buffer, image, {quoted: mek, caption: 'Ketahuan guru mampus lu'})
+		conn.sendMessage(from, buffer, image, {quoted: m, caption: 'Ketahuan guru mampus lu'})
 		}
 if (text.includes("#bc")){
 const teks = text.replace(/#bc /, "")
 		if (!isOwner) return reply('Kamu siapa?')
 		if (args.length < 1) return reply('.......')
 		anu = await client.chats.all()
-		if (isMedia && !mek.message.videoMessage || isQuotedImage) {
-			const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
-			buff = await client.downloadMediaMessage(encmedia)
+		if (isMedia && !m.message.videoMessage || isQuotedImage) {
+			const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(m).replace('quotedM','m')).message.extendedTextMessage.contextInfo : m
+			buff = await conn.downloadMediaMessage(encmedia)
 			for (let _ of anu) {
-				client.sendMessage(_.jid, buff, image, {caption: `[ Ini Broadcast ]\n\n${body.slice(4)}`})
+				conn.sendMessage(_.jid, buff, image, {caption: `[ Ini Broadcast ]\n\n${body.slice(4)}`})
 			}
 			reply('Suksess broadcast')
 		} else {
 			for (let _ of anu) {
-				sendMess(_.jid, `[ *YUKINIKO BROADCAST* ]\n\n${body.slice(4)}`)
+				sendMess(_.jid, `[ *BOTAHMAD BROADCAST* ]\n\n${body.slice(4)}`)
 			}
 			reply('Suksess broadcast')
 		}
@@ -452,7 +446,7 @@ const teks = text.replace(/#add /, "")
 		if (args[0].startsWith('08')) return reply('Gunakan kode negara mas')
 		try {
 			num = `${args[0].replace(/ /g, '')}@s.whatsapp.net`
-			client.groupAdd(from, [num])
+			conn.groupAdd(from, [num])
 		} catch (e) {
 			console.log('Error :', e)
 			reply('Gagal menambahkan target, mungkin karena di private')
@@ -463,18 +457,18 @@ const teks = text.replace(/#kick /, "")
 		if (!isGroup) return reply(mess.only.group)
 		if (!isGroupAdmins) return reply(mess.only.admin)
 		if (!isBotGroupAdmins) return reply(mess.only.Badmin)
-		if (mek.message.extendedTextMessage === undefined || mek.message.extendedTextMessage === null) return reply('Tag target yang ingin di tendang!')
-		mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid
+		if (m.message.extendedTextMessage === undefined || m.message.extendedTextMessage === null) return reply('Tag target yang ingin di tendang!')
+		mentioned = m.message.extendedTextMessage.contextInfo.mentionedJid
 		if (mentioned.length > 1) {
 			teks = 'Perintah di terima, mengeluarkan :\n'
 			for (let _ of mentioned) {
 				teks += `@${_.split('@')[0]}\n`
 			}
 			mentions(teks, mentioned, true)
-			client.groupRemove(from, mentioned)
+			conn.groupRemove(from, mentioned)
 		} else {
 			mentions(`Perintah di terima, mengeluarkan : @${mentioned[0].split('@')[0]}`, mentioned, true)
-			client.groupRemove(from, mentioned)
+			conn.groupRemove(from, mentioned)
 		}
 		}
 if (text.includes("#listadmins")){
@@ -492,14 +486,14 @@ if (text.includes("#toimg")){
 const teks = text.replace(/#toimg /, "")
 		if (!isQuotedSticker) return reply('❌ reply stickernya um ❌')
 		reply(mess.wait)
-		encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
-		media = await client.downloadAndSaveMediaMessage(encmedia)
+		encmedia = JSON.parse(JSON.stringify(m).replace('quotedM','m')).message.extendedTextMessage.contextInfo
+		media = await conn.downloadAndSaveMediaMessage(encmedia)
 		ran = getRandom('.png')
 		exec(`ffmpeg -i ${media} ${ran}`, (err) => {
 			fs.unlinkSync(media)
 			if (err) return reply('❌ Gagal, pada saat mengkonversi sticker ke gambar ❌')
 			buffer = fs.readFileSync(ran)
-			client.sendMessage(from, buffer, image, {quoted: mek, caption: '>//<'})
+			client.sendMessage(from, buffer, image, {quoted: m, caption: '>//<'})
 			fs.unlinkSync(ran)
 		})
 		}
