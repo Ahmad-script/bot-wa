@@ -16,6 +16,8 @@
 
 #>pkg install ffmpeg
 
+#>pkg install libwebp
+
 #>pkg install nodejs
 
 #>npm i -g cwebp
