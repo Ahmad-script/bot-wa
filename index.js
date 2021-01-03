@@ -113,11 +113,11 @@ client.on('message-new', async (mek) => {
 			client.chatRead (from)
 
 				only: {
-					group: '❌ Perintah ini hanya bisa di gunakan dalam group! ❌',
-					ownerG: '❌ Perintah ini hanya bisa di gunakan oleh owner group! ❌',
-					ownerB: '❌ Perintah ini hanya bisa di gunakan oleh owner bot! ❌',
-					admin: '❌ Perintah ini hanya bisa di gunakan oleh admin group! ❌',
-					Badmin: '❌ Perintah ini hanya bisa di gunakan ketika bot menjadi admin! ❌'
+					group; '❌ Perintah ini hanya bisa di gunakan dalam group! ❌',
+					ownerG; '❌ Perintah ini hanya bisa di gunakan oleh owner group! ❌',
+					ownerB; '❌ Perintah ini hanya bisa di gunakan oleh owner bot! ❌',
+					admin; '❌ Perintah ini hanya bisa di gunakan oleh admin group! ❌',
+					Badmin; '❌ Perintah ini hanya bisa di gunakan ketika bot menjadi admin! ❌'
 				}
 			}
 
