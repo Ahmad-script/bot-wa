@@ -23,15 +23,11 @@ const tiktod = require('tiktok-scraper')
 const ffmpeg = require('fluent-ffmpeg')
 const { removeBackgroundFromImageFile } = require('remove.bg')
 const imgbb = require('imgbb-uploader')
-const welkom = JSON.parse(fs.readFileSync('./src/welkom.json'))
-const nsfw = JSON.parse(fs.readFileSync('./src/nsfw.json'))
 const adminNumber = JSON.parse(fs.readFileSync('./src/admin.json'))
-const anime = JSON.parse(fs.readFileSync('./src/anime.json'))
-const samih = JSON.parse(fs.readFileSync('./src/simi.json'))
 const speed = require('performance-now');
 const vcard = 'BEGIN:VCARD\n' // metadata of the contact card
             + 'VERSION:3.0\n' 
-            + 'FN:Ahmad\n' // full name
+            + 'FN:Ahmad (Owner Bot)\n' // full name
             + 'ORG:Owner  Bot Ahmad;\n' // the organization of the contact
             + 'TEL;type=CELL;type=VOICE;waid=6283865614902:+62 838-6561-4902\n' // WhatsApp ID + phone number
             + 'END:VCARD'
@@ -317,8 +313,6 @@ client.on('message-new', async (mek) => {
 					prefix = args[0]
 					reply(`Prefix berhasil di ubah menjadi : ${prefix}`)
 					break
-				
-
 conn.on('message-new', async(m) =>
 {
    const messageContent = m.message
@@ -486,6 +480,9 @@ axios.get(`https://arugaz.herokuapp.com/api/howbucins`).then((res) => {
 })
 }
 if (text.includes("#setgroupname")){
+if (!isGroup) return reply(mess.only.group)
+if (!isGroupAdmins) return reply(mess.only.admin)
+if (!isBotGroupAdmins) return reply(mess.only.Badmin)
 const teks = text.replace(/#setgroupname /, "")
     let nama = `${teks}`;
     let idgrup = `${id.split("@s.whatsapp.net")[0]}`;
@@ -494,6 +491,9 @@ conn.sendMessage(id, 'Succes Change Name Group' ,MessageType.text, { quoted: m }
 
 }
 if (text.includes("#setgroupdesc")){
+if (!isGroup) return reply(mess.only.group)
+if (!isGroupAdmins) return reply(mess.only.admin)
+if (!isBotGroupAdmins) return reply(mess.only.Badmin)
 const teks = text.replace(/#setgroupdesc /, "")
     let desk = `${teks}`;
     let idgrup = `${id.split("@s.whatsapp.net")[0]}`;
@@ -506,11 +506,17 @@ conn.sendMessage(id, {displayname: "Jeff", vcard: vcard}, MessageType.contact)
 conn.sendMessage(id, 'Ingin masukin Bot ke group?, chat Owner :D', MessageType.text)
 }
 else if (text == '#opengc'){
+if (!isGroup) return reply(mess.only.group)
+if (!isGroupAdmins) return reply(mess.only.admin)
+if (!isBotGroupAdmins) return reply(mess.only.Badmin)
 let hasil = `${id.split("@s.whatsapp.net")[0]}`;
    conn.groupSettingChange (hasil, GroupSettingChange.messageSend, false);
 conn.sendMessage(id, 'SUCCES, GRUP TELAH DIBUKA' ,MessageType.text, { quoted: m } );
 }
 else if (text == '#closegc'){
+if (!isGroup) return reply(mess.only.group)
+if (!isGroupAdmins) return reply(mess.only.admin)
+if (!isBotGroupAdmins) return reply(mess.only.Badmin)
  let hasil = `${id.split("@s.whatsapp.net")[0]}`;
    conn.groupSettingChange (hasil, GroupSettingChange.messageSend, true);
 conn.sendMessage(id, 'SUCCES, GRUP TELAH DITUTUP' ,MessageType.text, { quoted: m } );
