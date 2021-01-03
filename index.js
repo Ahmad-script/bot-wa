@@ -1304,6 +1304,10 @@ if (text.includes("pota")){
 let err = fs.readFileSync('mp3/' + 'pota' + '.mp3')
  conn.sendMessage(id, err, MessageType.audio, { ptt: true, quoted: m })
 }
+if (text.includes("lukluk")){
+let err = fs.readFileSync('mp3/' + 'lukluk' + '.mp3')
+ conn.sendMessage(id, err, MessageType.audio, { ptt: true, quoted: m })
+}
 if (text.includes("#randomloli"))
    {
     var items = ["anime loli","anime loli sange","anime loli fackgirll","anime loli i love you"];
