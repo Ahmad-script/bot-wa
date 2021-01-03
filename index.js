@@ -1396,3 +1396,4 @@ else if (text.includes("#pasangan ")) {
 	})
 }
 starts()
+})
