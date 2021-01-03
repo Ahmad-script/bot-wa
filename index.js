@@ -1382,8 +1382,7 @@ else if (text.includes("#pasangan ")) {
 						})
 					} else {
 						reply('Foto aja mas')
-					}
-				default:
+		
 					if (isGroup && isSimi && budy != undefined) {
 						console.log(budy)
 						muehe = await simih(budy)
