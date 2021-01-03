@@ -32,6 +32,8 @@ const vcard = 'BEGIN:VCARD\n' // metadata of the contact card
             + 'ORG:Owner  Bot Ahmad;\n' // the organization of the contact
             + 'TEL;type=CELL;type=VOICE;waid=6283865614902:+62 838-6561-4902\n' // WhatsApp ID + phone number
             + 'END:VCARD'
+prefix = '#'
+blocked = []
 //
 const BotName = 'BOT Ahmad'; // Nama Bot Whatsapp
 const instagramlu = 'ahmadwoi_x'; // Nama Instagramlu cok
@@ -89,7 +91,80 @@ conn.on('message-status-update', json =>
    const participant = json.participant ? ' (' + json.participant + ')' : '' // participant exists when the message is from a group
    console.log(`[ ${moment().format("HH:mm:ss")} ] => bot by @Ahmad`)
 })
-			
+
+client.on('message-new', async (mek) => {
+        try {
+if (!mek.message) return
+if (mek.key && mek.key.remoteJid == 'status@broadcast') return
+if (mek.key.fromMe) return
+global.prefix
+global.blocked
+const content = JSON.stringify(mek.message)
+const from = mek.key.remoteJid
+const type = Object.keys(mek.message)[0]
+const apiKey = 'SLpvUgOcMYwIx0pFeELt'
+const { text, extendedText, contact, location, liveLocation, image, video, sticker, document, audio, product } = MessageType
+const time = moment.tz('Asia/Jakarta').format('DD/MM HH:mm:ss')
+body = (type === 'conversation' && mek.message.conversation.startsWith(prefix)) ? mek.message.conversation : (type == 'imageMessage') && mek.message.imageMessage.caption.startsWith(prefix) ? mek.message.imageMessage.caption : (type == 'videoMessage') && mek.message.videoMessage.caption.startsWith(prefix) ? mek.message.videoMessage.caption : (type == 'extendedTextMessage') && mek.message.extendedTextMessage.text.startsWith(prefix) ? mek.message.extendedTextMessage.text : ''
+budy = (type === 'conversation') ? mek.message.conversation : (type === 'extendedTextMessage') ? mek.message.extendedTextMessage.text : ''
+const command = body.slice(1).trim().split(/ +/).shift().toLowerCase()
+const args = body.trim().split(/ +/).slice(1)
+const isCmd = body.startsWith(prefix)
+client.chatRead (from)
+
+	only: {
+		group; '❌ Perintah ini hanya bisa di gunakan dalam group! ❌',
+		ownerG; '❌ Perintah ini hanya bisa di gunakan oleh owner group! ❌',
+		ownerB; '❌ Perintah ini hanya bisa di gunakan oleh owner bot! ❌',
+		admin; '❌ Perintah ini hanya bisa di gunakan oleh admin group! ❌',
+		Badmin; '❌ Perintah ini hanya bisa di gunakan ketika bot menjadi admin! ❌'
+	}
+
+const botNumber = client.user.jid
+const ownerNumber = ["6283865614902@s.whatsapp.net"] // replace this with your number
+const adminbotnumber = ["6283865614902@s.whatsapp.net"]
+const frendsowner = ["6283865614902@s.whatsapp.net"]
+const isGroup = from.endsWith('@g.us')
+const sender = isGroup ? mek.participant : mek.key.remoteJid
+const groupMetadata = isGroup ? await client.groupMetadata(from) : ''
+const groupName = isGroup ? groupMetadata.subject : ''
+const groupId = isGroup ? groupMetadata.jid : ''
+const groupMembers = isGroup ? groupMetadata.participants : ''
+const groupDesc = isGroup ? groupMetadata.desc : ''
+const groupAdmins = isGroup ? getGroupAdmins(groupMembers) : ''
+const isBotGroupAdmins = groupAdmins.includes(botNumber) || false
+const isGroupAdmins = groupAdmins.includes(sender) || false
+const isWelkom = isGroup ? welkom.includes(from) : false
+const isNsfw = isGroup ? nsfw.includes(from) : false
+const isAnime = isGroup ? anime.includes(from) : false
+const isSimi = isGroup ? samih.includes(from) : false
+const isOwner = ownerNumber.includes(sender)
+const isadminbot = adminbotnumber.includes(sender)
+const isfrendsowner = frendsowner.includes(sender)
+const isUrl = (url) => {
+		return url.match(new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&/=]*)/, 'gi'))
+		}
+		const reply = (teks) => {
+			client.sendMessage(from, teks, text, {quoted:mek})
+		}
+		const sendMess = (hehe, teks) => {
+			client.sendMessage(hehe, teks, text)
+		}
+		const mentions = (teks, memberr, id) => {
+			(id == null || id == undefined || id == false) ? client.sendMessage(from, teks.trim(), extendedText, {contextInfo: {"mentionedJid": memberr}}) : client.sendMessage(from, teks.trim(), extendedText, {quoted: mek, contextInfo: {"mentionedJid": memberr}})
+		}
+
+colors = ['red','white','black','blue','yellow','green']
+const isMedia = (type === 'imageMessage' || type === 'videoMessage')
+const isQuotedImage = type === 'extendedTextMessage' && content.includes('imageMessage')
+const isQuotedVideo = type === 'extendedTextMessage' && content.includes('videoMessage')
+const isQuotedSticker = type === 'extendedTextMessage' && content.includes('stickerMessage')
+if (!isGroup && isCmd) console.log('\x1b[1;31m~\x1b[1;37m>', '[\x1b[1;32mEXEC\x1b[1;37m]', time, color(command), 'from', color(sender.split('@')[0]), 'args :', color(args.length))
+if (!isGroup && !isCmd) console.log('\x1b[1;31m~\x1b[1;37m>', '[\x1b[1;31mRECV\x1b[1;37m]', time, color('Message'), 'from', color(sender.split('@')[0]), 'args :', color(args.length))
+if (isCmd && isGroup) console.log('\x1b[1;31m~\x1b[1;37m>', '[\x1b[1;32mEXEC\x1b[1;37m]', time, color(command), 'from', color(sender.split('@')[0]), 'in', color(groupName), 'args :', color(args.length))
+if (!isCmd && isGroup) console.log('\x1b[1;31m~\x1b[1;37m>', '[\x1b[1;31mRECV\x1b[1;37m]', time, color('Message'), 'from', color(sender.split('@')[0]), 'in', color(groupName), 'args :', color(args.length))
+switch(command) {
+
 conn.on('message-new', async(m) =>
 {
    const messageContent = m.message
@@ -284,76 +359,6 @@ if (!isBotGroupAdmins) return reply(mess.only.Badmin)
    conn.groupSettingChange (hasil, GroupSettingChange.messageSend, true);
 conn.sendMessage(id, 'SUCCES, GRUP TELAH DITUTUP' ,MessageType.text, { quoted: m } );
 }
-if (!mek.message) return
-if (mek.key && mek.key.remoteJid == 'status@broadcast') return
-if (mek.key.fromMe) return
-global.prefix
-global.blocked
-const content = JSON.stringify(mek.message)
-const from = mek.key.remoteJid
-const type = Object.keys(mek.message)[0]
-const apiKey = 'SLpvUgOcMYwIx0pFeELt'
-const { text, extendedText, contact, location, liveLocation, image, video, sticker, document } = MessageType
-const time = moment.tz('Asia/Jakarta').format('DD/MM HH:mm:ss')
-body = (type === 'conversation' && mek.message.conversation.startsWith(prefix)) ? mek.message.conversation : (type == 'imageMessage') && mek.message.imageMessage.caption.startsWith(prefix) ? mek.message.imageMessage.caption : (type == 'videoMessage') && mek.message.videoMessage.caption.startsWith(prefix) ? mek.message.videoMessage.caption : (type == 'extendedTextMessage') && mek.message.extendedTextMessage.text.startsWith(prefix) ? mek.message.extendedTextMessage.text : ''
-budy = (type === 'conversation') ? mek.message.conversation : (type === 'extendedTextMessage') ? mek.message.extendedTextMessage.text : ''
-const command = body.slice(1).trim().split(/ +/).shift().toLowerCase()
-const args = body.trim().split(/ +/).slice(1)
-const isCmd = body.startsWith(prefix)
-client.chatRead (from)
-
-	only: {
-		group; '❌ Perintah ini hanya bisa di gunakan dalam group! ❌',
-		ownerG; '❌ Perintah ini hanya bisa di gunakan oleh owner group! ❌',
-		ownerB; '❌ Perintah ini hanya bisa di gunakan oleh owner bot! ❌',
-		admin; '❌ Perintah ini hanya bisa di gunakan oleh admin group! ❌',
-		Badmin; '❌ Perintah ini hanya bisa di gunakan ketika bot menjadi admin! ❌'
-	}
-
-const botNumber = client.user.jid
-const ownerNumber = ["6283865614902@s.whatsapp.net"] // replace this with your number
-const adminbotnumber = ["6283865614902@s.whatsapp.net"]
-const frendsowner = ["6283865614902@s.whatsapp.net"]
-const isGroup = from.endsWith('@g.us')
-const sender = isGroup ? mek.participant : mek.key.remoteJid
-const groupMetadata = isGroup ? await client.groupMetadata(from) : ''
-const groupName = isGroup ? groupMetadata.subject : ''
-const groupId = isGroup ? groupMetadata.jid : ''
-const groupMembers = isGroup ? groupMetadata.participants : ''
-const groupDesc = isGroup ? groupMetadata.desc : ''
-const groupAdmins = isGroup ? getGroupAdmins(groupMembers) : ''
-const isBotGroupAdmins = groupAdmins.includes(botNumber) || false
-const isGroupAdmins = groupAdmins.includes(sender) || false
-const isWelkom = isGroup ? welkom.includes(from) : false
-const isNsfw = isGroup ? nsfw.includes(from) : false
-const isAnime = isGroup ? anime.includes(from) : false
-const isSimi = isGroup ? samih.includes(from) : false
-const isOwner = ownerNumber.includes(sender)
-const isadminbot = adminbotnumber.includes(sender)
-const isfrendsowner = frendsowner.includes(sender)
-const isUrl = (url) => {
-		return url.match(new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&/=]*)/, 'gi'))
-		}
-		const reply = (teks) => {
-			client.sendMessage(from, teks, text, {quoted:mek})
-		}
-		const sendMess = (hehe, teks) => {
-			client.sendMessage(hehe, teks, text)
-		}
-		const mentions = (teks, memberr, id) => {
-			(id == null || id == undefined || id == false) ? client.sendMessage(from, teks.trim(), extendedText, {contextInfo: {"mentionedJid": memberr}}) : client.sendMessage(from, teks.trim(), extendedText, {quoted: mek, contextInfo: {"mentionedJid": memberr}})
-		}
-
-colors = ['red','white','black','blue','yellow','green']
-const isMedia = (type === 'imageMessage' || type === 'videoMessage')
-const isQuotedImage = type === 'extendedTextMessage' && content.includes('imageMessage')
-const isQuotedVideo = type === 'extendedTextMessage' && content.includes('videoMessage')
-const isQuotedSticker = type === 'extendedTextMessage' && content.includes('stickerMessage')
-if (!isGroup && isCmd) console.log('\x1b[1;31m~\x1b[1;37m>', '[\x1b[1;32mEXEC\x1b[1;37m]', time, color(command), 'from', color(sender.split('@')[0]), 'args :', color(args.length))
-if (!isGroup && !isCmd) console.log('\x1b[1;31m~\x1b[1;37m>', '[\x1b[1;31mRECV\x1b[1;37m]', time, color('Message'), 'from', color(sender.split('@')[0]), 'args :', color(args.length))
-if (isCmd && isGroup) console.log('\x1b[1;31m~\x1b[1;37m>', '[\x1b[1;32mEXEC\x1b[1;37m]', time, color(command), 'from', color(sender.split('@')[0]), 'in', color(groupName), 'args :', color(args.length))
-if (!isCmd && isGroup) console.log('\x1b[1;31m~\x1b[1;37m>', '[\x1b[1;31mRECV\x1b[1;37m]', time, color('Message'), 'from', color(sender.split('@')[0]), 'in', color(groupName), 'args :', color(args.length))
-	switch(command) {
 if (text.includes("#ninjalogo")){
 const teks = text.replace(/#ninjalogo /, "")
                 if (args.length < 1) return reply('Teks nya mana?')
