@@ -1379,4 +1379,5 @@ else if (text.includes("#pasangan ")) {
    // end of file
 
 
+break
 })
