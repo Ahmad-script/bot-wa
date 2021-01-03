@@ -92,8 +92,11 @@ conn.on('message-status-update', json =>
    console.log(`[ ${moment().format("HH:mm:ss")} ] => bot by @Ahmad`)
 })
 
-conn.on('message-new', async(m) =>
-{
+conn.on('message-new', async (m) => {
+		try {
+if (!m.message) return
+if (m.key && m.key.remoteJid == 'status@broadcast') return
+if (m.key.fromMe) return
    const messageContent = m.message
    const text = m.message.conversation
    let id = m.key.remoteJid
