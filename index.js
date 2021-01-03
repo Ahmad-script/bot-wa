@@ -119,7 +119,6 @@ client.on('message-new', async (mek) => {
 					admin; '❌ Perintah ini hanya bisa di gunakan oleh admin group! ❌',
 					Badmin; '❌ Perintah ini hanya bisa di gunakan ketika bot menjadi admin! ❌'
 				}
-			}
 
 			const botNumber = client.user.jid
 			const ownerNumber = ["6283865614902@s.whatsapp.net"] // replace this with your number
