@@ -1370,7 +1370,7 @@ else if (text.includes("#pasangan ")) {
   });
   }
 
-				case 'wait':
+				else if (text == '#wait'){
 					if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
 						reply(mess.wait)
 						const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
