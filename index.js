@@ -1383,7 +1383,6 @@ else if (text.includes("#pasangan ")) {
 					} else {
 						reply('Foto aja mas')
 					}
-					break
 				default:
 					if (isGroup && isSimi && budy != undefined) {
 						console.log(budy)
