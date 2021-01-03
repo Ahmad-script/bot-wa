@@ -32,8 +32,6 @@ const vcard = 'BEGIN:VCARD\n' // metadata of the contact card
             + 'ORG:Owner  Bot Ahmad;\n' // the organization of the contact
             + 'TEL;type=CELL;type=VOICE;waid=6283865614902:+62 838-6561-4902\n' // WhatsApp ID + phone number
             + 'END:VCARD'
-prefix = '#'
-blocked = []
 //
 const BotName = 'BOT Ahmad'; // Nama Bot Whatsapp
 const instagramlu = 'ahmadwoi_x'; // Nama Instagramlu cok
