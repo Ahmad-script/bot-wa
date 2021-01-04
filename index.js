@@ -39,6 +39,7 @@ const ownerNumber = ["6283865614902@s.whatsapp.net"] // replace this with your n
 const adminbotnumber = ["6283865614902@s.whatsapp.net"]
 const frendsowner = ["6283865614902@s.whatsapp.net"]
 const isGroup = from.endsWith('@g.us')
+const sender = isGroup ? m.participant : m.key.remoteJid
 const isBotGroupAdmins = groupAdmins.includes(botNumber) || false
 const isGroupAdmins = groupAdmins.includes(sender) || false
 const isOwner = ownerNumber.includes(sender)
