@@ -14,7 +14,6 @@ const info = require("./lib/info.js");
 const intro = require("./lib/intro.js");
 const serverlist = require("./lib/serverlist.js");
 const serverphoenix = require("./lib/serverphoenix.js");
-const { wait, simih, getBuffer, h2k, generateMessageID, getGroupAdmins, getRandom, start, success, close } = require('./lib/functions')
 const { fetchJson } = require('./lib/fetcher')
 const { recognize } = require('./lib/ocr')
 const { exec } = require('child_process')
