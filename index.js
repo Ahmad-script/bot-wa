@@ -27,13 +27,13 @@ const vcard = 'BEGIN:VCARD\n' // metadata of the contact card
             + 'ORG:Owner  Bot Ahmad;\n' // the organization of the contact
             + 'TEL;type=CELL;type=VOICE;waid=6283865614902:+62 838-6561-4902\n' // WhatsApp ID + phone number
             + 'END:VCARD'
+const content = JSON.stringify(m.message)
+const from = m.key.remoteJid
+const type = Object.keys(m.message)[0]
 const messageContent = m.message
 const text = m.message.conversation
 const messageType = Object.keys(messageContent)[0] // message will always contain one key signifying what kind of message
 const apiKey = 'SLpvUgOcMYwIx0pFeELt'
-const content = JSON.stringify(m.message)
-const from = m.key.remoteJid
-const type = Object.keys(m.message)[0]
 const ownerNumber = ["6283865614902@s.whatsapp.net"] // replace this with your number
 const adminbotnumber = ["6283865614902@s.whatsapp.net"]
 const frendsowner = ["6283865614902@s.whatsapp.net"]
