@@ -18,7 +18,6 @@ const { wait, simih, getBuffer, h2k, generateMessageID, getGroupAdmins, getRando
 const { fetchJson } = require('./lib/fetcher')
 const { recognize } = require('./lib/ocr')
 const { exec } = require('child_process')
-const { color, bgcolor } = require('./lib/color')
 const adminNumber = JSON.parse(fs.readFileSync('./src/admin.json'))
 const speed = require('performance-now');
 const vcard = 'BEGIN:VCARD\n' // metadata of the contact card
@@ -27,10 +26,6 @@ const vcard = 'BEGIN:VCARD\n' // metadata of the contact card
             + 'ORG:Owner  Bot Ahmad;\n' // the organization of the contact
             + 'TEL;type=CELL;type=VOICE;waid=6283865614902:+62 838-6561-4902\n' // WhatsApp ID + phone number
             + 'END:VCARD'
-const apiKey = 'SLpvUgOcMYwIx0pFeELt'
-const ownerNumber = ["6283865614902@s.whatsapp.net"] // replace this with your number
-const adminbotnumber = ["6283865614902@s.whatsapp.net"]
-const frendsowner = ["6283865614902@s.whatsapp.net"]
 //
 const BotName = 'BOT Ahmad'; // Nama Bot Whatsapp
 const instagramlu = 'ahmadwoi_x'; // Nama Instagramlu cok
