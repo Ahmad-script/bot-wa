@@ -27,22 +27,10 @@ const vcard = 'BEGIN:VCARD\n' // metadata of the contact card
             + 'ORG:Owner  Bot Ahmad;\n' // the organization of the contact
             + 'TEL;type=CELL;type=VOICE;waid=6283865614902:+62 838-6561-4902\n' // WhatsApp ID + phone number
             + 'END:VCARD'
-const content = JSON.stringify(m.message)
-const from = m.key.remoteJid
-const type = Object.keys(m.message)[0]
-const messageContent = m.message
-const text = m.message.conversation
-const messageType = Object.keys(messageContent)[0] // message will always contain one key signifying what kind of message
 const apiKey = 'SLpvUgOcMYwIx0pFeELt'
 const ownerNumber = ["6283865614902@s.whatsapp.net"] // replace this with your number
 const adminbotnumber = ["6283865614902@s.whatsapp.net"]
 const frendsowner = ["6283865614902@s.whatsapp.net"]
-const isGroup = from.endsWith('@g.us')
-const sender = isGroup ? m.participant : m.key.remoteJid
-const isGroupAdmins = groupAdmins.includes(sender) || false
-const isOwner = ownerNumber.includes(sender)
-const isadminbot = adminbotnumber.includes(sender)
-const isfrendsowner = frendsowner.includes(sender)
 //
 const BotName = 'BOT Ahmad'; // Nama Bot Whatsapp
 const instagramlu = 'ahmadwoi_x'; // Nama Instagramlu cok
@@ -258,43 +246,10 @@ axios.get(`https://arugaz.herokuapp.com/api/howbucins`).then((res) => {
     conn.sendMessage(id, hasil ,MessageType.text);
 })
 }
-if (text.includes("#setgroupname")){
-if (!isGroupAdmins) return reply(mess.only.admin)
-if (!isBotGroupAdmins) return reply(mess.only.Badmin)
-const teks = text.replace(/#setgroupname /, "")
-    let nama = `${teks}`;
-    let idgrup = `${id.split("@s.whatsapp.net")[0]}`;
-    conn.groupUpdateSubject(idgrup, nama);
-conn.sendMessage(id, 'Succes Change Name Group' ,MessageType.text, { quoted: m } );
 
-}
-if (text.includes("#setgroupdesc")){
-if (!isGroupAdmins) return reply(mess.only.admin)
-if (!isBotGroupAdmins) return reply(mess.only.Badmin)
-const teks = text.replace(/#setgroupdesc /, "")
-    let desk = `${teks}`;
-    let idgrup = `${id.split("@s.whatsapp.net")[0]}`;
-    conn.groupUpdateDescription(idgrup, desk)
-conn.sendMessage(id, 'Succes Change Description Group' ,MessageType.text, { quoted: m } );
-
-}
 if (text.includes('#join')){
 conn.sendMessage(id, {displayname: "Jeff", vcard: vcard}, MessageType.contact)
 conn.sendMessage(id, 'Ingin masukin Bot ke group?, chat Owner :D', MessageType.text)
-}
-else if (text == '#opengc'){
-if (!isGroupAdmins) return reply(mess.only.admin)
-if (!isBotGroupAdmins) return reply(mess.only.Badmin)
-let hasil = `${id.split("@s.whatsapp.net")[0]}`;
-   conn.groupSettingChange (hasil, GroupSettingChange.messageSend, false);
-conn.sendMessage(id, 'SUCCES, GRUP TELAH DIBUKA' ,MessageType.text, { quoted: m } );
-}
-else if (text == '#closegc'){
-if (!isGroupAdmins) return reply(mess.only.admin)
-if (!isBotGroupAdmins) return reply(mess.only.Badmin)
- let hasil = `${id.split("@s.whatsapp.net")[0]}`;
-   conn.groupSettingChange (hasil, GroupSettingChange.messageSend, true);
-conn.sendMessage(id, 'SUCCES, GRUP TELAH DITUTUP' ,MessageType.text, { quoted: m } );
 }
 
 else if (text == '#help'){
