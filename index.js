@@ -18,7 +18,7 @@ const { fetchJson } = require('./lib/fetcher')
 const { recognize } = require('./lib/ocr')
 const { exec } = require('child_process')
 const adminNumber = JSON.parse(fs.readFileSync('./src/admin.json'))
-const audio = MessageType
+const { wait, simih, getBuffer, h2k, generateMessageID, getGroupAdmins, getRandom, banner, start, success, close } = require('./lib/functions')
 const speed = require('performance-now');
 const vcard = 'BEGIN:VCARD\n' // metadata of the contact card
             + 'VERSION:3.0\n' 
