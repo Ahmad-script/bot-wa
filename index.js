@@ -28,11 +28,14 @@ const vcard = 'BEGIN:VCARD\n' // metadata of the contact card
             + 'TEL;type=CELL;type=VOICE;waid=6283865614902:+62 838-6561-4902\n' // WhatsApp ID + phone number
             + 'END:VCARD'
 const apiKey = 'SLpvUgOcMYwIx0pFeELt'
+const content = JSON.stringify(m.message)
+const from = m.key.remoteJid
+const type = Object.keys(m.message)[0]
 const ownerNumber = ["6283865614902@s.whatsapp.net"] // replace this with your number
 const adminbotnumber = ["6283865614902@s.whatsapp.net"]
 const frendsowner = ["6283865614902@s.whatsapp.net"]
-const sender = m.participant ; m.key.remoteJid
-const isBotGroupAdmins = groupAdmins.includes(botNumber) || false
+const isGroup = from.endsWith('@g.us')
+const sender = isGroup ? m.participant ; m.key.remoteJid
 const isGroupAdmins = groupAdmins.includes(sender) || false
 const isOwner = ownerNumber.includes(sender)
 const isadminbot = adminbotnumber.includes(sender)
