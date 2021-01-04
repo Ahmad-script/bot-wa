@@ -28,7 +28,6 @@ const vcard = 'BEGIN:VCARD\n' // metadata of the contact card
             + 'TEL;type=CELL;type=VOICE;waid=6283865614902:+62 838-6561-4902\n' // WhatsApp ID + phone number
             + 'END:VCARD'
 const apiKey = 'SLpvUgOcMYwIx0pFeELt'
-const botNumber = client.user.jid
 const ownerNumber = ["6283865614902@s.whatsapp.net"] // replace this with your number
 const adminbotnumber = ["6283865614902@s.whatsapp.net"]
 const frendsowner = ["6283865614902@s.whatsapp.net"]
