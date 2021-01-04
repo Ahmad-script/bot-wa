@@ -27,6 +27,14 @@ const vcard = 'BEGIN:VCARD\n' // metadata of the contact card
             + 'ORG:Owner  Bot Ahmad;\n' // the organization of the contact
             + 'TEL;type=CELL;type=VOICE;waid=6283865614902:+62 838-6561-4902\n' // WhatsApp ID + phone number
             + 'END:VCARD'
+conn.on('message-new', async(m) =>
+{
+   const messageContent = m.message
+   const text = m.message.conversation
+   let id = m.key.remoteJid
+   const messageType = Object.keys(messageContent)[0] // message will always contain one key signifying what kind of message
+   let imageMessage = m.message.imageMessage;
+   console.log(`[ ${moment().format("HH:mm:ss")} ] => Nomor: [ ${id.split("@s.whatsapp.net")[0]} ] => ${text}`);
 const apiKey = 'SLpvUgOcMYwIx0pFeELt'
 const content = JSON.stringify(m.message)
 const from = m.key.remoteJid
@@ -98,14 +106,6 @@ conn.on('message-status-update', json =>
    console.log(`[ ${moment().format("HH:mm:ss")} ] => bot by @Ahmad`)
 })
 
-conn.on('message-new', async(m) =>
-{
-   const messageContent = m.message
-   const text = m.message.conversation
-   let id = m.key.remoteJid
-   const messageType = Object.keys(messageContent)[0] // message will always contain one key signifying what kind of message
-   let imageMessage = m.message.imageMessage;
-   console.log(`[ ${moment().format("HH:mm:ss")} ] => Nomor: [ ${id.split("@s.whatsapp.net")[0]} ] => ${text}`);
 
 // Groups
 
