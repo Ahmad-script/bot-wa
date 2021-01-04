@@ -18,7 +18,6 @@ const { wait, simih, getBuffer, h2k, generateMessageID, getGroupAdmins, getRando
 const { fetchJson } = require('./lib/fetcher')
 const { recognize } = require('./lib/ocr')
 const { exec } = require('child_process')
-const kagApi = require('@kagchi/kag-api')
 const { color, bgcolor } = require('./lib/color')
 const tiktod = require('tiktok-scraper')
 const ffmpeg = require('fluent-ffmpeg')
