@@ -28,7 +28,6 @@ const vcard = 'BEGIN:VCARD\n' // metadata of the contact card
             + 'TEL;type=CELL;type=VOICE;waid=6283865614902:+62 838-6561-4902\n' // WhatsApp ID + phone number
             + 'END:VCARD'
 const apiKey = 'SLpvUgOcMYwIx0pFeELt'
-const { text, extendedText, contact, location, liveLocation, image, video, sticker, document, audio, product } = MessageType
 const botNumber = client.user.jid
 const ownerNumber = ["6283865614902@s.whatsapp.net"] // replace this with your number
 const adminbotnumber = ["6283865614902@s.whatsapp.net"]
@@ -147,6 +146,8 @@ if (text.includes("#say")){
   const teks = text.replace(/#say /, "")
 conn.sendMessage(id, teks, MessageType.text)
 }
+
+const { text, extendedText, contact, location, liveLocation, image, video, sticker, document, audio, product } = MessageType
 
 if (text.includes("#ytmp3")){
 const teks = text.replace(/#ytmp3 /, "")
