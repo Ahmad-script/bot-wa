@@ -31,7 +31,6 @@ const apiKey = 'SLpvUgOcMYwIx0pFeELt'
 const ownerNumber = ["6283865614902@s.whatsapp.net"] // replace this with your number
 const adminbotnumber = ["6283865614902@s.whatsapp.net"]
 const frendsowner = ["6283865614902@s.whatsapp.net"]
-const isGroup = from.endsWith('@g.us')
 const sender = isGroup ? m.participant : m.key.remoteJid
 const isBotGroupAdmins = groupAdmins.includes(botNumber) || false
 const isGroupAdmins = groupAdmins.includes(sender) || false
@@ -253,7 +252,6 @@ axios.get(`https://arugaz.herokuapp.com/api/howbucins`).then((res) => {
 })
 }
 if (text.includes("#setgroupname")){
-if (!isGroup) return reply(mess.only.group)
 if (!isGroupAdmins) return reply(mess.only.admin)
 if (!isBotGroupAdmins) return reply(mess.only.Badmin)
 const teks = text.replace(/#setgroupname /, "")
@@ -264,7 +262,6 @@ conn.sendMessage(id, 'Succes Change Name Group' ,MessageType.text, { quoted: m }
 
 }
 if (text.includes("#setgroupdesc")){
-if (!isGroup) return reply(mess.only.group)
 if (!isGroupAdmins) return reply(mess.only.admin)
 if (!isBotGroupAdmins) return reply(mess.only.Badmin)
 const teks = text.replace(/#setgroupdesc /, "")
@@ -279,7 +276,6 @@ conn.sendMessage(id, {displayname: "Jeff", vcard: vcard}, MessageType.contact)
 conn.sendMessage(id, 'Ingin masukin Bot ke group?, chat Owner :D', MessageType.text)
 }
 else if (text == '#opengc'){
-if (!isGroup) return reply(mess.only.group)
 if (!isGroupAdmins) return reply(mess.only.admin)
 if (!isBotGroupAdmins) return reply(mess.only.Badmin)
 let hasil = `${id.split("@s.whatsapp.net")[0]}`;
@@ -287,7 +283,6 @@ let hasil = `${id.split("@s.whatsapp.net")[0]}`;
 conn.sendMessage(id, 'SUCCES, GRUP TELAH DIBUKA' ,MessageType.text, { quoted: m } );
 }
 else if (text == '#closegc'){
-if (!isGroup) return reply(mess.only.group)
 if (!isGroupAdmins) return reply(mess.only.admin)
 if (!isBotGroupAdmins) return reply(mess.only.Badmin)
  let hasil = `${id.split("@s.whatsapp.net")[0]}`;
