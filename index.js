@@ -1049,6 +1049,10 @@ if (text.includes("lukluk"){
 let err = fs.readFileSync('mp3/' + 'lukluk' + '.mp3')
  conn.sendMessage(id, err, MessageType.audio, { quoted: m } )
 }
+if (text.includes("grandescape"){
+let err = fs.readFileSync('mp3/' + 'grandescape' + '.mp3')
+ conn.sendMessage(id, err, MessageType.audio, { quoted: m } )
+}
 if (text.includes("#randomloli"))
    {
     var items = ["anime loli","anime loli sange","anime loli fackgirll","anime loli i love you"];
