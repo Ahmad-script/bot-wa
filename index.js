@@ -985,7 +985,7 @@ if (text.includes("test")){
 let err = fs.readFileSync('mp3/' + 'test' + '.mp3')
  conn.sendMessage(id, err, MessageType.audio, { quoted: m } )
 }
-if (text.includes("salam"))}
+if (text.includes("salam")){
 let err = fs.readFileSync('mp3/' + 'salam' + '.mp3')
  conn.sendMessage(id, err, MessageType.audio, { quoted: m } )
 }
