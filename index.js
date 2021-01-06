@@ -1051,7 +1051,7 @@ else if (text == 'baka') {
 let hasil = fs.readFileSync('mp3/' + 'baka' + '.mp3')
  conn.sendMessage(id, hasil, MessageType.audio, { quoted: m } )
 }
-else if (text == 'goblok'))
+else if (text == 'goblok') {
 let hasil = fs.readFileSync('mp3/' + 'goblok' + '.mp3')
  conn.sendMessage(id, hasil, MessageType.audio, { quoted: m } )
 }
