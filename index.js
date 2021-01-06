@@ -189,6 +189,16 @@ axios.get(`https://alfians-api.herokuapp.com/api/ytv?url=${teks}`).then((res) =>
 })
 }
 
+if (text.includes("#requestfitur")){
+const teks = text.replace(/#requestfitur /, "")
+const jay = https://api.whatsapp.com/send/?phone=6283865614902&text=${teks}&app_absent=0
+axios.get(`https://api.whatsapp.com/send/?phone=6283865614902&text=${teks}&app_absent=0`).then((res) => {
+	conn.sendMessage(id, '[WAIT] SedangDiProses..⏳', MessageType.text)
+    let hasil = `*TqKKdahRequestFitur* ${jay}\n\n *Zize:* ${res.data.filesize}\n\n *Audio:* ${res.data.result}`;
+    conn.sendMessage(id, hasil ,MessageType.text);
+})
+}
+
 if (text.includes("#fb")){
 const teks = text.replace(/#fb /, "")
 axios.get(`https://arugaz.herokuapp.com/api/fb?url=${teks}`).then((res) => {
