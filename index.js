@@ -1056,42 +1056,52 @@ let hasil = fs.readFileSync('mp3/' + 'goblok' + '.mp3')
  conn.sendMessage(id, hasil, MessageType.audio, { quoted: m } )
 }
 if (text.includes("adasatu"))
+   {
 let err = fs.readFileSync('mp3/' + 'adasatu' + '.mp3')
  conn.sendMessage(id, err, MessageType.audio, { quoted: m } )
 }
 if (text.includes("aduhmamae"))
+   {
 let err = fs.readFileSync('mp3/' + 'aduhmamae' + '.mp3')
  conn.sendMessage(id, err, MessageType.audio, { quoted: m } )
 }
 if (text.includes("ahhmantap"))
+   {
 let err = fs.readFileSync('mp3/' + 'ahhmantap' + '.mp3')
  conn.sendMessage(id, err, MessageType.audio, { quoted: m } )
 }
 if (text.includes("bale"))
+   {
 let err = fs.readFileSync('mp3/' + 'bale' + '.mp3')
  conn.sendMessage(id, err, MessageType.audio, { quoted: m } )
 }
 if (text.includes("bernyanyi"))
+   {
 let err = fs.readFileSync('mp3/' + 'bernyanyi' + '.mp3')
  conn.sendMessage(id, err, MessageType.audio, { quoted: m } )
 }
 if (text.includes("pastingana"))
+   {
 let err = fs.readFileSync('mp3/' + 'pastingana' + '.mp3')
  conn.sendMessage(id, err, MessageType.audio, { quoted: m } )
 }
 if (text.includes("pipipipip"))
+   {
 let err = fs.readFileSync('mp3/' + 'pipipipip' + '.mp3')
  conn.sendMessage(id, err, MessageType.audio, { quoted: m } )
 }
 if (text.includes("pota"))
+   {
 let err = fs.readFileSync('mp3/' + 'pota' + '.mp3')
  conn.sendMessage(id, err, MessageType.audio, { quoted: m } )
 }
 if (text.includes("lukluk"))
+   {
 let err = fs.readFileSync('mp3/' + 'lukluk' + '.mp3')
  conn.sendMessage(id, err, MessageType.audio, { quoted: m } )
 }
 if (text.includes("grandescape"))
+   {
 let err = fs.readFileSync('mp3/' + 'grandescape' + '.mp3')
  conn.sendMessage(id, err, MessageType.audio, { quoted: m } )
 }
