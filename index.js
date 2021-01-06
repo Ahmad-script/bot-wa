@@ -129,6 +129,48 @@ if (text.includes("#say")){
 conn.sendMessage(id, teks, MessageType.text)
 }
 
+if (text.includes('#nulis')){
+  var teks = text.replace(/#nulis /, '')
+    axios.get('https://bangandre.herokuapp.com/nulis?teks='+teks)
+    .then((res) => {
+      imageToBase64(res.data.result)
+        .then(
+          (ress) => {
+            conn.sendMessage(id, 'Bot lagi nulis📝', MessageType.text)
+            var buf = Buffer.from(ress, 'base64')
+            conn.sendMessage(id, buf, MessageType.image)
+        })
+    })
+}
+
+if (text.includes('#ssweb')){
+  var teks = text.replace(/#ssweb /, '')
+    axios.get('https://api.haipbis.xyz/ssweb?url='+teks)
+    .then((res) => {
+      imageToBase64(res.data.result)
+        .then(
+          (ress) => {
+            conn.sendMessage(id, '[❗] SEDANG DIPROSES', MessageType.text)
+            var buf = Buffer.from(ress, 'base64')
+            conn.sendMessage(id, buf, MessageType.image)
+        })
+    })
+}   
+
+  if (text.includes('#cooltext')){
+  var teks = text.replace(/#cooltext /, '')
+    axios.get('https://api.haipbis.xyz/randomcooltext?text='+teks)
+    .then((res) => {
+      imageToBase64(res.data.image)
+        .then(
+          (ress) => {
+            conn.sendMessage(id, '[❗] SEDANG DIPROSES', MessageType.text)
+            var buf = Buffer.from(ress, 'base64')
+            conn.sendMessage(id, buf, MessageType.image)
+        })
+    })
+} 
+
 if (text.includes("#ytmp3")){
 const teks = text.replace(/#ytmp3 /, "")
 axios.get(`https://alfians-api.herokuapp.com/api/yta?url=${teks}`).then((res) => {
@@ -1001,7 +1043,7 @@ if (text.includes('bot')){
  }
  conn.sendMessage(id, options, MessageType.text, { quoted: m } )
 }
-if (text.includes("iri") {
+if (text.includes("iri")){
 let err = fs.readFileSync('mp3/' + 'iri' + '.mp3')
  conn.sendMessage(id, err, MessageType.audio, { quoted: m } )
 }
@@ -1009,47 +1051,47 @@ else if (text == 'baka') {
 let hasil = fs.readFileSync('mp3/' + 'baka' + '.mp3')
  conn.sendMessage(id, hasil, MessageType.audio, { quoted: m } )
 }
-else if (text == 'goblok')){
+else if (text == 'goblok'))
 let hasil = fs.readFileSync('mp3/' + 'goblok' + '.mp3')
  conn.sendMessage(id, hasil, MessageType.audio, { quoted: m } )
 }
-if (text.includes("adasatu") {
+if (text.includes("adasatu"))
 let err = fs.readFileSync('mp3/' + 'adasatu' + '.mp3')
  conn.sendMessage(id, err, MessageType.audio, { quoted: m } )
 }
-if (text.includes("aduhmamae") {
+if (text.includes("aduhmamae"))
 let err = fs.readFileSync('mp3/' + 'aduhmamae' + '.mp3')
  conn.sendMessage(id, err, MessageType.audio, { quoted: m } )
 }
-if (text.includes("ahhmantap") {
+if (text.includes("ahhmantap"))
 let err = fs.readFileSync('mp3/' + 'ahhmantap' + '.mp3')
  conn.sendMessage(id, err, MessageType.audio, { quoted: m } )
 }
-if (text.includes("bale") {
+if (text.includes("bale"))
 let err = fs.readFileSync('mp3/' + 'bale' + '.mp3')
  conn.sendMessage(id, err, MessageType.audio, { quoted: m } )
 }
-if (text.includes("bernyanyi") {
+if (text.includes("bernyanyi"))
 let err = fs.readFileSync('mp3/' + 'bernyanyi' + '.mp3')
  conn.sendMessage(id, err, MessageType.audio, { quoted: m } )
 }
-if (text.includes("pastingana") {
+if (text.includes("pastingana"))
 let err = fs.readFileSync('mp3/' + 'pastingana' + '.mp3')
  conn.sendMessage(id, err, MessageType.audio, { quoted: m } )
 }
-if (text.includes("pipipipip") {
+if (text.includes("pipipipip"))
 let err = fs.readFileSync('mp3/' + 'pipipipip' + '.mp3')
  conn.sendMessage(id, err, MessageType.audio, { quoted: m } )
 }
-if (text.includes("pota") {
+if (text.includes("pota"))
 let err = fs.readFileSync('mp3/' + 'pota' + '.mp3')
  conn.sendMessage(id, err, MessageType.audio, { quoted: m } )
 }
-if (text.includes("lukluk") {
+if (text.includes("lukluk"))
 let err = fs.readFileSync('mp3/' + 'lukluk' + '.mp3')
  conn.sendMessage(id, err, MessageType.audio, { quoted: m } )
 }
-if (text.includes("grandescape") {
+if (text.includes("grandescape"))
 let err = fs.readFileSync('mp3/' + 'grandescape' + '.mp3')
  conn.sendMessage(id, err, MessageType.audio, { quoted: m } )
 }
