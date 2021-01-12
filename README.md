@@ -6,8 +6,6 @@
 
 #>pkg install git
 
-#>pkg install tesseract
-
 #>git clone https://github.com/Ahmad-script/bot-wa
 
 #>cd bot-wa
@@ -15,8 +13,6 @@
 #>pkg install wget
 
 #>pkg install ffmpeg
-
-#>pkg install libwebp
 
 #>pkg install nodejs
 
