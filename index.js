@@ -92,7 +92,10 @@ conn.on('message-new', async(m) =>
 
 module.exports = index = async (m, message) => {
     try {
-const { id, from } = message
+const { chat, type, from, caption } = message
+let { body } = message
+var { name, formattedTitle, gcok} = chat
+const chats = (type === 'chat') ? body : (type === 'image' || type === 'video') ? caption : ''
 
 // Groups
 
@@ -144,46 +147,49 @@ if (text.includes('#nulis')){
     })
 }
 
-if (text.includes('adasatu')){
+if (chats == 'adasatu'){
   m.sendPtt(from, './mp3/adasatu.mp3', id)
 }
-if (text.includes('aduhmamae')){
+if (chats == 'aduhmamae'){
   m.sendPtt(from, './mp3/aduhmamae.mp3', id)
 }
-if (text.includes('ahhmantap')){
+if (chats == 'ahhmantap'){
   m.sendPtt(from, './mp3/ahhmantap.mp3', id)
 }
-if (text.includes('baka')){
+if (chats == 'baka'){
   m.sendPtt(from, './mp3/baka.mp3', id)
 }
-if (text.includes('bale')){
+if (chats == 'bale'){
   m.sendPtt(from, './mp3/bale.mp3', id)
 }
-if (text.includes('bernyanyi')){
+if (chats == 'bernyanyi') {
   m.sendPtt(from, './mp3/bernyanyi.mp3', id)
 }
-if (text.includes('grandescape')){
+if (chats == 'grandescape') {
   m.sendPtt(from, './mp3/grandescape.mp3', id)
 }
-if (text.includes('iri')){
+if (chats == 'iri') {
   m.sendPtt(from, './mp3/iri.mp3', id)
 }
-if (text.includes('lukluk')){
+if (chats == 'lukluk'){
   m.sendPtt(from, './mp3/lukluk.mp3', id)
 }
-if (text.includes('pastingana')){
+if (chats == 'pastingana'){
   m.sendPtt(from, './mp3/pastingana.mp3', id)
 }
-if (text.includes('pipipipip')){
+if (chats == 'pipipipip'){
   m.sendPtt(from, './mp3/pipipipip.mp3', id)
 }
-if (text.includes('pots')){
+if (chats == 'pota'){
   m.sendPtt(from, './mp3/pota.mp3', id)
 }
-if (text.includes('tariksis')){
+if (chats == 'tariksis'){
   m.sendPtt(from, './mp3/tariksis.mp3', id)
 }
-
+if (chats == 'test'){
+  m.sendPtt(from, './mp3/test.mp3', id)
+}
+      
 if (text.includes('#ssweb')){
   var teks = text.replace(/#ssweb /, '')
     axios.get('https://api.haipbis.xyz/ssweb?url='+teks)
