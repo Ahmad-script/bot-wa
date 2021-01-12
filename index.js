@@ -14,7 +14,7 @@ const info = require("./lib/info.js");
 const intro = require("./lib/intro.js");
 const serverlist = require("./lib/serverlist.js");
 const serverphoenix = require("./lib/serverphoenix.js");
-const adminNumber = JSON.parse(fs.readFileSync('./src/admin.json'))
+const linkgrup = 'gk ada'; // Link Grup Chat Bot wa Kau
 const speed = require('performance-now');
 const vcard = 'BEGIN:VCARD\n' // Yang Cuma Numpang Nama Doang anjim Emg
             + 'VERSION:3.0\n' 
