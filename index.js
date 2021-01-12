@@ -19,19 +19,14 @@ const { recognize } = require('./lib/ocr')
 const { exec } = require('child_process')
 const adminNumber = JSON.parse(fs.readFileSync('./src/admin.json'))
 const speed = require('performance-now');
-const vcard = 'BEGIN:VCARD\n' // metadata of the contact card
+const vcard = 'BEGIN:VCARD\n' // Yang Cuma Numpang Nama Doang anjim Emg
             + 'VERSION:3.0\n' 
-            + 'FN:Ahmad (Owner Bot)\n' // full name
-            + 'ORG:Owner  Bot Ahmad;\n' // the organization of the contact
-            + 'TEL;type=CELL;type=VOICE;waid=6283865614902:+62 838-6561-4902\n' // WhatsApp ID + phone number
+            + 'FN:Ahmad (Owner Bot)\n' // di Ganti Auto eror
+            + 'ORG:Owner  Bot Ahmad;\n' // jangan di ganti nanti eror
+            + 'TEL;type=CELL;type=VOICE;waid=6283865614902:+62 838-6561-4902\n' // apalagi ini kalau diganti pasti eror
             + 'END:VCARD'
 //
-const BotName = 'BOT Ahmad'; // Nama Bot Whatsapp
-const instagramlu = 'ahmadwoi_x'; // Nama Instagramlu cok
-const whatsapplu = '083865614902'; // Nomor whatsapplu cok
-const kapanbotaktif = 'gtw'; // Kapan bot lu aktif
-const grupch1 = 'https://chat.whatsapp.com/DxdS1IGOuBrEVBo7cxgr7s'; // OFFICIAL GRUP LU 1
-const grupch2 = 'gk ada'; // OFFICIAL GRUP LU 2
+const BotName = 'BOT Ahmad'; // ini ganti woi
 const
 {
    WAConnection,
@@ -144,43 +139,43 @@ if (text.includes('#nulis')){
 }
 
 if (chats == 'adasatu'){
-  m.sendPtt(from, './media/adasatu.mp3', id)
+  m.sendPtt(from, './mp3/adasatu.mp3', id)
 }
 if (chats == 'aduhmamae'){
-  m.sendPtt(from, './media/aduhmamae.mp3', id)
+  m.sendPtt(from, './mp3/aduhmamae.mp3', id)
 }
 if (chats == 'ahhmantap'){
-  m.sendPtt(from, './media/ahhmantap.mp3', id)
+  m.sendPtt(from, './mp3/ahhmantap.mp3', id)
 }
 if (chats == 'baka'){
-  m.sendPtt(from, './media/baka.mp3', id)
+  m.sendPtt(from, './mp3/baka.mp3', id)
 }
 if (chats == 'bale'){
-  m.sendPtt(from, './media/bale.mp3', id)
+  m.sendPtt(from, './mp3/bale.mp3', id)
 }
 if (chats == 'bernyanyi'){
-  m.sendPtt(from, './media/bernyanyi.mp3', id)
+  m.sendPtt(from, './mp3/bernyanyi.mp3', id)
 }
 if (chats == 'grandescape'){
-  m.sendPtt(from, './media/grandescape.mp3', id)
+  m.sendPtt(from, './mp3/grandescape.mp3', id)
 }
 if (chats == 'iri'){
-  m.sendPtt(from, './media/iri.mp3', id)
+  m.sendPtt(from, './mp3/iri.mp3', id)
 }
 if (chats == 'lukluk'){
-  m.sendPtt(from, './media/lukluk.mp3', id)
+  m.sendPtt(from, './mp3/lukluk.mp3', id)
 }
 if (chats == 'pastingana'){
-  m.sendPtt(from, './media/pastingana.mp3', id)
+  m.sendPtt(from, './mp3/pastingana.mp3', id)
 }
 if (chats == 'pipipipip'){
-  m.sendPtt(from, './media/pipipipip.mp3', id)
+  m.sendPtt(from, './mp3/pipipipip.mp3', id)
 }
 if (chats == 'pota'){
-  m.sendPtt(from, './media/pota.mp3', id)
+  m.sendPtt(from, './mp3/pota.mp3', id)
 }
 if (chats == 'tariksis'){
-  m.sendPtt(from, './media/tariksis.mp3', id)
+  m.sendPtt(from, './mp3/tariksis.mp3', id)
 }
 
 if (text.includes('#ssweb')){
