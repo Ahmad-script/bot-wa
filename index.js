@@ -22,7 +22,7 @@ const vcard = 'BEGIN:VCARD\n' // Yang Cuma Numpang Nama Doang anjim Emg
             + 'ORG:Owner  Bot Ahmad;\n' // jangan di ganti nanti eror
             + 'TEL;type=CELL;type=VOICE;waid=6283865614902:+62 838-6561-4902\n' // apalagi ini kalau diganti pasti eror
             + 'END:VCARD'
-//
+//info.js jangan diubah woi Kalau Kau ubah Auto eror
 const BotName = 'BOT Ahmad'; // ini ganti woi
 const
 {
