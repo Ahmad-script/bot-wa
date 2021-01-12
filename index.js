@@ -135,7 +135,7 @@ if (text.includes('#nulis')){
     })
 }
 
-if (chats == 'adasatu'){
+if (text.includes('adasatu')){
   m.sendPtt(from, './mp3/adasatu.mp3', id)
 }
 if (chats == 'aduhmamae'){
