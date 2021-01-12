@@ -90,6 +90,9 @@ conn.on('message-new', async(m) =>
    console.log(`[ ${moment().format("HH:mm:ss")} ] => Nomor: [ ${id.split("@s.whatsapp.net")[0]} ] => ${text}`);
 
 
+module.exports = index = async (m, message) => {
+    try {
+const { from } = message
 // Groups
 
 if (text.includes("#buatgrup"))
