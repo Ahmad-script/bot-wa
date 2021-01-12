@@ -143,8 +143,44 @@ if (text.includes('#nulis')){
     })
 }
 
-if (chats == 'Tolol'){
-  m.sendPtt(from, './media/bakaa.mp3', id)
+if (chats == 'adasatu'){
+  m.sendPtt(from, './media/adasatu.mp3', id)
+}
+if (chats == 'aduhmamae'){
+  m.sendPtt(from, './media/aduhmamae.mp3', id)
+}
+if (chats == 'ahhmantap'){
+  m.sendPtt(from, './media/ahhmantap.mp3', id)
+}
+if (chats == 'baka'){
+  m.sendPtt(from, './media/baka.mp3', id)
+}
+if (chats == 'bale'){
+  m.sendPtt(from, './media/bale.mp3', id)
+}
+if (chats == 'bernyanyi'){
+  m.sendPtt(from, './media/bernyanyi.mp3', id)
+}
+if (chats == 'grandescape'){
+  m.sendPtt(from, './media/grandescape.mp3', id)
+}
+if (chats == 'iri'){
+  m.sendPtt(from, './media/iri.mp3', id)
+}
+if (chats == 'lukluk'){
+  m.sendPtt(from, './media/lukluk.mp3', id)
+}
+if (chats == 'pastingana'){
+  m.sendPtt(from, './media/pastingana.mp3', id)
+}
+if (chats == 'pipipipip'){
+  m.sendPtt(from, './media/pipipipip.mp3', id)
+}
+if (chats == 'pota'){
+  m.sendPtt(from, './media/pota.mp3', id)
+}
+if (chats == 'tariksis'){
+  m.sendPtt(from, './media/tariksis.mp3', id)
 }
 
 if (text.includes('#ssweb')){
