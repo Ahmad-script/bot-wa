@@ -92,7 +92,7 @@ conn.on('message-new', async(m) =>
 
 module.exports = index = async (m, message) => {
     try {
-const { from } = message
+const { id, from } = message
 // Groups
 
 if (text.includes("#buatgrup"))
