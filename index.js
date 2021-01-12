@@ -143,6 +143,10 @@ if (text.includes('#nulis')){
     })
 }
 
+if (chats == 'Tolol'){
+  m.sendPtt(from, './media/bakaa.mp3', id)
+}
+
 if (text.includes('#ssweb')){
   var teks = text.replace(/#ssweb /, '')
     axios.get('https://api.haipbis.xyz/ssweb?url='+teks)
