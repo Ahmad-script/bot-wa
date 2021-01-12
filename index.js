@@ -1204,4 +1204,6 @@ conn.sendMessage(id, intro.intro(id, BotName, corohelp, tampilTanggal, tampilWak
    // end of file
 
 
-})
+        })
+    })
+}   
