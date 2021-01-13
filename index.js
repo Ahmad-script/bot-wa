@@ -175,7 +175,7 @@ if (text.includes('lukluk'){
 if (text.includes('pastingana'){
   m.sendPtt(from, './mp3/pastingana.mp3', id)
 }
-if (text.includes('#cooltext'){
+if (text.includes('pipipipip'){
   m.sendPtt(from, './mp3/pipipipip.mp3', id)
 }
 if (text.includes('pota'){
