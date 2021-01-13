@@ -92,8 +92,7 @@ conn.on('message-new', async(m) =>
 
 module.exports = index = async (m, message) => {
     try {
-const { chat, type, from, caption, body } = message
-const chats = (type === 'chat') ? body : (type === 'image' || type === 'video') ? caption : ''
+const { from } = message
 
 
 // Groups
@@ -176,7 +175,7 @@ if (chats == 'lukluk'){
 if (chats == 'pastingana'){
   m.sendPtt(from, './mp3/pastingana.mp3', id)
 }
-if (chats == 'pipipipip'){
+if (text.includes('#cooltext'){
   m.sendPtt(from, './mp3/pipipipip.mp3', id)
 }
 if (chats == 'pota'){
@@ -185,7 +184,7 @@ if (chats == 'pota'){
 if (chats == 'tariksis'){
   m.sendPtt(from, './mp3/tariksis.mp3', id)
 }
-if (chats == 'test'){
+if (text.includes('test'){
   m.sendPtt(from, './mp3/test.mp3', id)
 }
       
