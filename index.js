@@ -160,28 +160,28 @@ if (text.includes('baka'){
 if (text.includes('bale'){
   m.sendPtt(from, './mp3/bale.mp3', id)
 }
-if ') {
+if (text.includes('bernyanyi') {
   m.sendPtt(from, './mp3/bernyanyi.mp3', id)
 }
-if  {
+if (text.includes('grandescape') {
   m.sendPtt(from, './mp3/grandescape.mp3', id)
 }
-if (chats == 'iri') {
+if (text.includes('iri') {
   m.sendPtt(from, './mp3/iri.mp3', id)
 }
-if (chats == 'lukluk'){
+if (text.includes('lukluk'){
   m.sendPtt(from, './mp3/lukluk.mp3', id)
 }
-if (chats == 'pastingana'){
+if (text.includes('pastingana'){
   m.sendPtt(from, './mp3/pastingana.mp3', id)
 }
 if (text.includes('#cooltext'){
   m.sendPtt(from, './mp3/pipipipip.mp3', id)
 }
-if (chats == 'pota'){
+if (text.includes('pota'){
   m.sendPtt(from, './mp3/pota.mp3', id)
 }
-if (chats == 'tariksis'){
+if (text.includes('tariksis'){
   m.sendPtt(from, './mp3/tariksis.mp3', id)
 }
 if (text.includes('test'){
