@@ -92,10 +92,9 @@ conn.on('message-new', async(m) =>
 
 module.exports = index = async (m, message) => {
     try {
-const { chat, type, from, caption } = message
-let { body } = message
-var { name, formattedTitle, gcok} = chat
+const { chat, type, from, caption, body } = message
 const chats = (type === 'chat') ? body : (type === 'image' || type === 'video') ? caption : ''
+
 
 // Groups
 
