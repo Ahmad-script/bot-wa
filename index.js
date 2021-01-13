@@ -1,4 +1,4 @@
-//Coding By @Ahmad
+//Coding By ahmad
 //Ynag Cuma Numpang Nama Anjing Emg
 //Udah Di kasih Script Malah Egois
 //dibilangin Jangan Diubah Info Malah Kau ubah
