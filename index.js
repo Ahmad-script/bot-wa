@@ -1,3 +1,8 @@
+//Coding By @Ahmad
+//Ynag Cuma Numpang Nama Anjing Emg
+//Udah Di kasih Script Malah Egois
+//dibilangin Jangan Diubah Info Malah Kau ubah
+//Ngntd Emg
 const qrcode = require("qrcode-terminal");
 const moment = require("moment");
 const cheerio = require("cheerio");
