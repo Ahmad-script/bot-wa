@@ -145,25 +145,25 @@ if (text.includes('#nulis')){
     })
 }
 
-if (chats == 'adasatu'){
+if (text.includes('adasatu'){
   m.sendPtt(from, './mp3/adasatu.mp3', id)
 }
-if (chats == 'aduhmamae'){
+if (text.includes('aduhmamae'){
   m.sendPtt(from, './mp3/aduhmamae.mp3', id)
 }
-if (chats == 'ahhmantap'){
+if (text.includes('ahhmantap'){
   m.sendPtt(from, './mp3/ahhmantap.mp3', id)
 }
-if (chats == 'baka'){
+if (text.includes('baka'){
   m.sendPtt(from, './mp3/baka.mp3', id)
 }
-if (chats == 'bale'){
+if (text.includes('bale'){
   m.sendPtt(from, './mp3/bale.mp3', id)
 }
-if (chats == 'bernyanyi') {
+if ') {
   m.sendPtt(from, './mp3/bernyanyi.mp3', id)
 }
-if (chats == 'grandescape') {
+if  {
   m.sendPtt(from, './mp3/grandescape.mp3', id)
 }
 if (chats == 'iri') {
